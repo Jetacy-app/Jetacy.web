@@ -505,23 +505,6 @@ function Contact() {
                 technology into your existing aviation services.
               </p>
             </div>
-            <div className="mt-7 space-y-3">
-              <a
-                href={`mailto:${EMAIL}`}
-                className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground transition-colors hover:border-brand"
-              >
-                <Mail className="size-4 text-brand" /> {EMAIL}
-              </a>
-              <a
-                href={LINKEDIN_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground transition-colors hover:border-brand"
-              >
-                <Linkedin className="size-4 text-brand" /> Follow Jetacy on
-                LinkedIn
-              </a>
-            </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
             <iframe
               src={CALENDLY_URL}
