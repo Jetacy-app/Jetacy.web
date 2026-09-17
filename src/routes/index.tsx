@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
 });
 
 const CALENDLY_URL =
-  "https://calendly.com/jetacy?hide_gdpr_banner=1&background_color=131314&text_color=f5f8f8&primary_color=449bcf&hide_landing_page_details=1";
+  "https://calendly.com/jetacy/30min?hide_gdpr_banner=1&background_color=131314&text_color=f5f8f8&primary_color=449bcf";
 const LINKEDIN_URL = "https://www.linkedin.com/company/jetacy";
 const EMAIL = "jetacy.app@gmail.com";
 
