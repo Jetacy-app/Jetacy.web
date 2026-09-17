@@ -286,18 +286,22 @@ function WhoWeAre() {
               key={it.name}
               className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-line/40"
             >
-              <div
-                className="flex size-11 items-center justify-center rounded-xl"
-                style={{ backgroundColor: `${it.color}1a`, color: it.color }}
-              >
-                <it.icon className="size-5" />
+              <div className="flex items-center gap-3">
+                <div
+                  className="flex size-10 shrink-0 items-center justify-center rounded-xl"
+                  style={{ backgroundColor: `${it.color}1a`, color: it.color }}
+                >
+                  <it.icon className="size-5" />
+                </div>
+                <div>
+                  <h3 className="font-display text-lg font-semibold tracking-wide">
+                    {it.name}
+                  </h3>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slatejet">
+                    {it.sub}
+                  </p>
+                </div>
               </div>
-              <h3 className="mt-4 font-display text-lg font-semibold tracking-wide">
-                {it.name}
-              </h3>
-              <p className="text-xs font-semibold tracking-[0.16em] text-slatejet uppercase">
-                {it.sub}
-              </p>
               <ul className="mt-4 space-y-2.5 text-sm text-slatejet">
                 {it.points.map((p) => (
                   <li key={p} className="flex items-start gap-2">
@@ -438,9 +442,11 @@ function Platform() {
         </div>
         <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {platformFeatures.map((f) => (
-            <div key={f.title} className="bg-card p-6 transition-colors hover:bg-surface">
-              <f.icon className="size-5 text-brand" />
-              <h3 className="mt-3 font-display text-sm font-semibold">{f.title}</h3>
+            <div key={f.title} className="bg-card p-5 transition-colors hover:bg-surface">
+              <div className="flex items-center gap-2.5">
+                <f.icon className="size-4 shrink-0 text-brand" />
+                <h3 className="font-display text-sm font-semibold">{f.title}</h3>
+              </div>
               <p className="mt-2 text-xs leading-relaxed text-slatejet">{f.body}</p>
             </div>
           ))}
@@ -540,7 +546,38 @@ function Contact() {
               Book a live walkthrough — pick a slot that suits your operation
               and we'll show you the full lifecycle: order to departure-ready.
             </p>
-            <div className="mt-8 space-y-3">
+            <div className="mt-7 max-w-md rounded-xl border border-border bg-card p-5">
+              <p className="eyebrow">Who Jetacy is built for</p>
+              <ul className="mt-3 space-y-1.5 text-sm text-slatejet">
+                <li className="flex items-baseline gap-2">
+                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-royal" />
+                  <span>
+                    <span className="font-medium text-foreground">
+                      Specialized aircraft detailers
+                    </span>{" "}
+                    — our primary focus
+                  </span>
+                </li>
+                <li className="flex items-baseline gap-2">
+                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-fleet" />
+                  Fixed-Base Operators (FBOs)
+                </li>
+                <li className="flex items-baseline gap-2">
+                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-brand" />
+                  Business aviation service providers & handling agents
+                </li>
+                <li className="flex items-baseline gap-2">
+                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-slatejet" />
+                  Charter & private jet fleet operators
+                </li>
+              </ul>
+              <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-slatejet">
+                Two ways to come aboard: run your detailing operation on Jetacy
+                as its dedicated platform, or partner with us to embed the
+                technology into your existing aviation services.
+              </p>
+            </div>
+            <div className="mt-7 space-y-3">
               <a
                 href={`mailto:${EMAIL}`}
                 className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground transition-colors hover:border-brand"
@@ -556,17 +593,12 @@ function Contact() {
                 <Linkedin className="size-4 text-brand" /> Follow Jetacy on
                 LinkedIn
               </a>
-              <div className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm text-slatejet">
-                <CalendarClock className="size-4 text-brand" />
-                Scheduling powered by Calendly — instant confirmation.
-              </div>
-            </div>
           </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
             <iframe
               src={CALENDLY_URL}
               title="Schedule a Jetacy demo on Calendly"
-              className="h-[640px] w-full border-0"
+              className="h-[480px] w-full border-0"
               loading="lazy"
             />
           </div>
