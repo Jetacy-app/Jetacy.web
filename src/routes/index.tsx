@@ -87,7 +87,7 @@ function PhoneMockup() {
               </span>
               <span className="size-7 rounded-full bg-gradient-to-br from-brand to-royal" />
             </div>
-          </div>
+            </div>
 
           {/* job card */}
           <div className="mt-4 rounded-xl border border-border bg-surface p-4">
@@ -142,7 +142,7 @@ function PhoneMockup() {
                 ⛁ F-228
               </span>
             </div>
-          </div>
+            </div>
 
           <p className="mt-4 text-center text-[8px] font-medium leading-relaxed tracking-[0.12em] text-slatejet">
             ALL SERVICES ARE ECO-FRIENDLY, ADHERING TO AIRPORT
@@ -198,7 +198,7 @@ function Hero() {
             >
               Explore the platform
             </a>
-          </div>
+            </div>
           <p className="mt-4 text-xs text-slatejet">
             Not a marketplace — discretion & reliability, by design.
           </p>
@@ -247,9 +247,9 @@ const interfaces = [
 
 function WhoWeAre() {
   return (
-    <section id="who" className="py-20 md:py-28">
+    <section id="who" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-20" />
+        <div className="hairline mb-12" />
         <p className="eyebrow">Who we are</p>
         <div className="mt-4 grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
@@ -277,7 +277,7 @@ function WhoWeAre() {
                 discretion & reliability are the foundation, not an add-on.
               </p>
             </div>
-          </div>
+            </div>
         </div>
 
         <div className="mt-16 grid gap-5 md:grid-cols-3">
@@ -286,18 +286,22 @@ function WhoWeAre() {
               key={it.name}
               className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-line/40"
             >
-              <div
-                className="flex size-11 items-center justify-center rounded-xl"
-                style={{ backgroundColor: `${it.color}1a`, color: it.color }}
-              >
-                <it.icon className="size-5" />
+              <div className="flex items-center gap-3">
+                <div
+                  className="flex size-10 shrink-0 items-center justify-center rounded-xl"
+                  style={{ backgroundColor: `${it.color}1a`, color: it.color }}
+                >
+                  <it.icon className="size-5" />
+                </div>
+                <div>
+                  <h3 className="font-display text-lg font-semibold tracking-wide">
+                    {it.name}
+                  </h3>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slatejet">
+                    {it.sub}
+                  </p>
+                </div>
               </div>
-              <h3 className="mt-4 font-display text-lg font-semibold tracking-wide">
-                {it.name}
-              </h3>
-              <p className="text-xs font-semibold tracking-[0.16em] text-slatejet uppercase">
-                {it.sub}
-              </p>
               <ul className="mt-4 space-y-2.5 text-sm text-slatejet">
                 {it.points.map((p) => (
                   <li key={p} className="flex items-start gap-2">
@@ -336,7 +340,7 @@ const solutions = [
 
 function ProblemSolution() {
   return (
-    <section id="problem" className="py-20 md:py-28">
+    <section id="problem" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <p className="eyebrow">The problem · the solution</p>
         <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
@@ -355,7 +359,7 @@ function ProblemSolution() {
                 </li>
               ))}
             </ul>
-          </div>
+            </div>
           <div
             className="rounded-2xl border border-brand/30 bg-card p-7"
             style={{ boxShadow: "0 0 60px -30px #449bcf55" }}
@@ -371,7 +375,7 @@ function ProblemSolution() {
                 </li>
               ))}
             </ul>
-          </div>
+            </div>
         </div>
       </div>
     </section>
@@ -423,9 +427,9 @@ const platformFeatures = [
 
 function Platform() {
   return (
-    <section id="platform" className="py-20 md:py-28">
+    <section id="platform" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-20" />
+        <div className="hairline mb-12" />
         <p className="eyebrow">The platform</p>
         <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
           <h2 className="max-w-xl text-3xl font-bold leading-tight sm:text-4xl">
@@ -438,9 +442,11 @@ function Platform() {
         </div>
         <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {platformFeatures.map((f) => (
-            <div key={f.title} className="bg-card p-6 transition-colors hover:bg-surface">
-              <f.icon className="size-5 text-brand" />
-              <h3 className="mt-3 font-display text-sm font-semibold">{f.title}</h3>
+            <div key={f.title} className="bg-card p-5 transition-colors hover:bg-surface">
+              <div className="flex items-center gap-2.5">
+                <f.icon className="size-4 shrink-0 text-brand" />
+                <h3 className="font-display text-sm font-semibold">{f.title}</h3>
+              </div>
               <p className="mt-2 text-xs leading-relaxed text-slatejet">{f.body}</p>
             </div>
           ))}
@@ -480,9 +486,9 @@ function Platform() {
 
 function VisionMission() {
   return (
-    <section id="vision" className="py-20 md:py-28">
+    <section id="vision" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-20" />
+        <div className="hairline mb-12" />
         <p className="eyebrow">Vision & mission</p>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-8">
@@ -499,7 +505,7 @@ function VisionMission() {
               <span className="text-brand">presentation-perfect</span> — through
               operations that are invisible, precise & effortless.
             </p>
-          </div>
+            </div>
           <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-8">
             <div
               aria-hidden
@@ -514,7 +520,7 @@ function VisionMission() {
               <span className="text-royal">precision care, protection &
               presentation</span> for private & business aviation.
             </p>
-          </div>
+            </div>
         </div>
         <p className="mt-8 text-center text-sm text-slatejet">
           Treated with care to clean, protect & preserve aircraft to the highest
@@ -527,9 +533,9 @@ function VisionMission() {
 
 function Contact() {
   return (
-    <section id="contact" className="py-20 md:py-28">
+    <section id="contact" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-20" />
+        <div className="hairline mb-12" />
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="eyebrow">Request a demo</p>
@@ -540,7 +546,38 @@ function Contact() {
               Book a live walkthrough — pick a slot that suits your operation
               and we'll show you the full lifecycle: order to departure-ready.
             </p>
-            <div className="mt-8 space-y-3">
+            <div className="mt-7 max-w-md rounded-xl border border-border bg-card p-5">
+              <p className="eyebrow">Who Jetacy is built for</p>
+              <ul className="mt-3 space-y-1.5 text-sm text-slatejet">
+                <li className="flex items-baseline gap-2">
+                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-royal" />
+                  <span>
+                    <span className="font-medium text-foreground">
+                      Specialized aircraft detailers
+                    </span>{" "}
+                    — our primary focus
+                  </span>
+                </li>
+                <li className="flex items-baseline gap-2">
+                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-fleet" />
+                  Fixed-Base Operators (FBOs)
+                </li>
+                <li className="flex items-baseline gap-2">
+                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-brand" />
+                  Business aviation service providers & handling agents
+                </li>
+                <li className="flex items-baseline gap-2">
+                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-slatejet" />
+                  Charter & private jet fleet operators
+                </li>
+              </ul>
+              <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-slatejet">
+                Two ways to come aboard: run your detailing operation on Jetacy
+                as its dedicated platform, or partner with us to embed the
+                technology into your existing aviation services.
+              </p>
+            </div>
+            <div className="mt-7 space-y-3">
               <a
                 href={`mailto:${EMAIL}`}
                 className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground transition-colors hover:border-brand"
@@ -556,19 +593,15 @@ function Contact() {
                 <Linkedin className="size-4 text-brand" /> Follow Jetacy on
                 LinkedIn
               </a>
-              <div className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm text-slatejet">
-                <CalendarClock className="size-4 text-brand" />
-                Scheduling powered by Calendly — instant confirmation.
-              </div>
             </div>
-          </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
             <iframe
               src={CALENDLY_URL}
               title="Schedule a Jetacy demo on Calendly"
-              className="h-[640px] w-full border-0"
+              className="h-[480px] w-full border-0"
               loading="lazy"
             />
+            </div>
           </div>
         </div>
       </div>
