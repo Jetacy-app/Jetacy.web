@@ -77,14 +77,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Jetacy — Operating System for Business Jet Detailing" },
+      {
+        name: "description",
+        content:
+          "Jetacy connects Clients, Fleet Ops & Detailing Crews on one execution layer — live job cards, dynamic scheduling, crew GPS tracking & financial tracking for BizAv detailing.",
+      },
+      { name: "author", content: "Jetacy" },
+      { property: "og:title", content: "Jetacy — Operating System for Business Jet Detailing" },
+      {
+        property: "og:description",
+        content:
+          "Three interfaces, one execution layer. Digitize the entire business jet detailing lifecycle — request to departure-ready.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@Jetacy" },
     ],
     links: [
       {
@@ -92,6 +100,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
