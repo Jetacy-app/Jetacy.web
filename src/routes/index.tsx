@@ -16,6 +16,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
+import ordersScreenshot from "@/assets/jetacy-orders-enhanced.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -74,91 +75,14 @@ function Nav() {
 
 function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-full max-w-[320px]">
-      <div className="glow-ring rounded-[2rem] border border-border bg-surface p-3">
-        <div className="rounded-[1.5rem] bg-ink p-4">
-          {/* app header */}
-          <div className="flex items-center justify-between">
-            <span className="font-display text-xl font-bold text-brand">Jetacy</span>
-            <div className="flex gap-2">
-              <span className="size-7 rounded-lg border border-border" />
-              <span className="relative size-7 rounded-lg border border-border">
-                <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-destructive" />
-              </span>
-              <span className="size-7 rounded-full bg-gradient-to-br from-brand to-royal" />
-            </div>
-            </div>
-
-          {/* job card */}
-          <div className="mt-4 rounded-xl border border-border bg-surface p-4">
-            <div className="flex items-center justify-between">
-              <span className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] text-foreground">
-                <span className="size-2 rounded-full bg-brand" /> ORDERS
-              </span>
-              <span className="flex size-6 items-center justify-center rounded-md border border-border text-brand">
-                +
-              </span>
-            </div>
-            <div className="mt-3 flex flex-wrap items-center gap-1.5">
-              <span className="rounded border border-line/40 px-2 py-0.5 text-[9px] font-semibold tracking-wider text-slatejet">
-                ACTIVE
-              </span>
-              <span className="rounded border border-brand/60 px-2 py-0.5 text-[9px] font-semibold tracking-wider text-brand">
-                GO 24/4 @ 11:55PM
-              </span>
-              <span className="rounded border border-line/40 px-2 py-0.5 text-[9px] font-semibold tracking-wider text-slatejet">
-                TTD 1:09
-              </span>
-            </div>
-            <p className="mt-3 flex items-center gap-1.5 font-display text-lg font-semibold">
-              SDF981 <span className="text-royal">◆</span>
-              <span className="text-xs font-bold text-destructive">⚡URGENT</span>
-            </p>
-            <p className="text-[11px] font-medium tracking-wide text-slatejet">
-              CHALLENGER 3500
-            </p>
-            <p className="mt-2 text-xs font-semibold text-foreground">AZI · DHABIJET</p>
-            <div className="flex items-end justify-between">
-              <div className="text-[11px] tracking-wide text-slatejet">
-                <p>PARKED</p>
-                <p>DEP 24/4/26 5:00AM</p>
-              </div>
-              <span className="text-[10px] font-semibold tracking-wider text-brand">
-                DETAILING
-              </span>
-            </div>
-            <div className="mt-2 h-1 rounded-full bg-line/25">
-              <div className="h-1 w-2/3 rounded-full bg-brand" />
-            </div>
-            <div className="mt-4 flex items-center justify-between">
-              <div className="flex gap-1.5">
-                <span className="flex h-10 w-14 items-center justify-center rounded-lg border border-dashed border-brand/50 text-[8px] font-semibold text-brand">
-                  + PHOTOS
-                </span>
-                <span className="h-10 w-14 rounded-lg bg-gradient-to-br from-slatejet/30 to-line/20" />
-                <span className="h-10 w-14 rounded-lg bg-gradient-to-tl from-brand/25 to-line/15" />
-              </div>
-              <span className="text-[10px] font-semibold tracking-wider text-slatejet">
-                ⛁ F-228
-              </span>
-            </div>
-            </div>
-
-          <p className="mt-4 text-center text-[8px] font-medium leading-relaxed tracking-[0.12em] text-slatejet">
-            ALL SERVICES ARE ECO-FRIENDLY, ADHERING TO AIRPORT
-            <br />
-            ENVIRONMENTAL REGULATIONS & OPERATIONAL SAFETY.
-          </p>
-        </div>
-      </div>
-
-      {/* floating chips */}
-      <div className="absolute -left-8 top-16 hidden rounded-xl border border-border bg-surface/90 px-3 py-2 text-[10px] font-semibold tracking-wider text-fleet backdrop-blur lg:block">
-        FLEET OPS · LIVE
-      </div>
-      <div className="absolute -right-10 bottom-24 hidden rounded-xl border border-border bg-surface/90 px-3 py-2 text-[10px] font-semibold tracking-wider text-royal backdrop-blur lg:block">
-        ROYAL ZONE ✓
-      </div>
+    <div className="mx-auto w-full max-w-[560px]">
+      <img
+        src={ordersScreenshot.url}
+        alt="Jetacy live detailing order interface"
+        width={1354}
+        height={1316}
+        className="h-auto w-full rounded-lg object-contain shadow-2xl"
+      />
     </div>
   );
 }
