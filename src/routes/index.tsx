@@ -87,7 +87,7 @@ function PhoneMockup() {
               </span>
               <span className="size-7 rounded-full bg-gradient-to-br from-brand to-royal" />
             </div>
-          </div>
+            </div>
 
           {/* job card */}
           <div className="mt-4 rounded-xl border border-border bg-surface p-4">
@@ -142,7 +142,7 @@ function PhoneMockup() {
                 ⛁ F-228
               </span>
             </div>
-          </div>
+            </div>
 
           <p className="mt-4 text-center text-[8px] font-medium leading-relaxed tracking-[0.12em] text-slatejet">
             ALL SERVICES ARE ECO-FRIENDLY, ADHERING TO AIRPORT
@@ -198,7 +198,7 @@ function Hero() {
             >
               Explore the platform
             </a>
-          </div>
+            </div>
           <p className="mt-4 text-xs text-slatejet">
             Not a marketplace — discretion & reliability, by design.
           </p>
@@ -247,9 +247,9 @@ const interfaces = [
 
 function WhoWeAre() {
   return (
-    <section id="who" className="py-20 md:py-28">
+    <section id="who" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-20" />
+        <div className="hairline mb-12" />
         <p className="eyebrow">Who we are</p>
         <div className="mt-4 grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
@@ -277,7 +277,7 @@ function WhoWeAre() {
                 discretion & reliability are the foundation, not an add-on.
               </p>
             </div>
-          </div>
+            </div>
         </div>
 
         <div className="mt-16 grid gap-5 md:grid-cols-3">
@@ -340,7 +340,7 @@ const solutions = [
 
 function ProblemSolution() {
   return (
-    <section id="problem" className="py-20 md:py-28">
+    <section id="problem" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <p className="eyebrow">The problem · the solution</p>
         <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
@@ -359,7 +359,7 @@ function ProblemSolution() {
                 </li>
               ))}
             </ul>
-          </div>
+            </div>
           <div
             className="rounded-2xl border border-brand/30 bg-card p-7"
             style={{ boxShadow: "0 0 60px -30px #449bcf55" }}
@@ -375,7 +375,7 @@ function ProblemSolution() {
                 </li>
               ))}
             </ul>
-          </div>
+            </div>
         </div>
       </div>
     </section>
@@ -427,9 +427,9 @@ const platformFeatures = [
 
 function Platform() {
   return (
-    <section id="platform" className="py-20 md:py-28">
+    <section id="platform" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-20" />
+        <div className="hairline mb-12" />
         <p className="eyebrow">The platform</p>
         <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
           <h2 className="max-w-xl text-3xl font-bold leading-tight sm:text-4xl">
@@ -486,9 +486,9 @@ function Platform() {
 
 function VisionMission() {
   return (
-    <section id="vision" className="py-20 md:py-28">
+    <section id="vision" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-20" />
+        <div className="hairline mb-12" />
         <p className="eyebrow">Vision & mission</p>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-8">
@@ -505,7 +505,7 @@ function VisionMission() {
               <span className="text-brand">presentation-perfect</span> — through
               operations that are invisible, precise & effortless.
             </p>
-          </div>
+            </div>
           <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-8">
             <div
               aria-hidden
@@ -520,7 +520,7 @@ function VisionMission() {
               <span className="text-royal">precision care, protection &
               presentation</span> for private & business aviation.
             </p>
-          </div>
+            </div>
         </div>
         <p className="mt-8 text-center text-sm text-slatejet">
           Treated with care to clean, protect & preserve aircraft to the highest
@@ -533,9 +533,9 @@ function VisionMission() {
 
 function Contact() {
   return (
-    <section id="contact" className="py-20 md:py-28">
+    <section id="contact" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-20" />
+        <div className="hairline mb-12" />
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="eyebrow">Request a demo</p>
@@ -593,7 +593,7 @@ function Contact() {
                 <Linkedin className="size-4 text-brand" /> Follow Jetacy on
                 LinkedIn
               </a>
-          </div>
+            </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
             <iframe
               src={CALENDLY_URL}
@@ -601,7 +601,7 @@ function Contact() {
               className="h-[480px] w-full border-0"
               loading="lazy"
             />
-          </div>
+            </div>
         </div>
       </div>
     </section>
