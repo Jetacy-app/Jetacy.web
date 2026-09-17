@@ -16,7 +16,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-import ordersScreenshot from "@/assets/jetacy-orders-enhanced.png.asset.json";
+import ordersScreenshot from "@/assets/jetacy-orders-neutral.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -76,13 +76,17 @@ function Nav() {
 function PhoneMockup() {
   return (
     <div className="mx-auto w-full max-w-[560px]">
-      <img
-        src={ordersScreenshot.url}
-        alt="Jetacy live detailing order interface"
-        width={1354}
-        height={1316}
-        className="h-auto w-full rounded-lg object-contain shadow-2xl"
-      />
+      <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-2xl">
+        <div className="overflow-hidden rounded-[1.5rem] bg-ink">
+          <img
+            src={ordersScreenshot.url}
+            alt="Jetacy live detailing order interface"
+            width={1354}
+            height={1316}
+            className="h-auto w-full object-contain"
+          />
+        </div>
+      </div>
     </div>
   );
 }
