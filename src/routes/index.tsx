@@ -97,15 +97,21 @@ function FramedScreenshot({
   width,
   height,
   portrait = false,
+  maxWClass,
 }: {
   src: string;
   alt: string;
   width: number;
   height: number;
   portrait?: boolean;
+  maxWClass?: string;
 }) {
   return (
-    <div className={`mx-auto w-full ${portrait ? "max-w-[360px]" : "max-w-[560px]"}`}>
+    <div
+      className={`mx-auto w-full ${
+        portrait ? "max-w-[360px]" : (maxWClass ?? "max-w-[560px]")
+      }`}
+    >
       <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-2xl">
         <div className="overflow-hidden rounded-[1.5rem] bg-ink">
           <img
