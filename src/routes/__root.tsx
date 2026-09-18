@@ -77,18 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Jetacy — Operating System for Business Jet Detailing" },
+      { title: "Jetacy | Business Jet Detailing Operations" },
       {
         name: "description",
         content:
-          "Jetacy connects Clients, Fleet Ops & Detailing Crews on one execution layer — live job cards, dynamic scheduling, crew GPS tracking & financial tracking for BizAv detailing.",
+          "Jetacy connects Clients, Fleet Ops & Detailing Crews through one operating system for business aviation care.",
       },
       { name: "author", content: "Jetacy" },
-      { property: "og:title", content: "Jetacy — Operating System for Business Jet Detailing" },
+      { property: "og:title", content: "Jetacy | Business Jet Detailing Operations" },
       {
         property: "og:description",
         content:
-          "Three interfaces, one execution layer. Digitize the entire business jet detailing lifecycle — request to departure-ready.",
+          "Three interfaces and one execution layer for faster, clearer business jet detailing operations.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

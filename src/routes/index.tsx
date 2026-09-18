@@ -13,12 +13,30 @@ import {
   Plane,
   ScanLine,
   ShieldCheck,
-  Sparkles,
   Users,
 } from "lucide-react";
 import ordersScreenshot from "@/assets/jetacy-orders-neutral.png.asset.json";
+import appHomeScreenshot from "@/assets/jetacy-app-home.png.asset.json";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Jetacy | Business Jet Detailing Operations" },
+      {
+        name: "description",
+        content:
+          "Jetacy connects clients, fleet operations, and detailing crews through one operating system for business aviation care.",
+      },
+      { property: "og:title", content: "Jetacy | Business Jet Detailing Operations" },
+      {
+        property: "og:description",
+        content:
+          "One operating system for faster, clearer business jet detailing operations.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
@@ -73,16 +91,28 @@ function Nav() {
   );
 }
 
-function PhoneMockup() {
+function FramedScreenshot({
+  src,
+  alt,
+  width,
+  height,
+  portrait = false,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  portrait?: boolean;
+}) {
   return (
-    <div className="mx-auto w-full max-w-[560px]">
+    <div className={`mx-auto w-full ${portrait ? "max-w-[360px]" : "max-w-[560px]"}`}>
       <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-2xl">
         <div className="overflow-hidden rounded-[1.5rem] bg-ink">
           <img
-            src={ordersScreenshot.url}
-            alt="Jetacy live detailing order interface"
-            width={1354}
-            height={1316}
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
             className="h-auto w-full object-contain"
           />
         </div>
@@ -94,13 +124,6 @@ function PhoneMockup() {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[820px] -translate-x-1/2 rounded-full opacity-25 blur-3xl"
-        style={{
-          background: "radial-gradient(closest-side, #449bcf, transparent)",
-        }}
-      />
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 lg:grid-cols-[1.15fr_0.85fr]">
         <div>
           <p className="eyebrow">Business aviation · detailing operations</p>
@@ -110,8 +133,8 @@ function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
             Jetacy connects Clients, Fleet Ops & Detailing Crews through three
-            dedicated interfaces on one execution layer — digitizing the entire
-            detailing lifecycle for seamless turnaround execution.
+            dedicated interfaces on one execution layer for seamless turnaround
+            execution.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
@@ -126,12 +149,15 @@ function Hero() {
             >
               Explore the platform
             </a>
-            </div>
-          <p className="mt-4 text-xs text-slatejet">
-            Not a marketplace — discretion & reliability, by design.
-          </p>
+          </div>
         </div>
-        <PhoneMockup />
+        <FramedScreenshot
+          src={appHomeScreenshot.url}
+          alt="Jetacy app home screen with Client, Fleet Ops, and Crew interfaces"
+          width={678}
+          height={1204}
+          portrait
+        />
       </div>
     </section>
   );
@@ -168,7 +194,7 @@ const interfaces = [
     points: [
       "Digital job cards & 5-step checklists",
       "GPS-tracked execution, live progress",
-      "Time-stamped before/after photos",
+      "Performance profiles: level, hours, permits & qualifications",
     ],
   },
 ];
@@ -181,18 +207,18 @@ function WhoWeAre() {
         <p className="eyebrow">Who we are</p>
         <div className="mt-4 grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
-            One execution layer for the entire detailing lifecycle.
+            One execution layer for every detailing operation.
           </h2>
           <div className="space-y-5 text-slatejet">
             <p className="text-base leading-relaxed sm:text-lg">
               Jetacy is a centralized operating system for business jet
-              detailing services — built to eliminate operational friction by
+              detailing services, built to eliminate operational friction by
               connecting Clients, Fleet Ops & Detailing Crews through three
               dedicated interfaces on one shared execution layer.
             </p>
             <p className="text-base leading-relaxed sm:text-lg">
               Engineered to empower specialized aircraft detailers, alongside
-              FBOs & Fleet Ops — with operational transparency & speed for
+              FBOs & Fleet Ops, with operational transparency & speed for
               BizAv presentation & care.
             </p>
             <div className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
@@ -201,14 +227,23 @@ function WhoWeAre() {
                 <span className="font-semibold text-foreground">
                   Not a marketplace.
                 </span>{" "}
-                No public listings, no bidding wars. Your clients stay yours —
-                discretion & reliability are the foundation, not an add-on.
+                No public listings or bidding wars. Your clients stay yours.
+                Discretion and reliability are built in.
               </p>
             </div>
             </div>
         </div>
 
-        <div className="mt-16 grid gap-5 md:grid-cols-3">
+        <div className="mt-12">
+          <FramedScreenshot
+            src={ordersScreenshot.url}
+            alt="Jetacy live detailing job card"
+            width={1354}
+            height={1316}
+          />
+        </div>
+
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
           {interfaces.map((it) => (
             <div
               key={it.name}
@@ -254,13 +289,13 @@ function WhoWeAre() {
 
 const painPoints = [
   "Scheduling over phone calls & WhatsApp threads",
-  "No live status — \"is the jet done yet?\"",
+  "No live status. Teams keep asking if the jet is ready.",
   "Checklists & sign-offs on paper, photos lost in camera rolls",
   "Manual tail & flight details re-typed into every work order",
 ];
 
 const solutions = [
-  "Dynamic scheduling with auto-priority (urgent < 2h, rushed < 4h)",
+  "Dynamic scheduling with automatic URGENT & RUSHED priority",
   "Live job cards with real-time stage, GO & departure countdowns",
   "Structured 5-step digital checklists with time-stamped photo proof",
   "Automated tail lookup & live flight / FBO sync on every order",
@@ -272,12 +307,12 @@ function ProblemSolution() {
       <div className="mx-auto max-w-6xl px-5">
         <p className="eyebrow">The problem · the solution</p>
         <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
-          Detailers didn't lack skill — they lacked a system.
+          Detailers didn't lack skill. They lacked a system.
         </h2>
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
           <div className="rounded-2xl border border-border bg-card p-7">
             <p className="eyebrow" style={{ color: "#9FA3A4" }}>
-              Today — manual coordination
+              Today: manual coordination
             </p>
             <ul className="mt-5 space-y-4">
               {painPoints.map((p) => (
@@ -293,7 +328,7 @@ function ProblemSolution() {
             style={{ boxShadow: "0 0 60px -30px #449bcf55" }}
           >
             <p className="eyebrow" style={{ color: "#449BCF" }}>
-              With Jetacy — one execution layer
+              With Jetacy: one execution layer
             </p>
             <ul className="mt-5 space-y-4">
               {solutions.map((s) => (
@@ -314,7 +349,7 @@ const platformFeatures = [
   {
     icon: ScanLine,
     title: "Automated tail lookups",
-    body: "Enter a tail number — aircraft type & details auto-fill the work order.",
+    body: "Enter a tail number and aircraft details auto-fill the work order.",
   },
   {
     icon: Compass,
@@ -337,19 +372,9 @@ const platformFeatures = [
     body: "Know who is on which ramp, with verified arrival & service times.",
   },
   {
-    icon: Sparkles,
-    title: "Performance profiles",
-    body: "Per-aircraft service history, preferences & recurring requests.",
-  },
-  {
     icon: Coins,
     title: "Financial tracking",
     body: "Billing, tax invoices, payouts & audit-ready financial reporting.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Eco & safety standards",
-    body: "Aviation-approved biodegradable chemicals, operational safety first.",
   },
 ];
 
@@ -365,7 +390,7 @@ function Platform() {
           </h2>
           <p className="max-w-sm text-sm leading-relaxed text-slatejet">
             Every capability below feeds one goal: a seamless, transparent,
-            on-time turnaround — every single time.
+            reliable, on-time turnaround every single time.
           </p>
         </div>
         <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
@@ -403,7 +428,7 @@ function Platform() {
             )}
           </ol>
           <p className="mt-4 text-center text-xs text-slatejet">
-            Safety gates authorize entry — checklists, photos & job summary sign
+            Safety gates authorize entry. Checklists, photos & job summary sign
             off each stage.
           </p>
         </div>
@@ -430,7 +455,7 @@ function VisionMission() {
             </p>
             <p className="mt-4 font-display text-xl font-semibold leading-snug sm:text-2xl">
               A world where every business jet departs{" "}
-              <span className="text-brand">presentation-perfect</span> — through
+              <span className="text-brand">presentation-perfect</span> through
               operations that are invisible, precise & effortless.
             </p>
             </div>
@@ -444,7 +469,7 @@ function VisionMission() {
               Mission
             </p>
             <p className="mt-4 font-display text-xl font-semibold leading-snug sm:text-2xl">
-              Digitize the entire detailing lifecycle —{" "}
+              Digitize aircraft detailing through{" "}
               <span className="text-royal">precision care, protection &
               presentation</span> for private & business aviation.
             </p>
@@ -471,7 +496,7 @@ function Contact() {
               See Jetacy on your own turnaround.
             </h2>
             <p className="mt-5 max-w-md text-base leading-relaxed text-slatejet">
-              Book a live walkthrough — pick a slot that suits your operation
+              Book a live walkthrough. Pick a slot that suits your operation
               and we'll show you the full lifecycle: order to departure-ready.
             </p>
             <div className="mt-7 max-w-md rounded-xl border border-border bg-card p-5">
@@ -482,8 +507,8 @@ function Contact() {
                   <span>
                     <span className="font-medium text-foreground">
                       Specialized aircraft detailers
-                    </span>{" "}
-                    — our primary focus
+                    </span>
+                    , our primary focus
                   </span>
                 </li>
                 <li className="flex items-baseline gap-2">
@@ -505,6 +530,7 @@ function Contact() {
                 technology into your existing aviation services.
               </p>
             </div>
+          </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
             <iframe
               src={CALENDLY_URL}
@@ -512,7 +538,6 @@ function Contact() {
               className="h-[480px] w-full border-0"
               loading="lazy"
             />
-            </div>
           </div>
         </div>
       </div>
@@ -530,8 +555,15 @@ function Footer() {
             JET DETAILERS · BIZAV CARE OPERATIONS
           </p>
         </div>
-        <div className="flex items-center gap-4 text-xs text-slatejet">
+        <div className="flex items-center gap-3 text-xs text-slatejet">
           <span>© 2026 Jetacy. All rights reserved.</span>
+          <a
+            href={`mailto:${EMAIL}`}
+            aria-label="Email Jetacy"
+            className="rounded-lg border border-border p-2 transition-colors hover:border-brand hover:text-brand"
+          >
+            <Mail className="size-4" />
+          </a>
           <a
             href={LINKEDIN_URL}
             target="_blank"
