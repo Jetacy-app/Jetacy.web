@@ -194,7 +194,7 @@ const interfaces = [
     points: [
       "Digital job cards & 5-step checklists",
       "GPS-tracked execution, live progress",
-      "Crew levels, logged hours, permits & qualifications",
+      "Performance profiles: level, hours, permits & qualifications",
     ],
   },
 ];
@@ -218,7 +218,7 @@ function WhoWeAre() {
             </p>
             <p className="text-base leading-relaxed sm:text-lg">
               Engineered to empower specialized aircraft detailers, alongside
-              FBOs & Fleet Ops — with operational transparency & speed for
+              FBOs & Fleet Ops, with operational transparency & speed for
               BizAv presentation & care.
             </p>
             <div className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
@@ -390,7 +390,7 @@ function Platform() {
           </h2>
           <p className="max-w-sm text-sm leading-relaxed text-slatejet">
             Every capability below feeds one goal: a seamless, transparent,
-            on-time turnaround — every single time.
+            reliable, on-time turnaround every single time.
           </p>
         </div>
         <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
@@ -507,7 +507,7 @@ function Contact() {
                   <span>
                     <span className="font-medium text-foreground">
                       Specialized aircraft detailers
-                    </span>{" "}
+                    </span>
                     , our primary focus
                   </span>
                 </li>
@@ -530,6 +530,7 @@ function Contact() {
                 technology into your existing aviation services.
               </p>
             </div>
+          </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
             <iframe
               src={CALENDLY_URL}
@@ -537,7 +538,6 @@ function Contact() {
               className="h-[480px] w-full border-0"
               loading="lazy"
             />
-            </div>
           </div>
         </div>
       </div>
