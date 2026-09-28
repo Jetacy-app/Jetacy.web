@@ -313,12 +313,12 @@ function ProblemSolution() {
       <div className="mx-auto max-w-6xl px-5">
         <p className="eyebrow">The problem · the solution</p>
         <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
-          Detailers didn't lack skill. They lacked a system.
+          Centralising the workflow.
         </h2>
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
           <div className="rounded-2xl border border-border bg-card p-7">
             <p className="eyebrow" style={{ color: "#9FA3A4" }}>
-              Today: manual coordination
+              Manual coordination
             </p>
             <ul className="mt-5 space-y-4">
               {painPoints.map((p) => (
@@ -399,14 +399,14 @@ function Platform() {
             reliable, on-time turnaround every single time.
           </p>
         </div>
-        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {platformFeatures.map((f) => (
-            <div key={f.title} className="bg-card p-5 transition-colors hover:bg-surface">
+            <div key={f.title} className="bg-card p-6 transition-colors hover:bg-surface">
               <div className="flex items-center gap-2.5">
-                <f.icon className="size-4 shrink-0 text-brand" />
-                <h3 className="font-display text-sm font-semibold">{f.title}</h3>
+                <f.icon className="size-5 shrink-0 text-brand" />
+                <h3 className="font-display text-base font-semibold">{f.title}</h3>
               </div>
-              <p className="mt-2 text-xs leading-relaxed text-slatejet">{f.body}</p>
+              <p className="mt-2.5 text-sm leading-relaxed text-slatejet">{f.body}</p>
             </div>
           ))}
         </div>
