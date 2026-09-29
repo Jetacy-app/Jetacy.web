@@ -148,13 +148,10 @@ function Hero() {
             >
               Request Demo <ArrowRight className="size-4" />
             </a>
-            <a
-              href="#platform"
-              className="inline-flex items-center gap-2 rounded-xl border border-border px-6 py-3.5 font-display text-sm font-semibold text-foreground transition-colors hover:border-brand hover:text-brand"
-            >
-              Explore the platform
-            </a>
           </div>
+          <p className="mt-6 font-display text-sm font-semibold tracking-[0.2em] text-slatejet">
+            3 INTERFACES · 1 EXECUTION LAYER
+          </p>
         </div>
         <FramedScreenshot
           src={appHomeScreenshot.url}
@@ -284,9 +281,6 @@ function WhoWeAre() {
             </div>
           ))}
         </div>
-        <p className="mt-8 text-center font-display text-sm font-semibold tracking-[0.2em] text-slatejet">
-          3 INTERFACES · 1 EXECUTION LAYER
-        </p>
       </div>
     </section>
   );
