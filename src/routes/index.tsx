@@ -281,6 +281,34 @@ function WhoWeAre() {
             </div>
           ))}
         </div>
+
+        <div className="mt-14">
+          <p className="text-center font-display text-xs font-semibold tracking-[0.24em] text-slatejet">
+            THE CREW WORKFLOW
+          </p>
+          <ol className="mt-6 grid gap-4 sm:grid-cols-5">
+            {["Safety", "Inspect", "Detail", "Photos", "Complete"].map(
+              (step, i) => (
+                <li
+                  key={step}
+                  className="rounded-xl border border-border bg-card p-4 text-center"
+                >
+                  <span className="font-display text-2xl font-bold text-brand">
+                    {i + 1}
+                  </span>
+                  <p className="mt-1 text-xs font-semibold tracking-[0.18em] text-foreground uppercase">
+                    {step}
+                  </p>
+                </li>
+              ),
+            )}
+          </ol>
+          <p className="mt-4 text-center text-xs text-slatejet">
+            Safety gates authorize entry. Checklists, photos & job summary sign
+            off each stage.
+          </p>
+        </div>
+
       </div>
     </section>
   );
@@ -404,33 +432,8 @@ function Platform() {
           ))}
         </div>
 
-        {/* workflow */}
-        <div className="mt-14">
-          <p className="text-center font-display text-xs font-semibold tracking-[0.24em] text-slatejet">
-            THE CREW WORKFLOW
-          </p>
-          <ol className="mt-6 grid gap-4 sm:grid-cols-5">
-            {["Safety", "Inspect", "Detail", "Photos", "Complete"].map(
-              (step, i) => (
-                <li
-                  key={step}
-                  className="rounded-xl border border-border bg-card p-4 text-center"
-                >
-                  <span className="font-display text-2xl font-bold text-brand">
-                    {i + 1}
-                  </span>
-                  <p className="mt-1 text-xs font-semibold tracking-[0.18em] text-foreground uppercase">
-                    {step}
-                  </p>
-                </li>
-              ),
-            )}
-          </ol>
-          <p className="mt-4 text-center text-xs text-slatejet">
-            Safety gates authorize entry. Checklists, photos & job summary sign
-            off each stage.
-          </p>
-        </div>
+        {/* workflow moved under the three interface cards in Who We Are */}
+
       </div>
     </section>
   );
