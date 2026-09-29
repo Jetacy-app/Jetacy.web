@@ -306,7 +306,7 @@ function ProblemSolution() {
       <div className="mx-auto max-w-6xl px-5">
         <p className="eyebrow">The problem · the solution</p>
         <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
-          Centralising the workflow.
+          Centralizing the workflow.
         </h2>
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
           <div className="rounded-2xl border border-border bg-card p-7">
