@@ -139,8 +139,7 @@ function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
             Jetacy connects Clients, Fleet Ops & Detailing Crews through three
-            dedicated interfaces on one execution layer for seamless turnaround
-            execution.
+            dedicated interfaces for seamless turnaround execution.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
@@ -214,14 +213,14 @@ function WhoWeAre() {
         <div className="mt-4 grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <div>
             <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
-              One execution layer for every detailing operation.
+              One system for every detailing operation.
             </h2>
             <div className="mt-6 space-y-5 text-slatejet">
               <p className="text-base leading-relaxed sm:text-lg">
                 Jetacy is a centralized operating system for business jet
                 detailing services, built to eliminate operational friction by
                 connecting Clients, Fleet Ops & Detailing Crews through three
-                dedicated interfaces on one shared execution layer.
+                dedicated interfaces for seamless turnaround execution.
               </p>
               <p className="text-base leading-relaxed sm:text-lg">
                 Engineered to empower specialized aircraft detailers, alongside
@@ -334,7 +333,7 @@ function ProblemSolution() {
             style={{ boxShadow: "0 0 60px -30px #449bcf55" }}
           >
             <p className="eyebrow" style={{ color: "#449BCF" }}>
-              With Jetacy: one execution layer
+              With Jetacy: one system
             </p>
             <ul className="mt-5 space-y-4">
               {solutions.map((s) => (
