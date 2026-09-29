@@ -220,7 +220,7 @@ function WhoWeAre() {
                 Jetacy is a centralized operating system for business jet
                 detailing services, built to eliminate operational friction by
                 connecting Clients, Fleet Ops & Detailing Crews through three
-                dedicated interfaces on one shared execution layer.
+                dedicated interfaces for seamless turnaround execution.
               </p>
               <p className="text-base leading-relaxed sm:text-lg">
                 Engineered to empower specialized aircraft detailers, alongside
@@ -333,7 +333,7 @@ function ProblemSolution() {
             style={{ boxShadow: "0 0 60px -30px #449bcf55" }}
           >
             <p className="eyebrow" style={{ color: "#449BCF" }}>
-              With Jetacy: one execution layer
+              With Jetacy: one system
             </p>
             <ul className="mt-5 space-y-4">
               {solutions.map((s) => (
