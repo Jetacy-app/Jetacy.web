@@ -141,7 +141,10 @@ function Hero() {
             Jetacy connects Clients, Fleet Ops & Detailing Crews through three
             dedicated interfaces for seamless turnaround execution.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <p className="mt-8 font-display text-sm font-semibold tracking-[0.2em] text-slatejet">
+            3 INTERFACES · 1 EXECUTION LAYER
+          </p>
+          <div className="mt-4 flex flex-wrap items-center gap-4">
             <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3.5 font-display text-sm font-semibold text-ink transition-opacity hover:opacity-90"
@@ -149,9 +152,6 @@ function Hero() {
               Request Demo <ArrowRight className="size-4" />
             </a>
           </div>
-          <p className="mt-6 font-display text-sm font-semibold tracking-[0.2em] text-slatejet">
-            3 INTERFACES · 1 EXECUTION LAYER
-          </p>
         </div>
         <FramedScreenshot
           src={appHomeScreenshot.url}
