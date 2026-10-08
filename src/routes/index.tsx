@@ -137,12 +137,13 @@ function FramedScreenshot({
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40">
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 lg:grid-cols-[1.15fr_0.85fr]">
-        <div>
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-[360px_1fr] lg:gap-16">
+        <div className="order-1 lg:order-2">
           <p className="eyebrow">Business aviation · detailing operations</p>
-          <h1 className="mt-4 text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-6xl">
-            The operating system for{" "}
-            <span className="text-brand">business jet detailing</span>.
+          <h1 className="mt-4 text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem]">
+            The operating system
+            <br className="hidden sm:block" />
+            for <span className="text-brand">business jet detailing</span>.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
             Jetacy connects Clients, Fleet Ops & Detailers through three
@@ -160,13 +161,16 @@ function Hero() {
             </a>
           </div>
         </div>
-        <FramedScreenshot
-          src={appHomeScreenshot.url}
-          alt="Jetacy home screen with Client, Fleet Ops, and Detailers interfaces"
-          width={678}
-          height={1198}
-          portrait
-        />
+        <div className="order-2 lg:order-1">
+          <FramedScreenshot
+            src={appHomeScreenshot.url}
+            alt="Jetacy home screen with Client, Fleet Ops, and Detailers interfaces"
+            width={678}
+            height={1198}
+            portrait
+            maxWClass="max-w-[300px] lg:max-w-[340px]"
+          />
+        </div>
       </div>
     </section>
   );
