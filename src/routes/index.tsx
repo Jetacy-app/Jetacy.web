@@ -325,7 +325,7 @@ function DetailerWorkflow() {
       <div className="mx-auto max-w-6xl px-5">
         <div className="hairline mb-12" />
         <p className="eyebrow">The detailer workflow</p>
-        <div className="mt-4 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <div className="mt-4 grid items-center gap-10 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-16">
           <div className="order-last lg:order-first">
             <FramedScreenshot
               src={stepsScreenshot.url}
@@ -343,11 +343,11 @@ function DetailerWorkflow() {
             <p className="mt-4 max-w-md text-sm leading-relaxed text-slatejet">
               The same sequence on every job, logged stage by stage.
             </p>
-            <ol className="mt-8 space-y-3.5">
+            <ol className="mt-8 w-fit space-y-3.5">
               {workflowSteps.map((s, i) => (
                 <li
                   key={s.name}
-                  className="flex items-center gap-4 rounded-xl border border-border bg-card px-5 py-5"
+                  className="flex items-center gap-4 rounded-xl border border-border bg-card p-5"
                 >
                   <span className="font-display w-6 shrink-0 text-xl font-bold text-brand">
                     {i + 1}
