@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import jobCardScreenshot from "@/assets/jetacy-job-card.png.asset.json";
 import appHomeScreenshot from "@/assets/jetacy-home.png.asset.json";
+import stepsScreenshot from "@/assets/jetacy-steps.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,7 +26,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Jetacy connects clients, fleet operations, and detailing crews through one operating system for business aviation care.",
+          "Jetacy connects clients, fleet operations, and detailers through one operating system for business aviation care.",
       },
       { property: "og:title", content: "Jetacy | Business Jet Detailing Operations" },
       {
@@ -52,9 +53,15 @@ function Nav() {
         <a href="#top" className="font-display text-2xl font-bold text-brand">
           Jetacy
         </a>
-        <nav className="hidden items-center gap-7 text-sm text-slatejet md:flex">
+        <nav className="hidden items-center gap-6 text-sm text-slatejet lg:flex">
           <a href="#who" className="transition-colors hover:text-foreground">
             Who we are
+          </a>
+          <a href="#interfaces" className="transition-colors hover:text-foreground">
+            Interfaces
+          </a>
+          <a href="#workflow" className="transition-colors hover:text-foreground">
+            Workflow
           </a>
           <a href="#problem" className="transition-colors hover:text-foreground">
             Why Jetacy
@@ -109,7 +116,7 @@ function FramedScreenshot({
   return (
     <div
       className={`mx-auto w-full ${
-        portrait ? "max-w-[360px]" : (maxWClass ?? "max-w-[560px]")
+        maxWClass ?? (portrait ? "max-w-[360px]" : "max-w-[560px]")
       }`}
     >
       <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-2xl">
@@ -138,7 +145,7 @@ function Hero() {
             <span className="text-brand">business jet detailing</span>.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
-            Jetacy connects Clients, Fleet Ops & Detailing Crews through three
+            Jetacy connects Clients, Fleet Ops & Detailers through three
             dedicated interfaces for seamless turnaround execution.
           </p>
           <p className="mt-8 font-display text-sm font-semibold tracking-[0.2em] text-slatejet">
@@ -185,11 +192,11 @@ const interfaces = [
     points: [
       "Calendar across all bookings & history",
       "Billing, invoices & fleet reports",
-      "Integrated crew communication",
+      "Integrated detailer communication",
     ],
   },
   {
-    name: "CREW",
+    name: "DETAILERS",
     sub: "Service execution",
     color: "#449BCF",
     icon: ShieldCheck,
@@ -216,7 +223,7 @@ function WhoWeAre() {
               <p className="text-base leading-relaxed sm:text-lg">
                 Jetacy is a centralized operating system for business jet
                 detailing services, built to eliminate operational friction by
-                connecting Clients, Fleet Ops & Detailing Crews through three
+                connecting Clients, Fleet Ops & Detailers through three
                 dedicated interfaces for seamless turnaround execution.
               </p>
               <p className="text-base leading-relaxed sm:text-lg">
@@ -244,8 +251,21 @@ function WhoWeAre() {
             maxWClass="max-w-[448px]"
           />
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+function Interfaces() {
+  return (
+    <section id="interfaces" className="py-16 md:py-20">
+      <div className="mx-auto max-w-6xl px-5">
+        <div className="hairline mb-12" />
+        <p className="eyebrow">The interfaces</p>
+        <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
+          Each role sees only what it needs.
+        </h2>
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
           {interfaces.map((it) => (
             <div
               key={it.name}
@@ -282,33 +302,65 @@ function WhoWeAre() {
           ))}
         </div>
 
-        <div className="mt-14">
-          <p className="text-center font-display text-xs font-semibold tracking-[0.24em] text-slatejet">
-            THE CREW WORKFLOW
-          </p>
-          <ol className="mt-6 grid gap-4 sm:grid-cols-5">
-            {["Safety", "Inspect", "Detail", "Photos", "Complete"].map(
-              (step, i) => (
+      </div>
+    </section>
+  );
+}
+
+const workflowSteps = [
+  { name: "Safety", desc: "Gates authorize ramp entry" },
+  { name: "Inspect", desc: "Condition logged before work begins" },
+  { name: "Detail", desc: "Checklist executed task by task" },
+  { name: "Photos", desc: "Time-stamped before & after proof" },
+  { name: "Complete", desc: "Job summary signed off on the ramp" },
+];
+
+function DetailerWorkflow() {
+  return (
+    <section id="workflow" className="py-16 md:py-20">
+      <div className="mx-auto max-w-6xl px-5">
+        <div className="hairline mb-12" />
+        <p className="eyebrow">The detailer workflow</p>
+        <div className="mt-4 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <div className="order-last lg:order-first">
+            <FramedScreenshot
+              src={stepsScreenshot.url}
+              alt="Jetacy detailer checklist screen showing step 3 of 5 on an active job"
+              width={678}
+              height={1198}
+              portrait
+              maxWClass="max-w-[300px] lg:max-w-[360px]"
+            />
+          </div>
+          <div>
+            <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
+              Five steps, one sign-off.
+            </h2>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-slatejet">
+              The same sequence on every job, logged stage by stage.
+            </p>
+            <ol className="mt-8 space-y-3.5">
+              {workflowSteps.map((s, i) => (
                 <li
-                  key={step}
-                  className="rounded-xl border border-border bg-card p-4 text-center"
+                  key={s.name}
+                  className="flex items-center gap-4 rounded-xl border border-border bg-card px-5 py-5"
                 >
-                  <span className="font-display text-2xl font-bold text-brand">
+                  <span className="font-display w-6 shrink-0 text-xl font-bold text-brand">
                     {i + 1}
                   </span>
-                  <p className="mt-1 text-xs font-semibold tracking-[0.18em] text-foreground uppercase">
-                    {step}
-                  </p>
+                  <div>
+                    <p className="font-display text-sm font-semibold uppercase tracking-[0.18em]">
+                      {s.name}
+                    </p>
+                    <p className="mt-0.5 text-xs leading-relaxed text-slatejet">
+                      {s.desc}
+                    </p>
+                  </div>
                 </li>
-              ),
-            )}
-          </ol>
-          <p className="mt-4 text-center text-xs text-slatejet">
-            Safety gates authorize entry. Checklists, photos & job summary sign
-            off each stage.
-          </p>
+              ))}
+            </ol>
+          </div>
         </div>
-
       </div>
     </section>
   );
@@ -395,7 +447,7 @@ const platformFeatures = [
   },
   {
     icon: MapPin,
-    title: "Crew GPS tracking",
+    title: "Detailer GPS tracking",
     body: "Know who is on which ramp, with verified arrival & service times.",
   },
   {
@@ -431,9 +483,6 @@ function Platform() {
             </div>
           ))}
         </div>
-
-        {/* workflow moved under the three interface cards in Who We Are */}
-
       </div>
     </section>
   );
@@ -588,6 +637,8 @@ function Index() {
       <main>
         <Hero />
         <WhoWeAre />
+        <Interfaces />
+        <DetailerWorkflow />
         <ProblemSolution />
         <Platform />
         <VisionMission />
