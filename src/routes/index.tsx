@@ -57,14 +57,14 @@ function Nav() {
           <a href="#who" className="transition-colors hover:text-foreground">
             Who we are
           </a>
+          <a href="#problem" className="transition-colors hover:text-foreground">
+            Why Jetacy
+          </a>
           <a href="#interfaces" className="transition-colors hover:text-foreground">
             Interfaces
           </a>
           <a href="#workflow" className="transition-colors hover:text-foreground">
             Workflow
-          </a>
-          <a href="#problem" className="transition-colors hover:text-foreground">
-            Why Jetacy
           </a>
           <a href="#platform" className="transition-colors hover:text-foreground">
             Platform
@@ -641,9 +641,9 @@ function Index() {
       <main>
         <Hero />
         <WhoWeAre />
+        <ProblemSolution />
         <Interfaces />
         <DetailerWorkflow />
-        <ProblemSolution />
         <Platform />
         <VisionMission />
         <Contact />
