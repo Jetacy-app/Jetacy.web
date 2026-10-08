@@ -442,7 +442,7 @@ const platformFeatures = [
   },
   {
     icon: MapPin,
-    title: "Crew GPS tracking",
+    title: "Detailer GPS tracking",
     body: "Know who is on which ramp, with verified arrival & service times.",
   },
   {
@@ -478,9 +478,6 @@ function Platform() {
             </div>
           ))}
         </div>
-
-        {/* workflow moved under the three interface cards in Who We Are */}
-
       </div>
     </section>
   );
@@ -635,6 +632,8 @@ function Index() {
       <main>
         <Hero />
         <WhoWeAre />
+        <Interfaces />
+        <DetailerWorkflow />
         <ProblemSolution />
         <Platform />
         <VisionMission />
