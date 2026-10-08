@@ -322,23 +322,28 @@ function DetailerWorkflow() {
         <div className="hairline mb-12" />
         <p className="eyebrow">The detailer workflow</p>
         <div className="mt-4 grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-          <FramedScreenshot
-            src={stepsScreenshot.url}
-            alt="Jetacy detailer checklist screen showing step 3 of 5 on an active job"
-            width={678}
-            height={1198}
-            portrait
-            maxWClass="max-w-[400px]"
-          />
+          <div className="order-last lg:order-first">
+            <FramedScreenshot
+              src={stepsScreenshot.url}
+              alt="Jetacy detailer checklist screen showing step 3 of 5 on an active job"
+              width={678}
+              height={1198}
+              portrait
+              maxWClass="max-w-[300px] lg:max-w-[360px]"
+            />
+          </div>
           <div>
             <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
               Five steps, one sign-off.
             </h2>
-            <ol className="mt-8 space-y-3">
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-slatejet">
+              The same sequence on every job, logged stage by stage.
+            </p>
+            <ol className="mt-8 space-y-3.5">
               {workflowSteps.map((s, i) => (
                 <li
                   key={s.name}
-                  className="flex items-center gap-4 rounded-xl border border-border bg-card px-5 py-4"
+                  className="flex items-center gap-4 rounded-xl border border-border bg-card px-5 py-5"
                 >
                   <span className="font-display w-6 shrink-0 text-xl font-bold text-brand">
                     {i + 1}
