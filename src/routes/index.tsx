@@ -15,8 +15,8 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
-import ordersScreenshot from "@/assets/jetacy-orders-neutral.png.asset.json";
-import appHomeScreenshot from "@/assets/jetacy-app-home.png.asset.json";
+import jobCardScreenshot from "@/assets/jetacy-job-card.png.asset.json";
+import appHomeScreenshot from "@/assets/jetacy-home.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -155,9 +155,9 @@ function Hero() {
         </div>
         <FramedScreenshot
           src={appHomeScreenshot.url}
-          alt="Jetacy app home screen with Client, Fleet Ops, and Crew interfaces"
+          alt="Jetacy home screen with Client, Fleet Ops, and Detailers interfaces"
           width={678}
-          height={1204}
+          height={1198}
           portrait
         />
       </div>
@@ -237,10 +237,10 @@ function WhoWeAre() {
             </div>
           </div>
           <FramedScreenshot
-            src={ordersScreenshot.url}
-            alt="Jetacy live detailing job card"
-            width={1354}
-            height={1316}
+            src={jobCardScreenshot.url}
+            alt="Jetacy live detailing job card for a Gulfstream G150 turnaround"
+            width={678}
+            height={614}
             maxWClass="max-w-[448px]"
           />
         </div>
