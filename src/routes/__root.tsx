@@ -89,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Three interfaces and one execution layer for faster, clearer business jet detailing operations.",
+          "Three interfaces & one execution layer for faster, clearer business jet detailing operations.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
