@@ -52,9 +52,6 @@ function Nav() {
           Jetacy
         </a>
         <nav className="hidden items-center gap-6 text-sm text-slatejet lg:flex">
-          <a href="#who" className="transition-colors hover:text-foreground">
-            Who we are
-          </a>
           <a href="#problem" className="transition-colors hover:text-foreground">
             Why Jetacy
           </a>
@@ -64,11 +61,8 @@ function Nav() {
           <a href="#workflow" className="transition-colors hover:text-foreground">
             Workflow
           </a>
-          <a href="#platform" className="transition-colors hover:text-foreground">
-            Platform
-          </a>
-          <a href="#vision" className="transition-colors hover:text-foreground">
-            Vision
+          <a href="#workforce" className="transition-colors hover:text-foreground">
+            Workforce
           </a>
           <a href="#contact" className="transition-colors hover:text-foreground">
             Contact
@@ -172,33 +166,21 @@ const interfaces = [
     sub: "Direct jet care",
     color: "#FCD042",
     icon: Users,
-    points: [
-      "Request & track services in real time",
-      "Before/after photo proof on every job",
-      "Membership packages per aircraft category",
-    ],
+    line: "Request & track jobs, with photo proof.",
   },
   {
     name: "FLEET OPS",
     sub: "Operations control",
     color: "#48BA5D",
     icon: Plane,
-    points: [
-      "Calendar across all bookings & history",
-      "Billing, invoices & fleet reports",
-      "Integrated detailer communication",
-    ],
+    line: "Calendar, billing & reports in one view.",
   },
   {
     name: "DETAILERS",
     sub: "Service execution",
     color: "#449BCF",
     icon: ShieldCheck,
-    points: [
-      "Digital job cards & 5-step checklists",
-      "GPS-tracked execution, live progress",
-      "Performance profiles: level, hours, permits & qualifications",
-    ],
+    line: "Job cards, checklists & performance profiles.",
   },
 ];
 
@@ -236,18 +218,18 @@ function WhoWeAre() {
 
 function Interfaces() {
   return (
-    <section id="interfaces" className="py-16 md:py-20">
+    <section id="interfaces" className="py-12 md:py-14">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-12" />
+        <div className="hairline mb-10" />
         <p className="eyebrow">The interfaces</p>
         <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
-          Each role sees only what it needs.
+          Each role, its own view.
         </h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
           {interfaces.map((it) => (
             <div
               key={it.name}
-              className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-line/40"
+              className="group rounded-2xl border border-border bg-card p-5 transition-colors hover:border-line/40"
             >
               <div className="flex items-center gap-3">
                 <div
@@ -265,17 +247,7 @@ function Interfaces() {
                   </p>
                 </div>
               </div>
-              <ul className="mt-4 space-y-2.5 text-sm text-slatejet">
-                {it.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2">
-                    <BadgeCheck
-                      className="mt-0.5 size-4 shrink-0"
-                      style={{ color: it.color }}
-                    />
-                    {p}
-                  </li>
-                ))}
-              </ul>
+              <p className="mt-3 text-sm text-slatejet">{it.line}</p>
             </div>
           ))}
         </div>
@@ -288,7 +260,7 @@ function Interfaces() {
 const workflowSteps = [
   { name: "Safety", desc: "Gates authorize ramp entry" },
   { name: "Inspect", desc: "Condition logged before work begins" },
-  { name: "Detail", desc: "Checklist executed task by task" },
+  { name: "Detail", desc: "Checklist executed task by task. Stain removal tiers." },
   { name: "Photos", desc: "Time-stamped before & after proof" },
   { name: "Complete", desc: "Job summary signed off on the ramp" },
 ];
@@ -416,7 +388,7 @@ const painPoints = [
 
 const solutions = [
   "Dynamic scheduling with automatic URGENT & RUSHED priority",
-  "Live job cards with real-time stage, GO & departure countdowns",
+  "Live job cards with real-time stage & departure countdown",
   "Structured 5-step digital checklists with time-stamped photo proof",
   "Automated tail lookup & live flight / FBO sync on every order",
 ];
@@ -466,36 +438,12 @@ function ProblemSolution() {
 }
 
 const platformFeatures = [
-  {
-    icon: ScanLine,
-    title: "Automated tail lookups",
-    body: "Enter a tail number & aircraft details auto-fill the work order.",
-  },
-  {
-    icon: Compass,
-    title: "Real-time traffic sync",
-    body: "Live flight & FBO data keeps every job aligned with the actual schedule.",
-  },
-  {
-    icon: CalendarClock,
-    title: "Dynamic scheduling",
-    body: "Auto-priority from booking time; slots shift as turnarounds change.",
-  },
-  {
-    icon: Gauge,
-    title: "Live digital job cards",
-    body: "Stage, progress bar, GO time & TTD countdown visible to everyone.",
-  },
-  {
-    icon: MapPin,
-    title: "Detailer GPS tracking",
-    body: "Know who is on which ramp, with verified arrival & service times.",
-  },
-  {
-    icon: Coins,
-    title: "Financial tracking",
-    body: "Billing, tax invoices, payouts & audit-ready financial reporting.",
-  },
+  { icon: ScanLine, title: "Tail auto-lookup", body: "Enter a tail. Details auto-fill." },
+  { icon: Compass, title: "Flight & FBO sync", body: "Live data keeps every job on schedule." },
+  { icon: CalendarClock, title: "Dynamic scheduling", body: "Auto rush priority. Slots adjust live." },
+  { icon: Gauge, title: "Live digital job cards", body: "Stage, progress & departure countdown for all." },
+  { icon: MapPin, title: "GPS & hourly logs", body: "Verified arrival, service time & hours." },
+  { icon: Coins, title: "Billing & finance audit", body: "Invoices, auto payouts & audit-ready reports." },
 ];
 
 function Platform() {
@@ -504,15 +452,9 @@ function Platform() {
       <div className="mx-auto max-w-6xl px-5">
         <div className="hairline mb-12" />
         <p className="eyebrow">The platform</p>
-        <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
-          <h2 className="max-w-xl text-3xl font-bold leading-tight sm:text-4xl">
-            AI & API powered, from request to completion.
-          </h2>
-          <p className="max-w-sm text-sm leading-relaxed text-slatejet">
-            Every capability below feeds one goal: a transparent, reliable,
-            on-time turnaround every single time.
-          </p>
-        </div>
+        <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
+          Powered by API.
+        </h2>
         <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {platformFeatures.map((f) => (
             <div key={f.title} className="bg-card p-6 transition-colors hover:bg-surface">
@@ -524,6 +466,35 @@ function Platform() {
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function BuiltFor() {
+  const items = [
+    { label: "Specialized Aircraft Detailers", dot: "bg-royal" },
+    { label: "FBOs (Fixed-Base Operators)", dot: "bg-fleet" },
+    { label: "BizAv Ground Handlers", dot: "bg-brand" },
+    { label: "Fleet Ops & Aircraft Management", dot: "bg-slatejet" },
+  ];
+  return (
+    <section id="built-for" className="py-16 md:py-20">
+      <div className="mx-auto max-w-6xl px-5">
+        <div className="hairline mb-12" />
+        <p className="eyebrow">Who Jetacy is built for</p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((it) => (
+            <div key={it.label} className="flex items-center gap-3 rounded-xl border border-border bg-card p-5">
+              <span className={`size-2 shrink-0 rounded-full ${it.dot}`} />
+              <span className="text-sm font-medium text-foreground">{it.label}</span>
+            </div>
+          ))}
+        </div>
+        <p className="mt-6 text-base text-slatejet">
+          We deploy as a white-label partner, integrated into your workflow &
+          your branding.
+        </p>
       </div>
     </section>
   );
@@ -591,33 +562,6 @@ function Contact() {
               Book a live walkthrough. Pick a suitable time to show you the
               full lifecycle.
             </p>
-            <div className="mt-7 max-w-md rounded-xl border border-border bg-card p-5">
-              <p className="eyebrow">Who Jetacy is built for</p>
-              <ul className="mt-3 space-y-1.5 text-sm text-slatejet">
-                <li className="flex items-baseline gap-2">
-                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-royal" />
-                  <span className="font-medium text-foreground">
-                    Specialized Aircraft Detailers
-                  </span>
-                </li>
-                <li className="flex items-baseline gap-2">
-                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-fleet" />
-                  FBOs (Fixed-Base Operators)
-                </li>
-                <li className="flex items-baseline gap-2">
-                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-brand" />
-                  BizAv Ground Handlers
-                </li>
-                <li className="flex items-baseline gap-2">
-                  <span className="mt-1 size-1.5 shrink-0 rounded-full bg-slatejet" />
-                  Fleet Ops & Aircraft Management
-                </li>
-              </ul>
-              <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-slatejet">
-                We deploy as a white-label partner, integrated into your
-                workflow & your branding.
-              </p>
-            </div>
           </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
             <iframe
