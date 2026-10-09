@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  ArrowRight,
   BadgeCheck,
   CalendarClock,
   Coins,
   Compass,
   Gauge,
   Linkedin,
-  Lock,
   Mail,
   MapPin,
   Plane,
@@ -156,7 +154,7 @@ function Hero() {
         <div className="order-2 lg:order-1">
           <FramedScreenshot
             src={appHomeScreenshot.url}
-            alt="Jetacy home screen with Client, Fleet Ops, and Detailers interfaces"
+            alt="Jetacy home screen with Client, Fleet Ops & Detailers interfaces"
             width={678}
             height={1198}
             portrait
@@ -471,7 +469,7 @@ const platformFeatures = [
   {
     icon: ScanLine,
     title: "Automated tail lookups",
-    body: "Enter a tail number and aircraft details auto-fill the work order.",
+    body: "Enter a tail number & aircraft details auto-fill the work order.",
   },
   {
     icon: Compass,
