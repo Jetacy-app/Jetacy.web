@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Jetacy connects clients, fleet operations, and detailers through one operating system for business aviation care.",
+          "Jetacy connects clients, fleet operations & detailers through one operating system for business aviation care.",
       },
       { property: "og:title", content: "Jetacy | Business Jet Detailing Operations" },
       {
@@ -137,7 +137,7 @@ function FramedScreenshot({
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-[360px_1fr] lg:gap-16">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[340px_1fr] lg:gap-16">
         <div className="order-1 lg:order-2">
           <p className="eyebrow">Business aviation · detailing operations</p>
           <h1 className="mt-4 text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem]">
@@ -152,14 +152,6 @@ function Hero() {
           <p className="mt-8 font-display text-sm font-semibold tracking-[0.2em] text-slatejet">
             3 INTERFACES · 1 EXECUTION LAYER
           </p>
-          <div className="mt-4 flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3.5 font-display text-sm font-semibold text-ink transition-opacity hover:opacity-90"
-            >
-              Request Demo <ArrowRight className="size-4" />
-            </a>
-          </div>
         </div>
         <div className="order-2 lg:order-1">
           <FramedScreenshot
@@ -225,26 +217,10 @@ function WhoWeAre() {
             </h2>
             <div className="mt-6 space-y-5 text-slatejet">
               <p className="text-base leading-relaxed sm:text-lg">
-                Jetacy is a centralized operating system for business jet
-                detailing services, built to eliminate operational friction by
-                connecting Clients, Fleet Ops & Detailers through three
-                dedicated interfaces for seamless turnaround execution.
-              </p>
-              <p className="text-base leading-relaxed sm:text-lg">
                 Engineered to empower specialized aircraft detailers, alongside
-                FBOs & Fleet Ops, with operational transparency & speed for
-                BizAv presentation & care.
+                FBOs & Fleet Ops, with transparency & speed for BizAv
+                presentation & care.
               </p>
-              <div className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
-                <Lock className="mt-0.5 size-5 shrink-0 text-royal" />
-                <p className="text-sm leading-relaxed">
-                  <span className="font-semibold text-foreground">
-                    Not a marketplace.
-                  </span>{" "}
-                  No public listings or bidding wars. Your clients stay yours.
-                  Discretion and reliability are built in.
-                </p>
-              </div>
             </div>
           </div>
           <FramedScreenshot
@@ -325,7 +301,7 @@ function DetailerWorkflow() {
       <div className="mx-auto max-w-6xl px-5">
         <div className="hairline mb-12" />
         <p className="eyebrow">The detailer workflow</p>
-        <div className="mt-4 grid items-center gap-10 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-16">
+        <div className="mt-4 grid items-center justify-center gap-10 lg:grid-cols-[auto_auto] lg:gap-16">
           <div className="order-last lg:order-first">
             <FramedScreenshot
               src={stepsScreenshot.url}
@@ -333,7 +309,7 @@ function DetailerWorkflow() {
               width={678}
               height={1198}
               portrait
-              maxWClass="max-w-[300px] lg:max-w-[360px]"
+              maxWClass="max-w-[300px] lg:max-w-[360px] lg:w-[360px]"
             />
           </div>
           <div>
@@ -341,9 +317,9 @@ function DetailerWorkflow() {
               Five steps, one sign-off.
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-slatejet">
-              The same sequence on every job, logged stage by stage.
+              The same sequence on every job, logged step by step.
             </p>
-            <ol className="mt-8 w-fit space-y-3.5">
+            <ol className="mt-8 space-y-3.5">
               {workflowSteps.map((s, i) => (
                 <li
                   key={s.name}
@@ -364,6 +340,69 @@ function DetailerWorkflow() {
               ))}
             </ol>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const workforceSteps = [
+  { name: "Apply", desc: "Candidates sign up in the app." },
+  { name: "Approve", desc: "Your team interviews them & clears permits." },
+  { name: "Qualify", desc: "Train cleaners into detailers & supervise them." },
+  { name: "Accept", desc: "Approved detailers take jobs & work by the hour." },
+  { name: "Get paid", desc: "Hours tracked with automated weekly payouts." },
+  { name: "Grow", desc: "Performance-based profiles track progress & rank." },
+];
+
+function WorkforceModule() {
+  return (
+    <section id="workforce" className="py-16 md:py-20">
+      <div className="mx-auto max-w-6xl px-5">
+        <div className="hairline mb-12" />
+        <div
+          className="relative overflow-hidden rounded-3xl border border-brand/30 bg-surface p-7 sm:p-10"
+          style={{ boxShadow: "0 0 0 1px #449bcf1a, 0 30px 80px -40px #000000, 0 0 120px -50px #449bcf88" }}
+        >
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -top-32 left-1/2 size-[28rem] -translate-x-1/2 rounded-full opacity-25 blur-3xl"
+            style={{ background: "radial-gradient(closest-side, #449bcf, transparent)" }}
+          />
+          <div className="relative text-center">
+            <p className="eyebrow" style={{ color: "#449BCF" }}>
+              Workforce module
+            </p>
+            <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
+              On-Demand Hourly Workforce Module
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slatejet">
+              An added layer with on-demand, hourly paid staff, without growing
+              full-time headcount.
+            </p>
+          </div>
+          <ol className="relative mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {workforceSteps.map((s, i) => (
+              <li
+                key={s.name}
+                className="rounded-2xl border border-border bg-ink/70 p-5 transition-colors hover:border-brand/50"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-brand/40 bg-brand-soft font-display text-sm font-bold text-brand">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="font-display text-sm font-semibold uppercase tracking-[0.18em]">
+                    {s.name}
+                  </p>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-slatejet">{s.desc}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="relative mt-10 text-center font-display text-xl font-semibold sm:text-2xl">
+            Not a marketplace.{" "}
+            <span className="text-brand">You decide who works.</span>
+          </p>
         </div>
       </div>
     </section>
@@ -472,8 +511,8 @@ function Platform() {
             AI & API powered, from request to completion.
           </h2>
           <p className="max-w-sm text-sm leading-relaxed text-slatejet">
-            Every capability below feeds one goal: a seamless, transparent,
-            reliable, on-time turnaround every single time.
+            Every capability below feeds one goal: a transparent, reliable,
+            on-time turnaround every single time.
           </p>
         </div>
         <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
@@ -551,38 +590,34 @@ function Contact() {
               See Jetacy on your own turnaround.
             </h2>
             <p className="mt-5 max-w-md text-base leading-relaxed text-slatejet">
-              Book a live walkthrough. Pick a slot that suits your operation
-              and we'll show you the full lifecycle: order to departure-ready.
+              Book a live walkthrough. Pick a suitable time to show you the
+              full lifecycle.
             </p>
             <div className="mt-7 max-w-md rounded-xl border border-border bg-card p-5">
               <p className="eyebrow">Who Jetacy is built for</p>
               <ul className="mt-3 space-y-1.5 text-sm text-slatejet">
                 <li className="flex items-baseline gap-2">
                   <span className="mt-1 size-1.5 shrink-0 rounded-full bg-royal" />
-                  <span>
-                    <span className="font-medium text-foreground">
-                      Specialized aircraft detailers
-                    </span>
-                    , our primary focus
+                  <span className="font-medium text-foreground">
+                    Specialized Aircraft Detailers
                   </span>
                 </li>
                 <li className="flex items-baseline gap-2">
                   <span className="mt-1 size-1.5 shrink-0 rounded-full bg-fleet" />
-                  Fixed-Base Operators (FBOs)
+                  FBOs (Fixed-Base Operators)
                 </li>
                 <li className="flex items-baseline gap-2">
                   <span className="mt-1 size-1.5 shrink-0 rounded-full bg-brand" />
-                  Business aviation service providers & handling agents
+                  BizAv Ground Handlers
                 </li>
                 <li className="flex items-baseline gap-2">
                   <span className="mt-1 size-1.5 shrink-0 rounded-full bg-slatejet" />
-                  Charter & private jet fleet operators
+                  Fleet Ops & Aircraft Management
                 </li>
               </ul>
               <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-slatejet">
-                Two ways to come aboard: run your detailing operation on Jetacy
-                as its dedicated platform, or partner with us to embed the
-                technology into your existing aviation services.
+                We deploy as a white-label partner, integrated into your
+                workflow & your branding.
               </p>
             </div>
           </div>
@@ -607,7 +642,7 @@ function Footer() {
         <div>
           <p className="font-display text-lg font-bold text-brand">Jetacy</p>
           <p className="text-xs tracking-[0.14em] text-slatejet">
-            JET DETAILERS · BIZAV CARE OPERATIONS
+            Jet Detailing OS
           </p>
         </div>
         <div className="flex items-center gap-3 text-xs text-slatejet">
@@ -644,6 +679,7 @@ function Index() {
         <ProblemSolution />
         <Interfaces />
         <DetailerWorkflow />
+        <WorkforceModule />
         <Platform />
         <VisionMission />
         <Contact />
