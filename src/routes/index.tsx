@@ -371,7 +371,7 @@ function WorkforceModule() {
               On-Demand Hourly Workforce Module
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slatejet">
-              An added layer with on-demand, hourly paid staff,{'\n'}
+              An added layer with on-demand, hourly paid staff, {'\n'}
               without growing
               full-time headcount.
             </p>
