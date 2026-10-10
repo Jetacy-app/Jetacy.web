@@ -134,7 +134,7 @@ function Hero() {
         <div className="order-1 lg:order-2">
           <p className="eyebrow">WHO WE ARE</p>
           <h1 className="mt-4 text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem]">
-            Business Jet Detailing
+            Business Jet Detailing{"\u00a0"}
             <br className="hidden sm:block" />
             <span className="text-brand">operating system</span>
           </h1>
