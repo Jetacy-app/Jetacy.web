@@ -2,16 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   BadgeCheck,
   CalendarClock,
+  Camera,
+  Clock,
   Coins,
   Compass,
+  Droplets,
   Gauge,
   Linkedin,
   Mail,
   MapPin,
   Plane,
+  Radar,
   ScanLine,
   ShieldCheck,
+  UserCheck,
   Users,
+  Zap,
 } from "lucide-react";
 import jobCardScreenshot from "@/assets/jetacy-job-card.png.asset.json";
 import appHomeScreenshot from "@/assets/jetacy-home.png.asset.json";
@@ -183,22 +189,28 @@ const interfaces = [
   },
 ];
 
+const jobCardTags = [
+  { icon: Plane, label: "Aircraft & location" },
+  { icon: Radar, label: "Ramp & telemetry" },
+  { icon: UserCheck, label: "Assigned detailer" },
+  { icon: Gauge, label: "Status & progress" },
+  { icon: Zap, label: "Auto priority tags" },
+  { icon: Droplets, label: "Stain removal flags" },
+  { icon: Clock, label: "Start & turnaround time" },
+  { icon: Camera, label: "Before & after photos" },
+];
+
 function WhoWeAre() {
   return (
     <section id="who" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <div className="hairline mb-12" />
-        <p className="eyebrow">LIVE JOB CARDS</p>
-        <div className="mt-4 grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <div>
-            <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
+            <p className="eyebrow">LIVE JOB CARDS</p>
+            <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
               A dedicated job card for each order.
             </h2>
-            <div className="mt-6 space-y-5 text-slatejet">
-              <p className="text-base leading-relaxed sm:text-lg">
-                Engineered to empower specialized aircraft detailers, alongside FBOs & Fleet Ops, that digitize the entire detailing lifecycle & simplify the workflow with transparency & speed for BizAv presentation & care
-              </p>
-            </div>
           </div>
           <FramedScreenshot
             src={jobCardScreenshot.url}
@@ -207,6 +219,16 @@ function WhoWeAre() {
             height={614}
             maxWClass="max-w-[448px]"
           />
+        </div>
+        <div className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-3 lg:grid-cols-4">
+          {jobCardTags.map((t) => (
+            <div key={t.label} className="flex justify-center">
+              <span className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border bg-card px-3 py-2 text-xs font-medium text-foreground">
+                <t.icon className="size-3.5 shrink-0 text-brand" />
+                {t.label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -267,8 +289,7 @@ function DetailerWorkflow() {
     <section id="workflow" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <div className="hairline mb-12" />
-        <p className="eyebrow">The detailer workflow</p>
-        <div className="mt-4 grid items-center justify-center gap-10 lg:grid-cols-[auto_auto] lg:gap-16">
+        <div className="grid items-center justify-center gap-10 lg:grid-cols-[auto_auto] lg:gap-16">
           <div className="order-last lg:order-first">
             <FramedScreenshot
               src={stepsScreenshot.url}
@@ -280,7 +301,8 @@ function DetailerWorkflow() {
             />
           </div>
           <div>
-            <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
+            <p className="eyebrow">The detailer workflow</p>
+            <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
               Five steps, one sign-off.
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-slatejet">
