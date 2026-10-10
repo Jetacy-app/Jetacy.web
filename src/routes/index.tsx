@@ -466,11 +466,10 @@ function Contact() {
           <div>
             <p className="eyebrow">Request a demo</p>
             <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-              See Jetacy on your own turnaround.
+              See Jetacy on your own turnaround ?
             </h2>
             <p className="mt-5 max-w-md text-base leading-relaxed text-slatejet">
-              Book a live walkthrough. Pick a suitable time to show you the
-              full lifecycle.
+              Book a live walkthrough.{"\u00a0\n"}Pick a suitable time to show you the full lifecycle.
             </p>
           </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
