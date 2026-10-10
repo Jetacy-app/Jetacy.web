@@ -194,8 +194,8 @@ const jobCardTags = [
   { icon: Radar, label: "Ramp & telemetry" },
   { icon: UserCheck, label: "Assigned detailer" },
   { icon: Gauge, label: "Status & progress" },
-  { icon: Zap, label: "Auto priority tags" },
-  { icon: Droplets, label: "Stain removal flags" },
+  { icon: Zap, label: "AUTO PRIORITY TAG" },
+  { icon: Droplets, label: "STAIN REMOVAL TAG" },
   { icon: Clock, label: "Start & turnaround time" },
   { icon: Camera, label: "Before & after photos" },
 ];
