@@ -209,7 +209,7 @@ function WhoWeAre() {
           <div>
             <p className="eyebrow">LIVE JOB CARDS</p>
             <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-              A dedicated job card for each order.
+              A dedicated card for each order.
             </h2>
             <div className="mt-8 flex flex-wrap gap-3">
               {jobCardTags.map((t) => (
