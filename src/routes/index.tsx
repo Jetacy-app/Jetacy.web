@@ -131,15 +131,14 @@ function Hero() {
     <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[340px_1fr] lg:gap-16">
         <div className="order-1 lg:order-2">
-          <p className="eyebrow">BUSINESS AVIATION · DETAILING</p>
+          <p className="eyebrow">WHO WE ARE</p>
           <h1 className="mt-4 text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem]">
             Business Jet Detailing
             <br className="hidden sm:block" />
             <span className="text-brand">operating system</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
-            Jetacy connects Clients, Fleet Ops & Detailers through three
-            dedicated interfaces for seamless turnaround execution.
+            Engineered to empower specialized aircraft detailers, alongside FBOs & Fleet Ops, to digitize the entire detailing lifecycle & simplify the workflow. Connecting Clients, Fleet Ops & Detailers through three dedicated interfaces, with transparency & speed.
           </p>
           <p className="mt-8 font-display text-sm font-semibold tracking-[0.2em] text-slatejet">
             3 INTERFACES · 1 EXECUTION LAYER
@@ -189,11 +188,11 @@ function WhoWeAre() {
     <section id="who" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <div className="hairline mb-12" />
-        <p className="eyebrow">Who we are</p>
+        <p className="eyebrow">LIVE JOB CARDS</p>
         <div className="mt-4 grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <div>
             <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
-              One system for every operation.
+              A dedicated job card for each order.
             </h2>
             <div className="mt-6 space-y-5 text-slatejet">
               <p className="text-base leading-relaxed sm:text-lg">
