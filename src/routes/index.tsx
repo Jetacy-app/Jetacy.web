@@ -215,8 +215,8 @@ function WhoWeAre() {
 
 const workflowSteps = [
   { name: "Safety", desc: "Gates authorize ramp entry" },
-  { name: "Inspect", desc: "Condition logged before work begins" },
-  { name: "Detail", desc: "Checklist executed task by task. Stain removal tiers." },
+  { name: "Inspect", desc: "Inspection before work begins" },
+  { name: "Detail", desc: "Checklist executed task by task" },
   { name: "Photos", desc: "Time-stamped before & after proof" },
   { name: "Complete", desc: "Job summary signed off on the ramp" },
 ];
@@ -243,7 +243,7 @@ function DetailerWorkflow() {
               Five steps, one sign-off.
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-slatejet">
-              The same sequence on every job, logged step by step.
+              The Same sequence on every job
             </p>
             <ol className="mt-8 space-y-3.5">
               {workflowSteps.map((s, i) => (
@@ -395,12 +395,12 @@ function ProblemSolution() {
 }
 
 const platformFeatures = [
-  { icon: ScanLine, title: "Tail auto-lookup", body: "Enter a tail. Details auto-fill." },
-  { icon: Compass, title: "Flight & FBO sync", body: "Live data keeps every job on schedule." },
-  { icon: CalendarClock, title: "Dynamic scheduling", body: "Auto rush priority. Slots adjust live." },
+  { icon: ScanLine, title: "Tail auto-lookup", body: "Aircraft details auto-fill." },
+  { icon: Compass, title: "Flight & FBO sync", body: "Live flight data." },
+  { icon: CalendarClock, title: "Dynamic scheduling", body: "Auto time priority. in-sync calendar" },
   { icon: Gauge, title: "Live digital job cards", body: "Stage, progress & departure countdown for all." },
-  { icon: MapPin, title: "GPS & hourly logs", body: "Verified arrival, service time & hours." },
-  { icon: Coins, title: "Billing & finance audit", body: "Invoices, auto payouts & audit-ready reports." },
+  { icon: MapPin, title: "GPS tracking", body: "Detailer location on ramp." },
+  { icon: Coins, title: "Billing & finance audit", body: "Invoices, audit-ready reports & auto payouts" },
 ];
 
 function Platform() {
