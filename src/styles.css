@@ -7,7 +7,7 @@
 /*
  * Jetacy brand system.
  * Brand palette (exact HEX only):
- *  #131314 darkest  |  #1E1E1F main black  |  #F5F8F8 primary text
+ *  #131314 darkest  |  #1B1F23 main black  |  #F5F8F8 primary text
  *  #449BCF blue accent  |  #9FA3A4 brand slate  |  #A3A3A3 sub grey (borders)
  *  #FCD042 royal yellow (client)  |  #48BA5D fleet green (fleet ops)
  */
@@ -41,7 +41,7 @@
 
   /* Jetacy brand tokens */
   --color-ink: #131314;
-  --color-surface: #1e1e1f;
+  --color-surface: #1B1F23;
   --color-brand: #449bcf;
   --color-brand-soft: #449bcf26;
   --color-slatejet: #9fa3a4;
@@ -57,17 +57,17 @@
   --radius: 0.75rem;
   --background: #131314;
   --foreground: #f5f8f8;
-  --card: #1e1e1f;
+  --card: #1B1F23;
   --card-foreground: #f5f8f8;
-  --popover: #1e1e1f;
+  --popover: #1B1F23;
   --popover-foreground: #f5f8f8;
   --primary: #449bcf;
   --primary-foreground: #131314;
-  --secondary: #1e1e1f;
+  --secondary: #1B1F23;
   --secondary-foreground: #f5f8f8;
-  --muted: #1e1e1f;
+  --muted: #1B1F23;
   --muted-foreground: #9fa3a4;
-  --accent: #1e1e1f;
+  --accent: #1B1F23;
   --accent-foreground: #f5f8f8;
   --destructive: #e5484d;
   --destructive-foreground: #f5f8f8;

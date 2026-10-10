@@ -12,7 +12,7 @@ The app is 90% done, considered complete, The Landing page will have a brief sim
 
 MUST Contain: BRAND Color pallet HEX: ONLY
 #131314      Darkest - The primary background 
-#1E1E1F      Main Black
+#1B1F23      Main Black
 #F5F8F8   Primary Text: (Primary light text and high-contrast elements) 
 #449BCF  Blue Accent Primary (main accent)
 #9FA3A4   Grey Subtext color: Brand Slate: (Muted text, icons, and secondary labels)
