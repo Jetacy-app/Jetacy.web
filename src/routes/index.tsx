@@ -16,7 +16,6 @@ import {
   ScanLine,
   ShieldCheck,
   UserCheck,
-  Users,
   Zap,
 } from "lucide-react";
 import jobCardScreenshot from "@/assets/jetacy-job-card.png.asset.json";
