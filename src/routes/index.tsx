@@ -136,7 +136,7 @@ function Hero() {
           <h1 className="mt-4 text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem]">
             Business Jet Detailing{"\u00a0"}
             <br className="hidden sm:block" />
-            <span className="text-brand">operating system</span>
+            <span className="text-brand">Operating System</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
             Engineered to empower specialized aircraft detailers, alongside FBOs & Fleet Ops, to digitize the entire detailing lifecycle & simplify the workflow. Connecting Clients, Fleet Ops & Detailers through three dedicated interfaces, with transparency & speed.
@@ -297,7 +297,7 @@ function WorkforceModule() {
           />
           <div className="relative text-center">
             <p className="eyebrow" style={{ color: "#449BCF" }}>
-              Workforce module
+              {"\n"}
             </p>
             <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
               On-Demand Hourly Workforce Module
@@ -354,7 +354,7 @@ function ProblemSolution() {
   return (
     <section id="problem" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <p className="eyebrow">The problem · the solution</p>
+        <p className="eyebrow">THE PROBLEM · THE SOLUTION</p>
         <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
           Centralized workflow.
         </h2>
