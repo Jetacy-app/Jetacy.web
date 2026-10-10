@@ -500,53 +500,6 @@ function BuiltFor() {
   );
 }
 
-function VisionMission() {
-  return (
-    <section id="vision" className="py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-12" />
-        <p className="eyebrow">Vision & mission</p>
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-8">
-            <div
-              aria-hidden
-              className="absolute -right-16 -top-16 size-48 rounded-full opacity-20 blur-2xl"
-              style={{ background: "radial-gradient(closest-side, #449bcf, transparent)" }}
-            />
-            <p className="eyebrow" style={{ color: "#449BCF" }}>
-              Vision
-            </p>
-            <p className="mt-4 font-display text-xl font-semibold leading-snug sm:text-2xl">
-              A world where every business jet departs{" "}
-              <span className="text-brand">presentation-perfect</span> through
-              operations that are invisible, precise & effortless.
-            </p>
-            </div>
-          <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-8">
-            <div
-              aria-hidden
-              className="absolute -right-16 -top-16 size-48 rounded-full opacity-20 blur-2xl"
-              style={{ background: "radial-gradient(closest-side, #fcd042, transparent)" }}
-            />
-            <p className="eyebrow" style={{ color: "#FCD042" }}>
-              Mission
-            </p>
-            <p className="mt-4 font-display text-xl font-semibold leading-snug sm:text-2xl">
-              Digitize aircraft detailing through{" "}
-              <span className="text-royal">precision care, protection &
-              presentation</span> for private & business aviation.
-            </p>
-            </div>
-        </div>
-        <p className="mt-8 text-center text-sm text-slatejet">
-          Treated with care to clean, protect & preserve aircraft to the highest
-          standard.
-        </p>
-      </div>
-    </section>
-  );
-}
-
 function Contact() {
   return (
     <section id="contact" className="py-16 md:py-20">
@@ -621,9 +574,9 @@ function Index() {
         <ProblemSolution />
         <Interfaces />
         <DetailerWorkflow />
-        <WorkforceModule />
         <Platform />
-        <VisionMission />
+        <WorkforceModule />
+        <BuiltFor />
         <Contact />
       </main>
       <Footer />
