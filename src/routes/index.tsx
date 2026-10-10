@@ -61,9 +61,6 @@ function Nav() {
           <a href="#problem" className="transition-colors hover:text-foreground">
             Why Jetacy
           </a>
-          <a href="#interfaces" className="transition-colors hover:text-foreground">
-            Interfaces
-          </a>
           <a href="#workflow" className="transition-colors hover:text-foreground">
             Workflow
           </a>
@@ -165,29 +162,6 @@ function Hero() {
   );
 }
 
-const interfaces = [
-  {
-    name: "CLIENT",
-    sub: "Direct jet care",
-    color: "#FCD042",
-    icon: Users,
-    line: "Request & track jobs, with photo proof.",
-  },
-  {
-    name: "FLEET OPS",
-    sub: "Operations control",
-    color: "#48BA5D",
-    icon: Plane,
-    line: "Calendar, billing & reports in one view.",
-  },
-  {
-    name: "DETAILERS",
-    sub: "Service execution",
-    color: "#449BCF",
-    icon: ShieldCheck,
-    line: "Job cards, checklists & performance profiles.",
-  },
-];
 
 const jobCardTags = [
   { icon: Plane, label: "Aircraft & location" },
@@ -240,46 +214,6 @@ function WhoWeAre() {
   );
 }
 
-function Interfaces() {
-  return (
-    <section id="interfaces" className="py-12 md:py-14">
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-10" />
-        <p className="eyebrow">The interfaces</p>
-        <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
-          Each role, its own view.
-        </h2>
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {interfaces.map((it) => (
-            <div
-              key={it.name}
-              className="group rounded-2xl border border-border bg-card p-5 transition-colors hover:border-line/40"
-            >
-              <div className="flex items-center gap-3">
-                <div
-                  className="flex size-10 shrink-0 items-center justify-center rounded-xl"
-                  style={{ backgroundColor: `${it.color}1a`, color: it.color }}
-                >
-                  <it.icon className="size-5" />
-                </div>
-                <div>
-                  <h3 className="font-display text-lg font-semibold tracking-wide">
-                    {it.name}
-                  </h3>
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slatejet">
-                    {it.sub}
-                  </p>
-                </div>
-              </div>
-              <p className="mt-3 text-sm text-slatejet">{it.line}</p>
-            </div>
-          ))}
-        </div>
-
-      </div>
-    </section>
-  );
-}
 
 const workflowSteps = [
   { name: "Safety", desc: "Gates authorize ramp entry" },
@@ -597,7 +531,6 @@ function Index() {
         <Hero />
         <WhoWeAre />
         <ProblemSolution />
-        <Interfaces />
         <DetailerWorkflow />
         <Platform />
         <WorkforceModule />
