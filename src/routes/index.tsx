@@ -131,11 +131,11 @@ function Hero() {
     <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[340px_1fr] lg:gap-16">
         <div className="order-1 lg:order-2">
-          <p className="eyebrow">Business aviation · detailing operations</p>
+          <p className="eyebrow">BUSINESS AVIATION · DETAILING</p>
           <h1 className="mt-4 text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem]">
-            The operating system
+            Business Jet Detailing
             <br className="hidden sm:block" />
-            for <span className="text-brand">business jet detailing</span>.
+            <span className="text-brand">operating system</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
             Jetacy connects Clients, Fleet Ops & Detailers through three
@@ -193,13 +193,11 @@ function WhoWeAre() {
         <div className="mt-4 grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <div>
             <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
-              One system for every detailing operation.
+              One system for every operation.
             </h2>
             <div className="mt-6 space-y-5 text-slatejet">
               <p className="text-base leading-relaxed sm:text-lg">
-                Engineered to empower specialized aircraft detailers, alongside
-                FBOs & Fleet Ops, with transparency & speed for BizAv
-                presentation & care.
+                Engineered to empower specialized aircraft detailers, alongside FBOs & Fleet Ops, that digitize the entire detailing lifecycle & simplify the workflow with transparency & speed for BizAv presentation & care
               </p>
             </div>
           </div>
@@ -399,7 +397,7 @@ function ProblemSolution() {
       <div className="mx-auto max-w-6xl px-5">
         <p className="eyebrow">The problem · the solution</p>
         <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
-          Centralizing the workflow.
+          Centralized workflow.
         </h2>
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
           <div className="rounded-2xl border border-border bg-card p-7">
