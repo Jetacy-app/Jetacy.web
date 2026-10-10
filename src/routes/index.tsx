@@ -384,7 +384,7 @@ function WorkforceModule() {
               >
                 <div className="flex items-center gap-3">
                   <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-brand/40 bg-brand-soft font-display text-sm font-bold text-brand">
-                    {String(i + 1).padStart(2, "0")}
+                    {String(i + 1)}
                   </span>
                   <p className="font-display text-sm font-semibold uppercase tracking-[0.18em]">
                     {s.name}
