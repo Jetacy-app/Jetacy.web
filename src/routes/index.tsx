@@ -14,7 +14,6 @@ import {
   Plane,
   Radar,
   ScanLine,
-  ShieldCheck,
   UserCheck,
   Zap,
 } from "lucide-react";
