@@ -274,9 +274,9 @@ function DetailerWorkflow() {
 
 const workforceSteps = [
   { name: "Apply", desc: "Candidates sign up in the app." },
-  { name: "Approve", desc: "Your team interviews them & clears permits." },
-  { name: "Qualify", desc: "Train cleaners into detailers & supervise them." },
-  { name: "Accept", desc: "Approved detailers take jobs & work by the hour." },
+  { name: "Approve", desc: "Your team interviews them\u00a0\n& clears permits." },
+  { name: "Qualify", desc: "Train cleaners into detailers\u00a0\n& supervise them." },
+  { name: "Accept", desc: "Approved detailers take jobs\u00a0\n& work by the hour." },
   { name: "Get paid", desc: "Hours tracked with automated weekly payouts." },
   { name: "Grow", desc: "Performance-based profiles track progress & rank." },
 ];
@@ -328,7 +328,7 @@ function WorkforceModule() {
           </ol>
           <p className="relative mt-10 text-center font-display text-xl font-semibold sm:text-2xl">
             Not a marketplace.{" "}
-            <span className="text-brand">You decide who works.</span>
+            <span className="text-brand">{"\n"}You decide who works.</span>
           </p>
         </div>
       </div>
