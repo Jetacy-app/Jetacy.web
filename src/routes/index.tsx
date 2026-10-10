@@ -215,7 +215,7 @@ function WhoWeAre() {
               {jobCardTags.map((t) => (
                 <span
                   key={t.label}
-                  className="inline-flex w-fit max-w-full items-center gap-2.5 whitespace-nowrap rounded-full border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground"
+                  className="inline-flex w-fit max-w-full items-center gap-2.5 whitespace-nowrap rounded-full border border-border bg-card px-4 py-2.5 text-sm font-semibold uppercase tracking-wide text-foreground"
 
                 >
                   <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-brand/10">
