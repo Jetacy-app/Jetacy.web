@@ -431,9 +431,9 @@ function Platform() {
 function BuiltFor() {
   const items = [
     { label: "Specialized Aircraft Detailers", dot: "bg-royal" },
-    { label: "FBOs (Fixed-Base Operators)", dot: "bg-fleet" },
+    { label: "FBOs & Fleet Ops", dot: "bg-fleet" },
     { label: "BizAv Ground Handlers", dot: "bg-brand" },
-    { label: "Fleet Ops & Aircraft Management", dot: "bg-slatejet" },
+    { label: "Aircraft Management\n", dot: "bg-slatejet" },
   ];
   return (
     <section id="built-for" className="py-16 md:py-20">
