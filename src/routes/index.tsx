@@ -143,7 +143,7 @@ function Hero() {
             <span className="text-brand">Operating System</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
-            Engineered to empower specialized aircraft detailers, alongside FBOs & Fleet Ops, to digitize the entire detailing lifecycle & simplify the workflow. Connecting Clients, Fleet Ops & Detailers through three dedicated interfaces, with a centralized workflow.
+            Engineered to empower specialized aircraft detailers, alongside FBOs & Fleet Ops, digitizing the entire detailing lifecycle & simplifying the operations friction. Connecting Clients, Fleet Ops & Detailers through three dedicated interfaces, with a centralized workflow.
           </p>
           <p className="mt-8 font-display text-sm font-semibold tracking-[0.2em] text-slatejet">
             3 INTERFACES · 1 EXECUTION LAYER
