@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  BadgeCheck,
   CalendarClock,
   Camera,
   Clock,
@@ -17,28 +16,37 @@ import {
   UserCheck,
   Zap,
 } from "lucide-react";
+import { Fragment } from "react";
 import jobCardScreenshot from "@/assets/jetacy-job-card.png.asset.json";
 import appHomeScreenshot from "@/assets/jetacy-home.png.asset.json";
+import ogScreenshot from "@/assets/jetacy-og.png.asset.json";
 import stepsScreenshot from "@/assets/jetacy-steps.png.asset.json";
+
+const SITE_URL = "https://jetacy.lovable.app";
+const OG_IMAGE = `${SITE_URL}${ogScreenshot.url}`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Jetacy | Business Jet Detailing Operations" },
+      { title: "Jetacy | Business Jet Detailing OS" },
       {
         name: "description",
         content:
-          "Jetacy connects clients, fleet operations & detailers through one operating system for business aviation care.",
+          "Jetacy is the business jet detailing operating system. Clients, Fleet Ops & Detailers on one execution layer, with live job cards, dynamic scheduling & photo proof.",
       },
-      { property: "og:title", content: "Jetacy | Business Jet Detailing Operations" },
+      { property: "og:title", content: "Jetacy | Business Jet Detailing OS" },
       {
         property: "og:description",
         content:
           "One operating system for faster, clearer business jet detailing operations.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
+    links: [{ rel: "canonical", href: SITE_URL }],
   }),
   component: Index,
 });
@@ -56,9 +64,6 @@ function Nav() {
           Jetacy
         </a>
         <nav className="hidden items-center gap-6 text-sm text-slatejet lg:flex">
-          <a href="#problem" className="transition-colors hover:text-foreground">
-            Why Jetacy
-          </a>
           <a href="#workflow" className="transition-colors hover:text-foreground">
             Workflow
           </a>
@@ -133,7 +138,7 @@ function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[340px_1fr] lg:gap-16">
         <div className="order-1 lg:order-2">
           <p className="eyebrow">WHO WE ARE</p>
-          <h1 className="mt-4 text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem]">
+          <h1 className="mt-4 text-[33px] font-bold leading-[1.08] sm:text-[45px] lg:text-[49px] xl:text-[54.6px]">
             Business Jet Detailing{"\u00a0"}
             <br className="hidden sm:block" />
             <span className="text-brand">Operating System</span>
@@ -247,22 +252,26 @@ function DetailerWorkflow() {
             </p>
             <ol className="mt-8 space-y-3.5">
               {workflowSteps.map((s, i) => (
-                <li
-                  key={s.name}
-                  className="flex items-center gap-4 rounded-xl border border-border bg-card p-5"
-                >
-                  <span className="font-display w-6 shrink-0 text-xl font-bold text-brand">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <p className="font-display text-sm font-semibold uppercase tracking-[0.18em]">
-                      {s.name}
-                    </p>
-                    <p className="mt-0.5 text-xs leading-relaxed text-slatejet">
-                      {s.desc}
-                    </p>
-                  </div>
-                </li>
+                <Fragment key={s.name}>
+                  {s.name === "Photos" && (
+                    <li className="pb-1 pt-2 text-center">
+                      <span className="eyebrow">WORKFORCE OPTIMIZATION</span>
+                    </li>
+                  )}
+                  <li className="flex items-center gap-4 rounded-xl border border-border bg-card p-5">
+                    <span className="font-display w-6 shrink-0 text-xl font-bold text-brand">
+                      {i + 1}
+                    </span>
+                    <div>
+                      <p className="font-display text-sm font-semibold uppercase tracking-[0.18em]">
+                        {s.name}
+                      </p>
+                      <p className="mt-0.5 text-xs leading-relaxed text-slatejet">
+                        {s.desc}
+                      </p>
+                    </div>
+                  </li>
+                </Fragment>
               ))}
             </ol>
           </div>
@@ -336,64 +345,6 @@ function WorkforceModule() {
   );
 }
 
-const painPoints = [
-  "Scheduling over phone calls & WhatsApp threads",
-  "No live status. Teams keep asking if the jet is ready.",
-  "Checklists & sign-offs on paper, photos lost in camera rolls",
-  "Manual tail & flight details re-typed into every work order",
-];
-
-const solutions = [
-  "Dynamic scheduling with automatic URGENT & RUSHED priority",
-  "Live job cards with real-time stage & departure countdown",
-  "Structured 5-step digital checklists with time-stamped photo proof",
-  "Automated tail lookup & live flight / FBO sync on every order",
-];
-
-function ProblemSolution() {
-  return (
-    <section id="problem" className="py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-5">
-        <p className="eyebrow">THE PROBLEM · THE SOLUTION</p>
-        <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
-          Centralized workflow.
-        </h2>
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-card p-7">
-            <p className="eyebrow" style={{ color: "#9FA3A4" }}>
-              Manual coordination
-            </p>
-            <ul className="mt-5 space-y-4">
-              {painPoints.map((p) => (
-                <li key={p} className="flex items-start gap-3 text-sm leading-relaxed text-slatejet">
-                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-line" />
-                  {p}
-                </li>
-              ))}
-            </ul>
-            </div>
-          <div
-            className="rounded-2xl border border-brand/30 bg-card p-7"
-            style={{ boxShadow: "0 0 60px -30px #449bcf55" }}
-          >
-            <p className="eyebrow" style={{ color: "#449BCF" }}>
-              With Jetacy: one system
-            </p>
-            <ul className="mt-5 space-y-4">
-              {solutions.map((s) => (
-                <li key={s} className="flex items-start gap-3 text-sm leading-relaxed text-foreground">
-                  <BadgeCheck className="mt-0.5 size-4 shrink-0 text-brand" />
-                  {s}
-                </li>
-              ))}
-            </ul>
-            </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 const platformFeatures = [
   { icon: ScanLine, title: "Tail auto-lookup", body: "Aircraft details auto-fill." },
   { icon: Compass, title: "Flight & FBO sync", body: "Live flight data." },
@@ -448,10 +399,10 @@ function BuiltFor() {
             </div>
           ))}
         </div>
-        <p className="mt-6 text-base text-slatejet">
+        <h2 className="mt-8 text-2xl font-bold leading-tight text-foreground sm:text-3xl">
           We deploy as a white-label partner, integrated into your workflow &
           your branding.
-        </p>
+        </h2>
       </div>
     </section>
   );
@@ -476,7 +427,7 @@ function Contact() {
             <iframe
               src={CALENDLY_URL}
               title="Schedule a Jetacy demo on Calendly"
-              className="h-[480px] w-full border-0"
+              className="h-[307px] w-full border-0"
               loading="lazy"
             />
           </div>
@@ -527,7 +478,6 @@ function Index() {
       <main>
         <Hero />
         <WhoWeAre />
-        <ProblemSolution />
         <DetailerWorkflow />
         <Platform />
         <WorkforceModule />
