@@ -16,7 +16,6 @@ import {
   UserCheck,
   Zap,
 } from "lucide-react";
-import { Fragment } from "react";
 import jobCardScreenshot from "@/assets/jetacy-job-card.png.asset.json";
 import appHomeScreenshot from "@/assets/jetacy-home.png.asset.json";
 import ogScreenshot from "@/assets/jetacy-og.png.asset.json";
