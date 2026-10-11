@@ -137,9 +137,9 @@ function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[340px_1fr] lg:gap-16">
         <div className="order-1 lg:order-2">
           <p className="eyebrow">WHO WE ARE</p>
-          <h1 className="mt-4 text-[33px] font-bold leading-[1.08] sm:text-[45px] lg:text-[49px] xl:text-[54.6px]">
+          <h1 className="mt-4 text-[31px] font-bold leading-[1.08] sm:text-[43px] lg:text-[47px] xl:text-[52.6px]">
             Business Jet Detailing{"\u00a0"}
-            <br className="hidden sm:block" />
+            <br />
             <span className="text-brand">Operating System</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
