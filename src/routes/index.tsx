@@ -139,7 +139,7 @@ function Hero() {
             <span className="text-brand">Operating System</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
-            Engineered to empower specialized aircraft detailers, alongside FBOs & Fleet Ops, to digitize the entire detailing lifecycle & simplify the workflow. Connecting Clients, Fleet Ops & Detailers through three dedicated interfaces, with transparency & speed.
+            Engineered to empower specialized aircraft detailers, alongside FBOs & Fleet Ops, to digitize the entire detailing lifecycle & simplify the workflow. Connecting Clients, Fleet Ops & Detailers through three dedicated interfaces, with a centralized workflow.
           </p>
           <p className="mt-8 font-display text-sm font-semibold tracking-[0.2em] text-slatejet">
             3 INTERFACES · 1 EXECUTION LAYER
@@ -214,11 +214,11 @@ function WhoWeAre() {
 
 
 const workflowSteps = [
-  { name: "Safety", desc: "Gates authorize ramp entry" },
-  { name: "Inspect", desc: "Inspection before work begins" },
-  { name: "Detail", desc: "Checklist executed task by task" },
-  { name: "Photos", desc: "Time-stamped before & after proof" },
-  { name: "Complete", desc: "Job summary signed off on the ramp" },
+  { name: "Safety", desc: "Authorize ramp entry" },
+  { name: "Inspect", desc: "Inspection & before photos" },
+  { name: "Detail", desc: "Task by task checklist" },
+  { name: "Photos", desc: "After photos proof" },
+  { name: "Complete", desc: "Signed off on the ramp." },
 ];
 
 function DetailerWorkflow() {
@@ -240,7 +240,7 @@ function DetailerWorkflow() {
           <div>
             <p className="eyebrow">The detailer workflow</p>
             <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-              Five steps, one sign-off.
+              Five steps
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-slatejet">
               The Same sequence on every job
