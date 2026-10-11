@@ -242,7 +242,7 @@ function DetailerWorkflow() {
             />
           </div>
           <div>
-            <p className="eyebrow">The detailer workflow</p>
+            <p className="eyebrow">DETAILERS WORKFLOW</p>
             <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
               Five steps
             </h2>
