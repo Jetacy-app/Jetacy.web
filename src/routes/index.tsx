@@ -306,8 +306,8 @@ function WorkforceModule() {
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slatejet">
               An added layer with on-demand, hourly paid staff, {'\n'}
-              without growing
-              full-time headcount.
+              <br />
+              without growing full-time headcount.
             </p>
           </div>
           <ol className="relative mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
