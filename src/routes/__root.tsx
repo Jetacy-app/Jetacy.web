@@ -78,14 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Jetacy | Business Jet Detailing Operations" },
+      { title: "Jetacy | Business Jet Detailing OS" },
       {
         name: "description",
         content:
-          "Jetacy connects Clients, Fleet Ops & Detailing Crews through one operating system for business aviation care.",
+          "Jetacy connects Clients, Fleet Ops & Detailers through one operating system for business aviation care.",
       },
       { name: "author", content: "Jetacy" },
-      { property: "og:title", content: "Jetacy | Business Jet Detailing Operations" },
+      { property: "og:title", content: "Jetacy | Business Jet Detailing OS" },
       {
         property: "og:description",
         content:
