@@ -16,7 +16,6 @@ import {
   UserCheck,
   Zap,
 } from "lucide-react";
-import { Fragment } from "react";
 import jobCardScreenshot from "@/assets/jetacy-job-card.png.asset.json";
 import appHomeScreenshot from "@/assets/jetacy-home.png.asset.json";
 import ogScreenshot from "@/assets/jetacy-og.png.asset.json";
@@ -252,26 +251,22 @@ function DetailerWorkflow() {
             </p>
             <ol className="mt-8 space-y-3.5">
               {workflowSteps.map((s, i) => (
-                <Fragment key={s.name}>
-                  {s.name === "Photos" && (
-                    <li className="pb-1 pt-2 text-center">
-                      <span className="eyebrow">WORKFORCE OPTIMIZATION</span>
-                    </li>
-                  )}
-                  <li className="flex items-center gap-4 rounded-xl border border-border bg-card p-5">
-                    <span className="font-display w-6 shrink-0 text-xl font-bold text-brand">
-                      {i + 1}
-                    </span>
-                    <div>
-                      <p className="font-display text-sm font-semibold uppercase tracking-[0.18em]">
-                        {s.name}
-                      </p>
-                      <p className="mt-0.5 text-xs leading-relaxed text-slatejet">
-                        {s.desc}
-                      </p>
-                    </div>
-                  </li>
-                </Fragment>
+                <li
+                  key={s.name}
+                  className="flex items-center gap-4 rounded-xl border border-border bg-card p-5"
+                >
+                  <span className="font-display w-6 shrink-0 text-xl font-bold text-brand">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <p className="font-display text-sm font-semibold uppercase tracking-[0.18em]">
+                      {s.name}
+                    </p>
+                    <p className="mt-0.5 text-xs leading-relaxed text-slatejet">
+                      {s.desc}
+                    </p>
+                  </div>
+                </li>
               ))}
             </ol>
           </div>
@@ -305,9 +300,7 @@ function WorkforceModule() {
             style={{ background: "radial-gradient(closest-side, #449bcf, transparent)" }}
           />
           <div className="relative text-center">
-            <p className="eyebrow" style={{ color: "#449BCF" }}>
-              {"\n"}
-            </p>
+            <p className="eyebrow text-center text-brand">WORKFORCE OPTIMIZATION</p>
             <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
               On-Demand Hourly Workforce Module
             </h2>
