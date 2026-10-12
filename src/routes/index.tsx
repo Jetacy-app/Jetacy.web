@@ -143,7 +143,10 @@ function Hero() {
             <span className="text-brand">Operating System</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
-            Engineered to empower specialized aircraft detailers, alongside FBOs & Fleet Ops, digitizing the entire detailing lifecycle & simplifying the operations friction. Connecting Clients, Fleet Ops & Detailers through three dedicated interfaces, with a centralized workflow.
+            Engineered to empower specialized Aircraft Detailers, alongside FBOs & Ground Handlers, digitizing the entire detailing lifecycle & easing operational friction.
+
+
+            Coordinating Detailers with Clients & Fleet Ops, each through its own dedicated interface, in one centralized workflow.
           </p>
           <p className="mt-8 font-display text-sm font-semibold tracking-[0.2em] text-foreground">
             3 INTERFACES · 1 EXECUTION LAYER
@@ -243,12 +246,12 @@ function DetailerWorkflow() {
             />
           </div>
           <div>
-            <p className="eyebrow">DETAILERS WORKFLOW</p>
+            <p className="eyebrow">DETAILERS ORDER PROCESS</p>
             <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
               Five steps
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-slatejet">
-              The Same sequence on every job
+              The same sequence on every job
             </p>
             <ol className="mt-8 space-y-3.5">
               {workflowSteps.map((s, i) => (
@@ -278,7 +281,7 @@ function DetailerWorkflow() {
 }
 
 const workforceSteps = [
-  { name: "Apply", desc: "Candidates sign up in the app." },
+  { name: "Apply", desc: "Candidates apply & submit their details." },
   { name: "Approve", desc: "Your team interviews them\u00a0\n& clears permits." },
   { name: "Qualify", desc: "Train cleaners into detailers\u00a0\n& supervise them." },
   { name: "Accept", desc: "Approved detailers take jobs\u00a0\n& work by the hour." },
@@ -342,7 +345,7 @@ function WorkforceModule() {
 const platformFeatures = [
   { icon: ScanLine, title: "Tail auto-lookup", body: "Aircraft details auto-fill." },
   { icon: Compass, title: "Flight & FBO sync", body: "Live flight data." },
-  { icon: CalendarClock, title: "Dynamic scheduling", body: "Auto time priority. in-sync calendar" },
+  { icon: CalendarClock, title: "Dynamic scheduling", body: "Auto time priority. In-sync calendar" },
   { icon: Gauge, title: "Live digital job cards", body: "Stage, progress & departure countdown for all." },
   { icon: MapPin, title: "GPS tracking", body: "Detailer location on ramp." },
   { icon: Coins, title: "Billing & finance audit", body: "Invoices, audit-ready reports & auto payouts" },
@@ -394,8 +397,7 @@ function BuiltFor() {
           ))}
         </div>
         <h2 className="mt-8 text-2xl font-bold leading-tight text-foreground sm:text-3xl">
-          We deploy as a white-label partner, integrated into your workflow &
-          your branding.
+          We deploy as a white-label partner, integrated into your system & customized to your brand.
         </h2>
       </div>
     </section>
@@ -414,7 +416,7 @@ function Contact() {
               See Jetacy on your own turnaround ?
             </h2>
             <p className="mt-5 max-w-md text-base leading-relaxed text-slatejet">
-              Book a live walkthrough.{"\u00a0\n"}Pick a suitable time to show you the full lifecycle.
+              Book a walkthrough. Choose a suitable time.
             </p>
           </div>
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
