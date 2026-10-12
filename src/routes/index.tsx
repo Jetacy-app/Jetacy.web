@@ -1,20 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   CalendarClock,
-  Camera,
-  Clock,
   Coins,
   Compass,
-  Droplets,
   Gauge,
   Linkedin,
   Mail,
   MapPin,
-  Plane,
-  Radar,
   ScanLine,
-  UserCheck,
-  Zap,
 } from "lucide-react";
 import jobCardScreenshot from "@/assets/jetacy-job-card.png.asset.json";
 import appHomeScreenshot from "@/assets/jetacy-home.png.asset.json";
@@ -168,18 +161,6 @@ function Hero() {
 }
 
 
-const jobCardTags = [
-  { icon: Plane, label: "Aircraft details & location" },
-  { icon: CalendarClock, label: "Arrival & departure time" },
-  { icon: Radar, label: "Ramp & telemetry" },
-  { icon: UserCheck, label: "Assigned detailer" },
-  { icon: Gauge, label: "Status & progress bar" },
-  { icon: Zap, label: "Auto priority tag" },
-  { icon: Droplets, label: "Stain removal tag" },
-  { icon: Clock, label: "Start & turnaround time" },
-  { icon: Camera, label: "Before & after photos" },
-];
-
 function WhoWeAre() {
   return (
     <section id="who" className="py-16 md:py-20">
@@ -191,20 +172,9 @@ function WhoWeAre() {
             <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
               A dedicated card for each order.
             </h2>
-            <div className="mt-8 flex flex-wrap gap-3">
-              {jobCardTags.map((t) => (
-                <span
-                  key={t.label}
-                  className="inline-flex w-fit max-w-full items-center gap-2.5 whitespace-nowrap rounded-full border border-border bg-card px-4 py-2.5 text-sm font-semibold uppercase tracking-wide text-foreground"
-
-                >
-                  <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-brand/10">
-                    <t.icon className="size-3.5 text-brand" />
-                  </span>
-                  {t.label}
-                </span>
-              ))}
-            </div>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-slatejet">
+              Every detail the job needs, in one place.
+            </p>
           </div>
           <FramedScreenshot
             src={jobCardScreenshot.url}
