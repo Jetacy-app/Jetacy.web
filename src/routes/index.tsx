@@ -137,8 +137,8 @@ function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
             Engineered to empower specialized Aircraft Detailers, alongside FBOs & Ground Handlers, digitizing the entire detailing lifecycle & easing operational friction.
-
-
+            <br />
+            <br />
             Coordinating Detailers with Clients & Fleet Ops, each through its own dedicated interface, in one centralized workflow.
           </p>
           <p className="mt-8 font-display text-sm font-semibold tracking-[0.2em] text-foreground">
