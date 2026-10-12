@@ -168,19 +168,6 @@ function Hero() {
 }
 
 
-const jobCardTags = [
-  { icon: Plane, label: "Aircraft details & location" },
-  { icon: CalendarClock, label: "Arrival & departure time" },
-  { icon: Radar, label: "Ramp & telemetry" },
-  { icon: UserCheck, label: "Assigned detailer" },
-  { icon: Gauge, label: "Status & progress bar" },
-  { icon: Zap, label: "Auto priority tag" },
-  { icon: Droplets, label: "Stain removal tag" },
-  { icon: Clock, label: "Start & turnaround time" },
-  { icon: Camera, label: "Before & after photos" },
-];
-
-function WhoWeAre() {
   return (
     <section id="who" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
