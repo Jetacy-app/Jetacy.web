@@ -332,9 +332,10 @@ function WorkforceModule() {
               </li>
             ))}
           </ol>
-          <p className="relative mt-10 text-center font-display text-xl font-semibold sm:text-2xl">
-            Not a marketplace.{" "}
-            <span className="text-brand">{"\n"}You decide who works.</span>
+          <p className="relative mt-10 text-center font-display text-xl font-semibold leading-snug sm:text-2xl">
+            Not a marketplace.
+            <br />
+            <span className="text-brand">You decide who works.</span>
           </p>
         </div>
       </div>
@@ -378,10 +379,10 @@ function Platform() {
 
 function BuiltFor() {
   const items = [
-    { label: "Specialized Aircraft Detailers", dot: "bg-royal" },
+    { label: "Specialized Aircraft Detailers", dot: "bg-brand" },
     { label: "FBOs & Fleet Ops", dot: "bg-fleet" },
-    { label: "BizAv Ground Handlers", dot: "bg-brand" },
-    { label: "Aircraft Management\n", dot: "bg-slatejet" },
+    { label: "BizAv Ground Handlers", dot: "bg-ground" },
+    { label: "Aircraft Management", dot: "bg-royal" },
   ];
   return (
     <section id="built-for" className="py-16 md:py-20">
@@ -396,9 +397,9 @@ function BuiltFor() {
             </div>
           ))}
         </div>
-        <h2 className="mt-8 text-2xl font-bold leading-tight text-foreground sm:text-3xl">
+        <p className="mt-8 max-w-3xl text-base leading-relaxed text-slatejet">
           We deploy as a white-label partner, integrated into your system & customized to your brand.
-        </h2>
+        </p>
       </div>
     </section>
   );
