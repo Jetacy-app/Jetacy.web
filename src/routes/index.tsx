@@ -9,7 +9,7 @@ import {
   MapPin,
   ScanLine,
 } from "lucide-react";
-import jobCardScreenshot from "@/assets/jetacy-job-card.png.asset.json";
+import jobCardScreenshot from "@/assets/jetacy-cards-busy.png.asset.json";
 import appHomeScreenshot from "@/assets/jetacy-home-2.png.asset.json";
 import ogScreenshot from "@/assets/jetacy-og.png.asset.json";
 import stepsScreenshot from "@/assets/jetacy-steps.png.asset.json";
@@ -178,10 +178,11 @@ function WhoWeAre() {
           </div>
           <FramedScreenshot
             src={jobCardScreenshot.url}
-            alt="Jetacy live detailing job card for a Gulfstream G150 turnaround"
+            alt="Jetacy live job cards for three aircraft in progress on the ramp"
             width={678}
-            height={614}
-            maxWClass="max-w-[448px]"
+            height={1197}
+            portrait
+            maxWClass="max-w-[300px] lg:max-w-[360px]"
           />
         </div>
 
