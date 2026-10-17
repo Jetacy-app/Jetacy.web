@@ -182,7 +182,7 @@ function WhoWeAre() {
             width={678}
             height={1197}
             portrait
-            maxWClass="max-w-[280px] lg:max-w-[320px]"
+            maxWClass="max-w-[300px] lg:max-w-[360px]"
           />
         </div>
 
