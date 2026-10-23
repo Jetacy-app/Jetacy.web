@@ -1,3 +1,4 @@
+import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   CalendarClock,
@@ -12,7 +13,11 @@ import {
 import jobCardScreenshot from "@/assets/jetacy-cards-busy.png.asset.json";
 import appHomeScreenshot from "@/assets/jetacy-home-2.png.asset.json";
 import ogScreenshot from "@/assets/jetacy-og.png.asset.json";
-import stepsScreenshot from "@/assets/jetacy-steps.png.asset.json";
+import stepShot1 from "@/assets/jetacy-step-1.png.asset.json";
+import stepShot2 from "@/assets/jetacy-step-2.png.asset.json";
+import stepShot3 from "@/assets/jetacy-step-3.png.asset.json";
+import stepShot4 from "@/assets/jetacy-step-4.png.asset.json";
+import stepShot5 from "@/assets/jetacy-step-5.png.asset.json";
 
 const SITE_URL = "https://jetacy.lovable.app";
 const OG_IMAGE = `${SITE_URL}${ogScreenshot.url}`;
