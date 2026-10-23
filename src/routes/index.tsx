@@ -214,6 +214,7 @@ function DetailerWorkflow() {
   const [instant, setInstant] = React.useState(false);
   const [showCode, setShowCode] = React.useState(false);
   const step = pos % total;
+  const firstSlide = stepSlides[0]!;
 
   React.useEffect(() => {
     if (pos === total) {
