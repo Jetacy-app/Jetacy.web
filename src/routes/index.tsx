@@ -223,7 +223,7 @@ function DetailerWorkflow() {
       }, SNAP_MS);
       return () => clearTimeout(snap);
     }
-    const meta = stepSlides[step];
+    const meta = stepSlides[step] ?? stepSlides[0]!;
     const toCode = setTimeout(() => setShowCode(true), meta.nameMs);
     const advance = setTimeout(() => {
       setShowCode(false);
@@ -269,8 +269,8 @@ function DetailerWorkflow() {
                       />
                     ))}
                     <img
-                      src={stepSlides[0].src}
-                      alt={stepSlides[0].alt}
+                      src={firstSlide.src}
+                      alt={firstSlide.alt}
                       width={678}
                       height={1198}
                       aria-hidden
