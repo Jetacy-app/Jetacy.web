@@ -1,3 +1,4 @@
+import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   CalendarClock,
@@ -12,7 +13,11 @@ import {
 import jobCardScreenshot from "@/assets/jetacy-cards-busy.png.asset.json";
 import appHomeScreenshot from "@/assets/jetacy-home-2.png.asset.json";
 import ogScreenshot from "@/assets/jetacy-og.png.asset.json";
-import stepsScreenshot from "@/assets/jetacy-steps.png.asset.json";
+import stepShot1 from "@/assets/jetacy-step-1.png.asset.json";
+import stepShot2 from "@/assets/jetacy-step-2.png.asset.json";
+import stepShot3 from "@/assets/jetacy-step-3.png.asset.json";
+import stepShot4 from "@/assets/jetacy-step-4.png.asset.json";
+import stepShot5 from "@/assets/jetacy-step-5.png.asset.json";
 
 const SITE_URL = "https://jetacy.lovable.app";
 const OG_IMAGE = `${SITE_URL}${ogScreenshot.url}`;
@@ -192,29 +197,91 @@ function WhoWeAre() {
 }
 
 
-const workflowSteps = [
-  { name: "Safety", desc: "Authorize ramp entry" },
-  { name: "Inspect", desc: "Inspection & before photos" },
-  { name: "Detail", desc: "Task by task checklist" },
-  { name: "Photos", desc: "After photos proof" },
-  { name: "Complete", desc: "Signed off on the ramp." },
+const stepSlides = [
+  { src: stepShot1.url, name: "Safety", code: "ON-STN", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 1: Safety" },
+  { src: stepShot2.url, name: "Inspect", code: "INSP-OK", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 2: Inspect" },
+  { src: stepShot3.url, name: "Detail", code: "DTL CLN GRM DWASH CAB-SVC", nameMs: 1000, holdMs: 5000, alt: "Jetacy step 3: Detail" },
+  { src: stepShot4.url, name: "Photos", code: "QC", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 4: Photos" },
+  { src: stepShot5.url, name: "RTS", code: "Sign-Off", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 5: RTS" },
 ];
 
+const SLIDE_MS = 900;
+const SNAP_MS = SLIDE_MS + 50;
+
 function DetailerWorkflow() {
+  const total = stepSlides.length;
+  const [pos, setPos] = React.useState(0);
+  const [instant, setInstant] = React.useState(false);
+  const [showCode, setShowCode] = React.useState(false);
+  const step = pos % total;
+  const firstSlide = stepSlides[0]!;
+
+  React.useEffect(() => {
+    if (pos === total) {
+      const snap = setTimeout(() => {
+        setInstant(true);
+        setPos(0);
+      }, SNAP_MS);
+      return () => clearTimeout(snap);
+    }
+    const meta = stepSlides[step] ?? stepSlides[0]!;
+    const toCode = setTimeout(() => setShowCode(true), meta.nameMs);
+    const advance = setTimeout(() => {
+      setShowCode(false);
+      setPos(pos + 1);
+    }, meta.holdMs);
+    return () => {
+      clearTimeout(toCode);
+      clearTimeout(advance);
+    };
+  }, [pos, step]);
+
+  React.useEffect(() => {
+    if (!instant) return;
+    const raf = requestAnimationFrame(() => requestAnimationFrame(() => setInstant(false)));
+    return () => cancelAnimationFrame(raf);
+  }, [instant]);
+
   return (
     <section id="workflow" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <div className="hairline mb-12" />
         <div className="grid items-center justify-center gap-10 lg:grid-cols-[auto_auto] lg:gap-16">
           <div className="order-last lg:order-first">
-            <FramedScreenshot
-              src={stepsScreenshot.url}
-              alt="Jetacy detailer checklist screen showing step 3 of 5 on an active job"
-              width={678}
-              height={1198}
-              portrait
-              maxWClass="max-w-[300px] lg:max-w-[360px] lg:w-[360px]"
-            />
+            <div className="mx-auto w-full max-w-[300px] lg:w-[360px] lg:max-w-none">
+              <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-2xl">
+                <div className="overflow-hidden rounded-[1.5rem] bg-ink">
+                  <div
+                    className="flex"
+                    style={{
+                      transform: `translateX(-${pos * 100}%)`,
+                      transition: instant ? "none" : `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.25, 1)`,
+                    }}
+                  >
+                    {stepSlides.map((s, i) => (
+                      <img
+                        key={s.name}
+                        src={s.src}
+                        alt={s.alt}
+                        width={678}
+                        height={1198}
+                        className="h-auto w-full shrink-0"
+                        loading={i === 0 ? "eager" : "lazy"}
+                      />
+                    ))}
+                    <img
+                      src={firstSlide.src}
+                      alt={firstSlide.alt}
+                      width={678}
+                      height={1198}
+                      aria-hidden
+                      className="h-auto w-full shrink-0"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div>
             <p className="eyebrow">DETAILERS ORDER PROCESS</p>
@@ -225,24 +292,42 @@ function DetailerWorkflow() {
               The same sequence on every job
             </p>
             <ol className="mt-8 space-y-3.5">
-              {workflowSteps.map((s, i) => (
-                <li
-                  key={s.name}
-                  className="flex items-center gap-4 rounded-xl border border-border bg-card p-5"
-                >
-                  <span className="font-display w-6 shrink-0 text-xl font-bold text-brand">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <p className="font-display text-sm font-semibold uppercase tracking-[0.18em]">
-                      {s.name}
-                    </p>
-                    <p className="mt-0.5 text-xs leading-relaxed text-slatejet">
-                      {s.desc}
-                    </p>
-                  </div>
-                </li>
-              ))}
+              {stepSlides.map((s, i) => {
+                const active = i === step;
+                const flip = active && showCode;
+                return (
+                  <li
+                    key={s.name}
+                    className={`flex items-center gap-4 rounded-xl border p-5 transition-colors duration-500 ${
+                      active ? "border-brand/60 bg-surface" : "border-border bg-card"
+                    }`}
+                  >
+                    <span
+                      className={`font-display w-6 shrink-0 text-xl font-bold transition-colors duration-500 ${
+                        active ? "text-brand" : "text-slatejet opacity-50"
+                      }`}
+                    >
+                      {i + 1}
+                    </span>
+                    <div className="grid min-w-0">
+                      <p
+                        className={`col-start-1 row-start-1 font-display text-sm font-semibold uppercase tracking-[0.18em] text-foreground transition-opacity duration-500 ${
+                          flip ? "opacity-0" : "opacity-100"
+                        }`}
+                      >
+                        {s.name}
+                      </p>
+                      <p
+                        className={`col-start-1 row-start-1 font-display text-xs font-semibold uppercase tracking-[0.14em] text-brand transition-opacity duration-500 ${
+                          flip ? "opacity-100" : "opacity-0"
+                        }`}
+                      >
+                        {s.code}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
             </ol>
           </div>
         </div>
