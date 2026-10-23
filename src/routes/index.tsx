@@ -253,11 +253,11 @@ function DetailerWorkflow() {
 
 const workforceSteps = [
   { name: "Apply", desc: "Candidates apply & submit their details." },
-  { name: "Approve", desc: "Your team interviews them\u00a0\n& clears permits." },
-  { name: "Qualify", desc: "Train cleaners into detailers\u00a0\n& supervise them." },
-  { name: "Accept", desc: "Approved detailers take jobs\u00a0\n& work by the hour." },
-  { name: "Get paid", desc: "Hours tracked with automated weekly payouts." },
-  { name: "Grow", desc: "Performance-based profiles track progress & rank." },
+  { name: "Approve", desc: "Your team interviews them\n& clears permits." },
+  { name: "Qualify", desc: "Train cleaners into detailers\n& supervise them." },
+  { name: "Accept", desc: "Approved detailers take jobs\n& work by the hour." },
+  { name: "Get paid", desc: "Hours tracked with automated payouts." },
+  { name: "Grow", desc: "Performance-based profiles\ntrack progress & ranks." },
 ];
 
 function WorkforceModule() {
@@ -318,9 +318,9 @@ const platformFeatures = [
   { icon: ScanLine, title: "Tail auto-lookup", body: "Aircraft details auto-fill." },
   { icon: Compass, title: "Flight & FBO sync", body: "Live flight data." },
   { icon: CalendarClock, title: "Dynamic scheduling", body: "Auto time priority. In-sync calendar" },
-  { icon: Gauge, title: "Live digital job cards", body: "Stage, progress & departure countdown for all." },
+  { icon: Gauge, title: "Live digital job cards", body: "Status, progress & departure countdown." },
   { icon: MapPin, title: "GPS tracking", body: "Detailer location on ramp." },
-  { icon: Coins, title: "Billing & finance audit", body: "Invoices, audit-ready reports & auto payouts" },
+  { icon: Coins, title: "Billing & finance audit", body: "Invoices, reports & auto payouts" },
 ];
 
 function Platform() {
