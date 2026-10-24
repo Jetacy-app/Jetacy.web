@@ -208,23 +208,26 @@ const stepSlides = [
 const SLIDE_MS = 900;
 const SNAP_MS = SLIDE_MS + 50;
 
+const detailCodes = ["DTL", "CLN", "GRM", "DWASH", "CAB-SVC"];
+const CODE_CYCLE_MS = 2000 / 3;
+
 function DetailerWorkflow() {
   const total = stepSlides.length;
   const [pos, setPos] = React.useState(0);
   const [instant, setInstant] = React.useState(false);
   const [showCode, setShowCode] = React.useState(false);
-  const step = pos % total;
+  const [codeIdx, setCodeIdx] = React.useState(0);
   const firstSlide = stepSlides[0]!;
 
   React.useEffect(() => {
-    if (pos === total) {
+    if (pos >= total) {
       const snap = setTimeout(() => {
         setInstant(true);
         setPos(0);
       }, SNAP_MS);
       return () => clearTimeout(snap);
     }
-    const meta = stepSlides[step] ?? stepSlides[0]!;
+    const meta = stepSlides[pos] ?? stepSlides[0]!;
     const toCode = setTimeout(() => setShowCode(true), meta.nameMs);
     const advance = setTimeout(() => {
       setShowCode(false);
@@ -234,7 +237,7 @@ function DetailerWorkflow() {
       clearTimeout(toCode);
       clearTimeout(advance);
     };
-  }, [pos, step]);
+  }, [pos]);
 
   React.useEffect(() => {
     if (!instant) return;
@@ -242,93 +245,73 @@ function DetailerWorkflow() {
     return () => cancelAnimationFrame(raf);
   }, [instant]);
 
+  React.useEffect(() => {
+    if (pos === 2 && showCode) {
+      const cycle = setInterval(
+        () => setCodeIdx((i) => (i + 1) % detailCodes.length),
+        CODE_CYCLE_MS,
+      );
+      return () => clearInterval(cycle);
+    }
+    setCodeIdx(0);
+  }, [pos, showCode]);
+
   return (
     <section id="workflow" className="py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5">
         <div className="hairline mb-12" />
-        <div className="grid items-center justify-center gap-10 lg:grid-cols-[auto_auto] lg:gap-16">
-          <div className="order-last lg:order-first">
-            <div className="mx-auto w-full max-w-[300px] lg:w-[360px] lg:max-w-none">
-              <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-2xl">
-                <div className="overflow-hidden rounded-[1.5rem] bg-ink">
-                  <div
-                    className="flex"
-                    style={{
-                      transform: `translateX(-${pos * 100}%)`,
-                      transition: instant ? "none" : `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.25, 1)`,
-                    }}
-                  >
-                    {stepSlides.map((s, i) => (
+        <div className="text-center">
+          <p className="eyebrow">DETAILERS ORDER PROCESS</p>
+          <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
+            Five steps
+          </h2>
+        </div>
+        <div className="mx-auto mt-10 w-full max-w-[300px] lg:w-[360px] lg:max-w-none">
+          <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-2xl">
+            <div className="relative overflow-hidden rounded-[1.5rem] bg-ink">
+              <div
+                className="flex"
+                style={{
+                  transform: `translateX(-${pos * 100}%)`,
+                  transition: instant ? "none" : `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.25, 1)`,
+                }}
+              >
+                {[...stepSlides, firstSlide].map((s, i) => {
+                  const active = i === pos;
+                  const flip = active && showCode;
+                  const code =
+                    s.name === "Detail" ? detailCodes[codeIdx] ?? detailCodes[0]! : s.code;
+                  return (
+                    <div key={`${s.name}-${i}`} className="relative w-full shrink-0">
                       <img
-                        key={s.name}
                         src={s.src}
                         alt={s.alt}
                         width={678}
                         height={1198}
-                        className="h-auto w-full shrink-0"
+                        className="h-auto w-full"
                         loading={i === 0 ? "eager" : "lazy"}
                       />
-                    ))}
-                    <img
-                      src={firstSlide.src}
-                      alt={firstSlide.alt}
-                      width={678}
-                      height={1198}
-                      aria-hidden
-                      className="h-auto w-full shrink-0"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
+                      <div className="absolute inset-x-0 top-0 bg-linear-to-b from-ink/85 via-ink/40 to-transparent px-6 pb-12 pt-8 text-center">
+                        <p
+                          className={`font-display text-sm font-semibold uppercase tracking-[0.18em] text-foreground transition-opacity duration-500 ${
+                            flip ? "opacity-0" : "opacity-100"
+                          }`}
+                        >
+                          {s.name}
+                        </p>
+                        <p
+                          className={`absolute inset-x-0 top-8 font-display text-xs font-semibold uppercase tracking-[0.14em] text-brand transition-opacity duration-500 ${
+                            flip ? "opacity-100" : "opacity-0"
+                          }`}
+                        >
+                          {code}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          </div>
-          <div>
-            <p className="eyebrow">DETAILERS ORDER PROCESS</p>
-            <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-              Five steps
-            </h2>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-slatejet">
-              The same sequence on every job
-            </p>
-            <ol className="mt-8 space-y-3.5">
-              {stepSlides.map((s, i) => {
-                const active = i === step;
-                const flip = active && showCode;
-                return (
-                  <li
-                    key={s.name}
-                    className={`flex items-center gap-4 rounded-xl border p-5 transition-colors duration-500 ${
-                      active ? "border-brand/60 bg-surface" : "border-border bg-card"
-                    }`}
-                  >
-                    <span
-                      className={`font-display w-6 shrink-0 text-xl font-bold transition-colors duration-500 ${
-                        active ? "text-brand" : "text-slatejet opacity-50"
-                      }`}
-                    >
-                      {i + 1}
-                    </span>
-                    <div className="grid min-w-0">
-                      <p
-                        className={`col-start-1 row-start-1 font-display text-sm font-semibold uppercase tracking-[0.18em] text-foreground transition-opacity duration-500 ${
-                          flip ? "opacity-0" : "opacity-100"
-                        }`}
-                      >
-                        {s.name}
-                      </p>
-                      <p
-                        className={`col-start-1 row-start-1 font-display text-xs font-semibold uppercase tracking-[0.14em] text-brand transition-opacity duration-500 ${
-                          flip ? "opacity-100" : "opacity-0"
-                        }`}
-                      >
-                        {s.code}
-                      </p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
           </div>
         </div>
       </div>
@@ -376,8 +359,8 @@ function WorkforceModule() {
                 key={s.name}
                 className="rounded-2xl border border-border bg-ink/70 p-5 transition-colors hover:border-brand/50"
               >
-                <div className="flex items-center gap-3">
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-brand/40 bg-brand-soft font-display text-sm font-bold text-brand">
+                <div className="flex items-center gap-4">
+                  <span className="font-display w-6 shrink-0 text-xl font-bold text-brand">
                     {String(i + 1)}
                   </span>
                   <p className="font-display text-sm font-semibold uppercase tracking-[0.18em]">
