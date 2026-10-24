@@ -254,6 +254,7 @@ function DetailerWorkflow() {
       return () => clearInterval(cycle);
     }
     setCodeIdx(0);
+    return undefined;
   }, [pos, showCode]);
 
   return (
