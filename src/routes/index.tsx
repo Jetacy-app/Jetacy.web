@@ -12,6 +12,7 @@ import {
   ArrowDown,
   ArrowUp,
   ArrowUpRight,
+  ChevronUp,
 } from "lucide-react";
 const jobCardScreenshot = "/images/jetacy-cards-busy.png";
 const appHomeScreenshot = "/images/jetacy-home-2.png";
@@ -339,7 +340,7 @@ function DetailerWorkflow() {
                           {s.name}
                         </p>
                         <p
-                          className={`absolute inset-x-0 top-8 font-display text-xs font-semibold uppercase tracking-[0.14em] text-brand transition-opacity duration-500 ${
+                          className={`absolute inset-x-0 top-8 font-display text-xs font-semibold uppercase tracking-[0.14em] text-brand transition-opacity duration-500 text-center ${
                             flip ? "opacity-100" : "opacity-0"
                           }`}
                         >
@@ -563,6 +564,79 @@ const brochureSlides = [
   { id: "contact", label: "Request a demo" },
 ];
 
+function MobileChapters({
+  active,
+  onNavigate,
+}: {
+  active: number;
+  onNavigate: (index: number) => void;
+}) {
+  const [open, setOpen] = React.useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+
+  React.useEffect(() => {
+    if (!open) return;
+    const dismiss = (event: PointerEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", dismiss);
+    return () => document.removeEventListener("pointerdown", dismiss);
+  }, [open]);
+
+  return (
+    <div
+      className="mobile-chapters"
+      ref={containerRef}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          setOpen(false);
+          triggerRef.current?.focus();
+        }
+      }}
+    >
+      <button
+        ref={triggerRef}
+        className="chapter-trigger"
+        aria-label={`Go to chapter: ${brochureSlides[active]?.label}`}
+        aria-expanded={open}
+        aria-controls="mobile-chapter-list"
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span className="chapter-number">{String(active + 1).padStart(2, "0")}</span>
+        <span className="chapter-label">{brochureSlides[active]?.label}</span>
+        <ChevronUp size={16} aria-hidden="true" />
+      </button>
+      <nav
+        id="mobile-chapter-list"
+        className="chapter-list"
+        aria-label="Go to chapter"
+        aria-hidden={!open}
+        inert={!open}
+        data-open={open}
+      >
+        {brochureSlides.map((slide, index) => (
+          <button
+            key={slide.id}
+            aria-current={active === index ? "step" : undefined}
+            onClick={() => {
+              onNavigate(index);
+              setOpen(false);
+              triggerRef.current?.focus();
+            }}
+          >
+            <span className="chapter-number">{String(index + 1).padStart(2, "0")}</span>
+            <span>{slide.label}</span>
+          </button>
+        ))}
+      </nav>
+    </div>
+  );
+}
+
 function Index() {
   const [active, setActive] = React.useState(0);
   const mainRef = React.useRef<HTMLElement>(null);
@@ -647,16 +721,7 @@ function Index() {
         ))}
       </aside>
       <div className="brochure-bottom">
-        <label className="mobile-chapters">
-          <span className="sr-only">Go to chapter</span>
-          <select value={active} onChange={(event) => goToSlide(Number(event.target.value))}>
-            {brochureSlides.map((slide, index) => (
-              <option key={slide.id} value={index}>
-                {String(index + 1).padStart(2, "0")} — {slide.label}
-              </option>
-            ))}
-          </select>
-        </label>
+        <MobileChapters active={active} onNavigate={goToSlide} />
         <div className="slide-caption">
           <span>{String(active + 1).padStart(2, "0")}</span>
           <span className="caption-line" />
