@@ -323,7 +323,6 @@
   border-radius: 26px;
 }
 .brochure #workflow h2 {
-  font-size: clamp(64px, 8vw, 128px);
   max-width: 500px;
 }
 .brochure #platform h2 {
@@ -648,9 +647,6 @@
     font-size: 15px;
     margin-top: 14px;
   }
-  .brochure #workflow h2 {
-    font-size: 58px;
-  }
   .brochure #workflow > div > div:last-child {
     max-width: 230px;
   }
@@ -902,9 +898,6 @@
   .brochure h2,
   .brochure #workforce h2 {
     font-size: 31px;
-  }
-  .brochure #workflow h2 {
-    font-size: 48px;
   }
   .brochure #platform .grid,
   .brochure #workforce ol {
