@@ -10,17 +10,16 @@ import {
   MapPin,
   ScanLine,
 } from "lucide-react";
-import jobCardScreenshot from "@/assets/jetacy-cards-busy.png.asset.json";
-import appHomeScreenshot from "@/assets/jetacy-home-2.png.asset.json";
-import ogScreenshot from "@/assets/jetacy-og.png.asset.json";
-import stepShot1 from "@/assets/jetacy-step-1.png.asset.json";
-import stepShot2 from "@/assets/jetacy-step-2.png.asset.json";
-import stepShot3 from "@/assets/jetacy-step-3.png.asset.json";
-import stepShot4 from "@/assets/jetacy-step-4.png.asset.json";
-import stepShot5 from "@/assets/jetacy-step-5.png.asset.json";
+const jobCardScreenshot = "/images/jetacy-cards-busy.png";
+const appHomeScreenshot = "/images/jetacy-home-2.png";
+const stepShot1 = "/images/jetacy-step-1.png";
+const stepShot2 = "/images/jetacy-step-2.png";
+const stepShot3 = "/images/jetacy-step-3.png";
+const stepShot4 = "/images/jetacy-step-4.png";
+const stepShot5 = "/images/jetacy-step-5.png";
 
-const SITE_URL = "https://jetacy.lovable.app";
-const OG_IMAGE = `${SITE_URL}${ogScreenshot.url}`;
+const SITE_URL = import.meta.env["VITE_SITE_URL"]?.replace(/\/+$/, "");
+const OG_IMAGE = `${SITE_URL ?? ""}/images/jetacy-og.png`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,12 +37,12 @@ export const Route = createFileRoute("/")({
           "One operating system for faster, clearer business jet detailing operations.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: SITE_URL },
+      ...(SITE_URL ? [{ property: "og:url", content: SITE_URL }] : []),
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: SITE_URL }],
+    links: SITE_URL ? [{ rel: "canonical", href: SITE_URL }] : [],
   }),
   component: Index,
 });
@@ -152,7 +151,7 @@ function Hero() {
         </div>
         <div className="order-2 lg:order-1">
           <FramedScreenshot
-            src={appHomeScreenshot.url}
+            src={appHomeScreenshot}
             alt="Jetacy home screen with Client, Fleet Ops & Detailers interfaces"
             width={678}
             height={1198}
@@ -182,7 +181,7 @@ function WhoWeAre() {
             </p>
           </div>
           <FramedScreenshot
-            src={jobCardScreenshot.url}
+            src={jobCardScreenshot}
             alt="Jetacy live job cards for three aircraft in progress on the ramp"
             width={678}
             height={1197}
@@ -198,11 +197,11 @@ function WhoWeAre() {
 
 
 const stepSlides = [
-  { src: stepShot1.url, name: "Safety", code: "ON-STN", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 1: Safety" },
-  { src: stepShot2.url, name: "Inspect", code: "INSP-OK", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 2: Inspect" },
-  { src: stepShot3.url, name: "Detail", code: "DTL CLN GRM DWASH CAB-SVC", nameMs: 1000, holdMs: 5000, alt: "Jetacy step 3: Detail" },
-  { src: stepShot4.url, name: "Photos", code: "QC", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 4: Photos" },
-  { src: stepShot5.url, name: "RTS", code: "Sign-Off", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 5: RTS" },
+  { src: stepShot1, name: "Safety", code: "ON-STN", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 1: Safety" },
+  { src: stepShot2, name: "Inspect", code: "INSP-OK", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 2: Inspect" },
+  { src: stepShot3, name: "Detail", code: "DTL CLN GRM DWASH CAB-SVC", nameMs: 1000, holdMs: 5000, alt: "Jetacy step 3: Detail" },
+  { src: stepShot4, name: "Photos", code: "QC", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 4: Photos" },
+  { src: stepShot5, name: "RTS", code: "Sign-Off", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 5: RTS" },
 ];
 
 const SLIDE_MS = 900;
