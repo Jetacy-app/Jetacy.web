@@ -504,6 +504,7 @@
   border: 1px solid var(--border);
   background: var(--background);
   cursor: pointer;
+  border-radius:10px;
   transition:
     color 0.2s,
     border-color 0.2s;
@@ -535,8 +536,8 @@
   padding-left: 20px;
 }
 .slide-rail i {
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
   border: 1px solid var(--muted-foreground);
   border-radius: 50%;
   transition:
@@ -546,7 +547,7 @@
 .slide-rail [aria-current] i {
   background: var(--primary);
   border-color: var(--primary);
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 .slide-rail span {
   font-size: 10px;
