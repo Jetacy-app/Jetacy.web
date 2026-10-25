@@ -41,7 +41,7 @@
 
   /* Jetacy brand tokens */
   --color-ink: #131314;
-  --color-surface: #1B1F23;
+  --color-surface: #1b1f23;
   --color-brand: #449bcf;
   --color-brand-soft: #449bcf26;
   --color-slatejet: #9fa3a4;
@@ -58,17 +58,17 @@
   --radius: 0.75rem;
   --background: #131314;
   --foreground: #f5f8f8;
-  --card: #1B1F23;
+  --card: #1b1f23;
   --card-foreground: #f5f8f8;
-  --popover: #1B1F23;
+  --popover: #1b1f23;
   --popover-foreground: #f5f8f8;
   --primary: #449bcf;
   --primary-foreground: #131314;
-  --secondary: #1B1F23;
+  --secondary: #1b1f23;
   --secondary-foreground: #f5f8f8;
-  --muted: #1B1F23;
+  --muted: #1b1f23;
   --muted-foreground: #9fa3a4;
-  --accent: #1B1F23;
+  --accent: #1b1f23;
   --accent-foreground: #f5f8f8;
   --destructive: #e5484d;
   --destructive-foreground: #f5f8f8;
@@ -126,4 +126,830 @@
     0 0 0 1px #a3a3a32b,
     0 24px 60px -24px #000000cc,
     0 0 80px -32px #449bcf66;
+}
+
+/* Full-screen editorial brochure. All colors inherit the Jetacy palette. */
+.brochure {
+  isolation: isolate;
+}
+.brochure > main {
+  height: 100dvh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+.brochure > main::-webkit-scrollbar {
+  display: none;
+}
+.brochure main > section {
+  position: relative;
+  min-height: 100dvh;
+  scroll-snap-align: start;
+  padding: 112px 8vw 94px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--background);
+}
+.brochure main > section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(#a3a3a308 1px, transparent 1px),
+    linear-gradient(90deg, #a3a3a308 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: linear-gradient(90deg, transparent 20%, #131314);
+}
+.brochure main > section:nth-child(even) {
+  background: var(--card);
+}
+.brochure main > section > div {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  padding-inline: 0;
+}
+.brochure .hairline {
+  display: none;
+}
+.brochure .eyebrow {
+  color: var(--primary);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.brochure .eyebrow::before {
+  content: "";
+  display: inline-block;
+  height: 1px;
+  width: 30px;
+  background: currentColor;
+}
+.brochure h1 {
+  font-size: clamp(42px, 4.6vw, 78px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+}
+.brochure h2 {
+  font-size: clamp(36px, 4.4vw, 70px);
+  font-weight: 500;
+  line-height: 1.07;
+  letter-spacing: -0.045em;
+}
+.brochure header {
+  background: #131314e8;
+  border-color: #a3a3a31a;
+}
+.brochure header > div {
+  max-width: none;
+  height: 82px;
+  padding-inline: 4vw;
+}
+.brochure header a[href="#top"] {
+  font-size: 30px;
+  letter-spacing: -0.055em;
+}
+.brochure header nav {
+  margin-left: auto;
+  margin-right: 48px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+.brochure header a[href="#contact"]:last-child {
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 11px;
+}
+.cta {
+  padding: 13px 18px;
+}
+.brochure header a[aria-label="Jetacy on LinkedIn"] {
+  border: 0;
+}
+.brochure #top > div {
+  grid-template-columns: minmax(0, 1.55fr) minmax(240px, 0.8fr);
+  gap: 6vw;
+}
+.brochure #top > div > div:first-child {
+  order: 1;
+}
+.brochure #top > div > div:last-child {
+  order: 2;
+}
+.brochure #top p.mt-6 {
+  font-size: clamp(13px, 1.1vw, 17px);
+  max-width: 570px;
+  line-height: 1.75;
+}
+.brochure #top p.mt-8 {
+  font-size: 10px;
+  border-top: 1px solid var(--border);
+  padding-top: 25px;
+  margin-top: 30px;
+  color: var(--muted-foreground);
+}
+.brochure #top h1 br {
+  display: none;
+}
+.brochure #top h1 span {
+  display: block;
+}
+.brochure #top > div > div:last-child::before {
+  content: "";
+  position: absolute;
+  inset: -40px -15px;
+  border: 1px solid #449bcf26;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  pointer-events: none;
+}
+.brochure #top > div > div:last-child {
+  position: relative;
+}
+.brochure #top img,
+.brochure #who img {
+  max-height: calc(100dvh - 260px);
+  width: auto;
+  margin: auto;
+}
+.brochure #top .rounded-\[2rem\],
+.brochure #who .rounded-\[2rem\] {
+  padding: 6px;
+  border-radius: 26px;
+  width: fit-content;
+  margin: auto;
+  box-shadow:
+    24px 30px 0 -10px #449bcf0d,
+    0 30px 90px #13131480;
+}
+.brochure #who > div > div.grid {
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 10vw;
+}
+.brochure #who h2 {
+  max-width: 650px;
+}
+.brochure #who p.mt-5 {
+  font-size: 18px;
+}
+.brochure #workflow > div {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 10vw;
+}
+.brochure #workflow .text-center {
+  text-align: left;
+}
+.brochure #workflow > div > div:last-child {
+  margin-block: 0;
+  width: min(100%, 310px);
+}
+.brochure #workflow img {
+  max-height: calc(100dvh - 250px);
+  object-fit: contain;
+}
+.brochure #workflow .rounded-\[2rem\] {
+  padding: 6px;
+  border-radius: 26px;
+}
+.brochure #workflow h2 {
+  font-size: clamp(64px, 8vw, 128px);
+  max-width: 500px;
+}
+.brochure #platform h2 {
+  margin-bottom: 48px;
+}
+.brochure #platform .grid {
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  gap: 0 42px;
+}
+.brochure #platform .grid > div {
+  padding: 26px 0;
+  background: transparent;
+  border-top: 1px solid var(--border);
+}
+.brochure #platform .grid > div > div {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+}
+.brochure #platform h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+.brochure #platform .size-5 {
+  width: 25px;
+  height: 25px;
+  stroke-width: 1.2;
+}
+.brochure #workforce > div > div {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+.brochure #workforce > div > div > div.absolute {
+  display: none;
+}
+.brochure #workforce .text-center {
+  text-align: left;
+}
+.brochure #workforce h2 {
+  max-width: 850px;
+  margin-left: 0;
+  font-size: clamp(34px, 3.5vw, 56px);
+}
+.brochure #workforce p.max-w-xl {
+  margin-left: 0;
+  max-width: none;
+  font-size: 14px;
+}
+.brochure #workforce ol {
+  margin-top: 30px;
+  column-gap: 35px;
+  row-gap: 16px;
+}
+.brochure #workforce li {
+  border: 0;
+  border-top: 1px solid var(--border);
+  background: transparent;
+  padding: 17px 0 0;
+  border-radius: 0;
+}
+.brochure #workforce li span {
+  font-size: 12px;
+  font-weight: 400;
+}
+.brochure #workforce li p.mt-3 {
+  margin-left: 40px;
+  margin-top: 8px;
+  font-size: 13px;
+}
+.brochure #workforce p.relative.mt-10 {
+  display: flex;
+  gap: 8px;
+  margin-top: 28px;
+  font-size: 18px;
+}
+.brochure #workforce p.relative.mt-10 br {
+  display: none;
+}
+.brochure #built-for > div > div.grid {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 38px;
+  gap: 0 60px;
+}
+.brochure #built-for .grid > div {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  padding: 30px 0;
+  gap: 20px;
+}
+.brochure #built-for .grid > div > span:last-child {
+  font-size: clamp(20px, 2.2vw, 34px);
+  letter-spacing: -0.025em;
+  font-weight: 400;
+}
+.brochure #built-for p.mt-8 {
+  max-width: 630px;
+  margin-top: 45px;
+  font-size: 18px;
+}
+.brochure #contact > div > .grid {
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 7vw;
+}
+.brochure #contact iframe {
+  height: min(460px, 58dvh);
+}
+.brochure #contact .overflow-hidden {
+  border-radius: 0;
+}
+.brochure #contact footer {
+  position: relative;
+  margin-top: 44px;
+  padding: 20px 0 0;
+}
+.brochure #contact footer > div {
+  padding-inline: 0;
+  max-width: 1320px;
+}
+.brochure #contact footer .font-display {
+  font-size: 16px;
+}
+.brochure-bottom {
+  pointer-events: none;
+  position: fixed;
+  z-index: 40;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  padding: 0 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(transparent, #131314 80%);
+}
+.slide-caption {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.slide-caption > span:first-child {
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+.caption-line {
+  width: 45px;
+  height: 1px;
+  background: var(--border);
+}
+.slide-controls {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.slide-controls > span {
+  font-size: 10px;
+  color: var(--muted-foreground);
+  margin-right: 18px;
+  font-variant-numeric: tabular-nums;
+}
+.slide-controls button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+.slide-controls button:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.slide-controls button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+.slide-rail {
+  position: fixed;
+  right: 3vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.slide-rail a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+  height: 24px;
+  padding-left: 20px;
+}
+.slide-rail i {
+  width: 5px;
+  height: 5px;
+  border: 1px solid var(--muted-foreground);
+  border-radius: 50%;
+  transition:
+    background 0.25s,
+    transform 0.25s;
+}
+.slide-rail [aria-current] i {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: scale(1.5);
+}
+.slide-rail span {
+  font-size: 10px;
+  color: var(--foreground);
+  background: var(--background);
+  padding: 4px 8px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.slide-rail a:hover span,
+.slide-rail a:focus-visible span {
+  opacity: 1;
+}
+.brochure a:focus-visible,
+.brochure button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 5px;
+}
+@media (max-width: 1023px) {
+  .brochure main > section {
+    padding-inline: 7vw;
+  }
+  .brochure #top > div {
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 30px;
+  }
+  .brochure #platform .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 25px;
+  }
+  .brochure #workforce ol {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .brochure #contact > div > .grid {
+    gap: 30px;
+  }
+  .slide-rail {
+    right: 2vw;
+  }
+}
+@media (max-width: 900px) {
+  .brochure > main {
+    scroll-snap-type: y proximity;
+  }
+  .brochure main > section {
+    padding: 104px 25px 88px;
+  }
+  .brochure header > div {
+    height: 70px;
+    padding-inline: 25px;
+  }
+  .brochure header a[href="#top"] {
+    font-size: 27px;
+  }
+  .brochure header a[href="#contact"]:last-child {
+    gap: 12px;
+    padding: 11px 13px;
+  }
+  .brochure header a[aria-label="Jetacy on LinkedIn"] {
+    display: none;
+  }
+  .brochure #top > div,
+  .brochure #who > div > div.grid,
+  .brochure #workflow > div,
+  .brochure #contact > div > .grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .brochure h1 {
+    font-size: clamp(36px, 9vw, 57px);
+  }
+  .brochure h2 {
+    font-size: 38px;
+  }
+  .brochure #top p.mt-6 {
+    font-size: 13px;
+    margin-top: 20px;
+  }
+  .brochure #top p.mt-8 {
+    margin-top: 20px;
+    padding-top: 16px;
+    font-size: 9px;
+  }
+  .brochure #top img {
+    max-height: 36dvh;
+  }
+  .brochure #top > div > div:last-child::before {
+    inset: -12px 20%;
+  }
+  .brochure #who img,
+  .brochure #workflow img {
+    max-height: 49dvh;
+  }
+  .brochure #who .max-w-\[300px\] {
+    max-width: 230px;
+  }
+  .brochure #who p.mt-5 {
+    font-size: 15px;
+    margin-top: 14px;
+  }
+  .brochure #workflow h2 {
+    font-size: 58px;
+  }
+  .brochure #workflow > div > div:last-child {
+    max-width: 230px;
+  }
+  .brochure #platform h2 {
+    margin-bottom: 22px;
+  }
+  .brochure #platform .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 24px;
+    margin-top: 0;
+  }
+  .brochure #platform .grid > div {
+    padding: 20px 0;
+  }
+  .brochure #platform .grid > div > div {
+    gap: 12px;
+  }
+  .brochure #platform h3 {
+    font-size: 14px;
+  }
+  .brochure #platform .grid p {
+    font-size: 12px;
+  }
+  .brochure #workforce h2 {
+    font-size: 34px;
+  }
+  .brochure #workforce ol {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+  }
+  .brochure #workforce li > div {
+    gap: 5px;
+  }
+  .brochure #workforce li p.font-display {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .brochure #workforce li p.mt-3 {
+    margin-left: 0;
+    font-size: 12px;
+  }
+  .brochure #workforce p.relative.mt-10 {
+    display: block;
+    font-size: 17px;
+  }
+  .brochure #workforce p.relative.mt-10 br {
+    display: block;
+  }
+  .brochure #built-for > div > div.grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 25px;
+  }
+  .brochure #built-for .grid > div {
+    padding: 25px 0;
+  }
+  .brochure #built-for .grid > div > span:last-child {
+    font-size: 23px;
+  }
+  .brochure #built-for p.mt-8 {
+    font-size: 15px;
+    margin-top: 30px;
+  }
+  .brochure #contact iframe {
+    height: 360px;
+  }
+  .brochure #contact footer {
+    margin-top: 28px;
+  }
+  .brochure #contact footer > div {
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+  }
+  .slide-rail {
+    display: none;
+  }
+  .brochure-bottom {
+    padding-inline: 25px;
+    height: 62px;
+  }
+  .slide-caption {
+    gap: 9px;
+    font-size: 8px;
+    max-width: 60%;
+  }
+  .caption-line {
+    width: 15px;
+    flex-shrink: 0;
+  }
+  .slide-controls > span {
+    display: none;
+  }
+}
+.mobile-chapters {
+  display: none;
+}
+.brochure main > section > div,
+.brochure .grid > * {
+  min-width: 0;
+}
+.brochure main > section {
+  overflow-wrap: break-word;
+}
+.brochure img {
+  max-width: 100%;
+}
+.slide-controls button {
+  width: 44px;
+  height: 44px;
+  touch-action: manipulation;
+}
+.brochure header a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (max-width: 900px), (max-height: 560px) {
+  .brochure > main {
+    height: auto;
+    overflow: visible;
+    scroll-snap-type: none;
+    overscroll-behavior-y: auto;
+  }
+  .brochure main > section {
+    min-height: 100svh;
+    padding-top: calc(100px + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px));
+    overflow: clip;
+  }
+  .brochure header {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .brochure-bottom {
+    height: calc(72px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+    gap: 12px;
+    background: var(--background);
+    border-top: 1px solid var(--border);
+  }
+  .slide-caption,
+  .slide-rail,
+  .slide-controls > span {
+    display: none;
+  }
+  .mobile-chapters {
+    display: block;
+    pointer-events: auto;
+    min-width: 0;
+    flex: 1;
+    max-width: 340px;
+  }
+  .mobile-chapters select {
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 25px 8px 0;
+    background: var(--background);
+    color: var(--foreground);
+    font: inherit;
+    font-size: 16px;
+    border: 0;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+  .mobile-chapters select:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+  .slide-controls {
+    flex-shrink: 0;
+  }
+  .brochure #top img,
+  .brochure #who img,
+  .brochure #workflow img {
+    max-height: none;
+    height: auto;
+    width: 100%;
+  }
+  .brochure #top > div > div:last-child > div,
+  .brochure #who .max-w-\[300px\],
+  .brochure #workflow > div > div:last-child {
+    width: min(100%, 260px);
+    max-width: 260px;
+  }
+}
+@media (max-width: 900px) {
+  .brochure main > section {
+    padding-inline: clamp(20px, 5vw, 44px);
+  }
+  .brochure #top p.mt-6 {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .brochure #top p.mt-8 {
+    font-size: 11px;
+    line-height: 1.7;
+    letter-spacing: 0.14em;
+  }
+  .brochure #top > div,
+  .brochure #who > div > div.grid,
+  .brochure #workflow > div {
+    gap: 36px;
+  }
+  .brochure #platform .grid p,
+  .brochure #workforce li p.mt-3 {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .brochure #platform h3 {
+    font-size: 16px;
+  }
+  .brochure #workforce li p.font-display {
+    font-size: 12px;
+  }
+  .brochure #workforce p.max-w-xl,
+  .brochure #built-for p.mt-8 {
+    font-size: 16px;
+  }
+  .brochure #contact iframe {
+    height: 660px;
+    max-height: none;
+    display: block;
+  }
+  .brochure #contact footer .flex.items-center.gap-3 {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .brochure #contact footer .flex.items-center.gap-3 > span {
+    width: 100%;
+    line-height: 1.7;
+  }
+  .brochure #contact footer a {
+    min-width: 44px;
+    min-height: 44px;
+    display: grid;
+    place-items: center;
+  }
+}
+@media (max-width: 380px) {
+  .brochure h1 {
+    font-size: 34px;
+  }
+  .brochure h2,
+  .brochure #workforce h2 {
+    font-size: 31px;
+  }
+  .brochure #workflow h2 {
+    font-size: 48px;
+  }
+  .brochure #platform .grid,
+  .brochure #workforce ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .brochure #platform .grid > div > div {
+    flex-direction: row;
+    align-items: center;
+  }
+  .brochure #built-for .grid > div > span:last-child {
+    font-size: 21px;
+  }
+  .brochure header > div {
+    padding-inline: 20px;
+  }
+  .brochure header a[href="#contact"]:last-child {
+    gap: 8px;
+  }
+  .mobile-chapters select {
+    font-size: 16px;
+  }
+  .brochure-bottom {
+    gap: 8px;
+    padding-inline: 16px;
+  }
+}
+@media (min-width: 901px) and (max-height: 560px) {
+  .brochure main > section {
+    min-height: 650px;
+  }
+  .brochure #top img,
+  .brochure #who img {
+    max-height: 400px;
+    width: auto;
+  }
+  .brochure #contact iframe {
+    height: 460px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brochure > main,
+  html {
+    scroll-behavior: auto;
+  }
+  .brochure *,
+  .brochure *::before {
+    transition-duration: 0s !important;
+    animation: none !important;
+  }
 }

@@ -9,6 +9,9 @@ import {
   Mail,
   MapPin,
   ScanLine,
+  ArrowDown,
+  ArrowUp,
+  ArrowUpRight,
 } from "lucide-react";
 const jobCardScreenshot = "/images/jetacy-cards-busy.png";
 const appHomeScreenshot = "/images/jetacy-home-2.png";
@@ -33,8 +36,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Jetacy | Business Jet Detailing OS" },
       {
         property: "og:description",
-        content:
-          "One operating system for faster, clearer business jet detailing operations.",
+        content: "One operating system for faster, clearer business jet detailing operations.",
       },
       { property: "og:type", content: "website" },
       ...(SITE_URL ? [{ property: "og:url", content: SITE_URL }] : []),
@@ -56,7 +58,11 @@ function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-ink/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <a href="#top" className="font-display text-2xl font-bold text-brand">
+        <a
+          href="#top"
+          aria-label="Jetacy home"
+          className="font-display text-2xl font-bold text-brand"
+        >
           Jetacy
         </a>
         <nav className="hidden items-center gap-6 text-sm text-slatejet lg:flex">
@@ -82,9 +88,10 @@ function Nav() {
           </a>
           <a
             href="#contact"
-            className="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-ink transition-opacity hover:opacity-90"
+            className="cta rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-ink transition-opacity hover:opacity-90"
           >
             Request Demo
+            <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
         </div>
       </div>
@@ -109,9 +116,7 @@ function FramedScreenshot({
 }) {
   return (
     <div
-      className={`mx-auto w-full ${
-        maxWClass ?? (portrait ? "max-w-[360px]" : "max-w-[560px]")
-      }`}
+      className={`mx-auto w-full ${maxWClass ?? (portrait ? "max-w-[360px]" : "max-w-[560px]")}`}
     >
       <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-2xl">
         <div className="overflow-hidden rounded-[1.5rem] bg-ink">
@@ -140,10 +145,12 @@ function Hero() {
             <span className="text-brand">Operating System</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
-            Engineered to empower specialized Aircraft Detailers, alongside FBOs & Ground Handlers, digitizing the entire detailing lifecycle & easing operational friction.
+            Engineered to empower specialized Aircraft Detailers, alongside FBOs & Ground Handlers,
+            digitizing the entire detailing lifecycle & easing operational friction.
             <br />
             <br />
-            Coordinating Detailers with Clients & Fleet Ops, each through its own dedicated interface, in one centralized workflow.
+            Coordinating Detailers with Clients & Fleet Ops, each through its own dedicated
+            interface, in one centralized workflow.
           </p>
           <p className="mt-8 font-display text-sm font-semibold tracking-[0.2em] text-foreground">
             3 INTERFACES · 1 EXECUTION LAYER
@@ -163,7 +170,6 @@ function Hero() {
     </section>
   );
 }
-
 
 function WhoWeAre() {
   return (
@@ -189,19 +195,52 @@ function WhoWeAre() {
             maxWClass="max-w-[300px] lg:max-w-[360px]"
           />
         </div>
-
       </div>
     </section>
   );
 }
 
-
 const stepSlides = [
-  { src: stepShot1, name: "Safety", code: "ON-STN", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 1: Safety" },
-  { src: stepShot2, name: "Inspect", code: "INSP-OK", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 2: Inspect" },
-  { src: stepShot3, name: "Detail", code: "DTL CLN GRM DWASH CAB-SVC", nameMs: 1000, holdMs: 5000, alt: "Jetacy step 3: Detail" },
-  { src: stepShot4, name: "Photos", code: "QC", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 4: Photos" },
-  { src: stepShot5, name: "RTS", code: "Sign-Off", nameMs: 2000, holdMs: 4000, alt: "Jetacy step 5: RTS" },
+  {
+    src: stepShot1,
+    name: "Safety",
+    code: "ON-STN",
+    nameMs: 2000,
+    holdMs: 4000,
+    alt: "Jetacy step 1: Safety",
+  },
+  {
+    src: stepShot2,
+    name: "Inspect",
+    code: "INSP-OK",
+    nameMs: 2000,
+    holdMs: 4000,
+    alt: "Jetacy step 2: Inspect",
+  },
+  {
+    src: stepShot3,
+    name: "Detail",
+    code: "DTL CLN GRM DWASH CAB-SVC",
+    nameMs: 1000,
+    holdMs: 5000,
+    alt: "Jetacy step 3: Detail",
+  },
+  {
+    src: stepShot4,
+    name: "Photos",
+    code: "QC",
+    nameMs: 2000,
+    holdMs: 4000,
+    alt: "Jetacy step 4: Photos",
+  },
+  {
+    src: stepShot5,
+    name: "RTS",
+    code: "Sign-Off",
+    nameMs: 2000,
+    holdMs: 4000,
+    alt: "Jetacy step 5: RTS",
+  },
 ];
 
 const SLIDE_MS = 900;
@@ -236,7 +275,7 @@ function DetailerWorkflow() {
       clearTimeout(toCode);
       clearTimeout(advance);
     };
-  }, [pos]);
+  }, [pos, total]);
 
   React.useEffect(() => {
     if (!instant) return;
@@ -262,9 +301,7 @@ function DetailerWorkflow() {
         <div className="hairline mb-12" />
         <div className="text-center">
           <p className="eyebrow">DETAILERS ORDER PROCESS</p>
-          <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-            Five steps
-          </h2>
+          <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">Five steps</h2>
         </div>
         <div className="mx-auto mt-10 w-full max-w-[300px] lg:w-[360px] lg:max-w-none">
           <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-2xl">
@@ -273,14 +310,16 @@ function DetailerWorkflow() {
                 className="flex"
                 style={{
                   transform: `translateX(-${pos * 100}%)`,
-                  transition: instant ? "none" : `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.25, 1)`,
+                  transition: instant
+                    ? "none"
+                    : `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.25, 1)`,
                 }}
               >
                 {[...stepSlides, firstSlide].map((s, i) => {
                   const active = i === pos;
                   const flip = active && showCode;
                   const code =
-                    s.name === "Detail" ? detailCodes[codeIdx] ?? detailCodes[0]! : s.code;
+                    s.name === "Detail" ? (detailCodes[codeIdx] ?? detailCodes[0]!) : s.code;
                   return (
                     <div key={`${s.name}-${i}`} className="relative w-full shrink-0">
                       <img
@@ -335,7 +374,9 @@ function WorkforceModule() {
         <div className="hairline mb-12" />
         <div
           className="relative overflow-hidden rounded-3xl border border-brand/30 bg-surface p-7 sm:p-10"
-          style={{ boxShadow: "0 0 0 1px #449bcf1a, 0 30px 80px -40px #000000, 0 0 120px -50px #449bcf88" }}
+          style={{
+            boxShadow: "0 0 0 1px #449bcf1a, 0 30px 80px -40px #000000, 0 0 120px -50px #449bcf88",
+          }}
         >
           <div
             aria-hidden
@@ -348,7 +389,7 @@ function WorkforceModule() {
               On-Demand Hourly Workforce Module
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slatejet">
-              An added layer with on-demand, hourly paid staff, {'\n'}
+              An added layer with on-demand, hourly paid staff, {"\n"}
               <br />
               without growing full-time headcount.
             </p>
@@ -385,7 +426,11 @@ function WorkforceModule() {
 const platformFeatures = [
   { icon: ScanLine, title: "Tail auto-lookup", body: "Aircraft details auto-fill." },
   { icon: Compass, title: "Flight & FBO sync", body: "Live flight data." },
-  { icon: CalendarClock, title: "Dynamic scheduling", body: "Auto time priority. In-sync calendar" },
+  {
+    icon: CalendarClock,
+    title: "Dynamic scheduling",
+    body: "Auto time priority. In-sync calendar",
+  },
   { icon: Gauge, title: "Live digital job cards", body: "Status, progress & departure countdown." },
   { icon: MapPin, title: "GPS tracking", body: "Detailer location on ramp." },
   { icon: Coins, title: "Billing & finance audit", body: "Invoices, reports & auto payouts" },
@@ -397,9 +442,7 @@ function Platform() {
       <div className="mx-auto max-w-6xl px-5">
         <div className="hairline mb-12" />
         <p className="eyebrow">The platform</p>
-        <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-          Powered by API.
-        </h2>
+        <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">Powered by API.</h2>
         <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {platformFeatures.map((f) => (
             <div key={f.title} className="bg-card p-6 transition-colors hover:bg-surface">
@@ -430,14 +473,18 @@ function BuiltFor() {
         <p className="eyebrow">Who Jetacy is built for</p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((it) => (
-            <div key={it.label} className="flex items-center gap-3 rounded-xl border border-border bg-card p-5">
+            <div
+              key={it.label}
+              className="flex items-center gap-3 rounded-xl border border-border bg-card p-5"
+            >
               <span className={`size-2 shrink-0 rounded-full ${it.dot}`} />
               <span className="text-sm font-medium text-foreground">{it.label}</span>
             </div>
           ))}
         </div>
         <p className="mt-8 max-w-3xl text-base leading-relaxed text-slatejet">
-          We deploy as a white-label partner, integrated into your system & customized to your brand.
+          We deploy as a white-label partner, integrated into your system & customized to your
+          brand.
         </p>
       </div>
     </section>
@@ -469,6 +516,7 @@ function Contact() {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 }
@@ -479,9 +527,7 @@ function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-center sm:flex-row sm:text-left">
         <div>
           <p className="font-display text-lg font-bold text-brand">Jetacy</p>
-          <p className="text-xs tracking-[0.14em] text-slatejet">
-            Jet Detailing OS
-          </p>
+          <p className="text-xs tracking-[0.14em] text-slatejet">Jet Detailing OS</p>
         </div>
         <div className="flex items-center gap-3 text-xs text-slatejet">
           <span>© 2026 Jetacy. All rights reserved.</span>
@@ -507,11 +553,78 @@ function Footer() {
   );
 }
 
+const brochureSlides = [
+  { id: "top", label: "Who we are" },
+  { id: "who", label: "Live job cards" },
+  { id: "workflow", label: "Detailers order process" },
+  { id: "platform", label: "The platform" },
+  { id: "workforce", label: "Workforce optimization" },
+  { id: "built-for", label: "Who Jetacy is built for" },
+  { id: "contact", label: "Request a demo" },
+];
+
 function Index() {
+  const [active, setActive] = React.useState(0);
+  const mainRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    const main = mainRef.current;
+    if (!main) return;
+    const mobileLayout = window.matchMedia("(max-width: 900px), (max-height: 560px)");
+    let observer: IntersectionObserver;
+    const observeSlides = () => {
+      observer?.disconnect();
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              const index = brochureSlides.findIndex((slide) => slide.id === entry.target.id);
+              if (index >= 0) setActive(index);
+            }
+          }
+        },
+        { root: mobileLayout.matches ? null : main, rootMargin: "-40% 0px -40% 0px", threshold: 0 },
+      );
+      main.querySelectorAll("main > section").forEach((section) => observer.observe(section));
+    };
+    observeSlides();
+    mobileLayout.addEventListener("change", observeSlides);
+    return () => {
+      observer.disconnect();
+      mobileLayout.removeEventListener("change", observeSlides);
+    };
+  }, []);
+
+  const goToSlide = React.useCallback((index: number) => {
+    const slide = brochureSlides[index];
+    if (slide) document.getElementById(slide.id)?.scrollIntoView({ block: "start" });
+  }, []);
+
+  React.useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      // Let native scrolling reach all content in chapters taller than the viewport.
+      if (window.matchMedia("(max-width: 900px), (max-height: 560px)").matches) return;
+      const target = event.target as HTMLElement;
+      if (target.closest("input, textarea, select, button, a, iframe, [contenteditable]")) return;
+      if (["ArrowDown", "PageDown", "ArrowUp", "PageUp", "Home", "End"].includes(event.key)) {
+        event.preventDefault();
+        const next =
+          event.key === "Home"
+            ? 0
+            : event.key === "End"
+              ? brochureSlides.length - 1
+              : active + (["ArrowDown", "PageDown"].includes(event.key) ? 1 : -1);
+        goToSlide(Math.max(0, Math.min(brochureSlides.length - 1, next)));
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [active, goToSlide]);
+
   return (
-    <div className="min-h-screen bg-ink text-foreground">
+    <div className="brochure min-h-screen bg-ink text-foreground">
       <Nav />
-      <main>
+      <main ref={mainRef} id="brochure" aria-label="Jetacy brochure">
         <Hero />
         <WhoWeAre />
         <DetailerWorkflow />
@@ -520,7 +633,53 @@ function Index() {
         <BuiltFor />
         <Contact />
       </main>
-      <Footer />
+      <aside className="slide-rail" aria-label="Brochure slides">
+        {brochureSlides.map((slide, index) => (
+          <a
+            key={slide.id}
+            href={`#${slide.id}`}
+            aria-label={slide.label}
+            aria-current={active === index ? "step" : undefined}
+          >
+            <span>{slide.label}</span>
+            <i />
+          </a>
+        ))}
+      </aside>
+      <div className="brochure-bottom">
+        <label className="mobile-chapters">
+          <span className="sr-only">Go to chapter</span>
+          <select value={active} onChange={(event) => goToSlide(Number(event.target.value))}>
+            {brochureSlides.map((slide, index) => (
+              <option key={slide.id} value={index}>
+                {String(index + 1).padStart(2, "0")} — {slide.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <div className="slide-caption">
+          <span>{String(active + 1).padStart(2, "0")}</span>
+          <span className="caption-line" />
+          <span>{brochureSlides[active]?.label}</span>
+        </div>
+        <div className="slide-controls">
+          <span>{String(active + 1).padStart(2, "0")} / 07</span>
+          <button
+            onClick={() => goToSlide(active - 1)}
+            disabled={active === 0}
+            aria-label="Previous slide"
+          >
+            <ArrowUp size={17} />
+          </button>
+          <button
+            onClick={() => goToSlide(active + 1)}
+            disabled={active === brochureSlides.length - 1}
+            aria-label="Next slide"
+          >
+            <ArrowDown size={17} />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
