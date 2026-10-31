@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+﻿import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
@@ -77,15 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Jetacy | Business Jet Detailing OS" },
       {
         name: "description",
-        content:
-          "Jetacy connects Clients, Fleet Ops & Detailers through one operating system for business aviation care.",
+        content: "A centralized operating system for aircraft detailing & cabin care services.",
       },
       { name: "author", content: "Jetacy" },
       { property: "og:title", content: "Jetacy | Business Jet Detailing OS" },
       {
         property: "og:description",
-        content:
-          "Three interfaces & one execution layer for faster, clearer business jet detailing operations.",
+        content: "A centralized operating system for aircraft detailing & cabin care services.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

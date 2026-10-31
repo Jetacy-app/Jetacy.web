@@ -1,750 +1,720 @@
-import * as React from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import * as Accordion from "@radix-ui/react-accordion";
 import {
-  CalendarClock,
-  Coins,
-  Compass,
-  Gauge,
-  Linkedin,
-  Mail,
-  MapPin,
-  ScanLine,
-  ArrowDown,
-  ArrowUp,
   ArrowUpRight,
-  ChevronUp,
+  ChevronLeft,
+  ChevronRight,
+  Pause,
+  Play,
+  Plus,
+  Sun,
+  Moon,
+  Plane,
+  Layers3,
+  Workflow,
+  Network,
+  Users,
+  Check,
+  Radio,
+  CalendarDays,
+  Mail,
+  Linkedin,
+  Phone,
+  MessageSquare,
+  Mic,
+  ShieldCheck,
+  Clock3,
+  CreditCard,
+  ChartNoAxesCombined,
+  Building2,
+  Sparkles,
+  SlidersHorizontal,
 } from "lucide-react";
-const jobCardScreenshot = "/images/jetacy-cards-busy.png";
-const appHomeScreenshot = "/images/jetacy-home-2.png";
-const stepShot1 = "/images/jetacy-step-1.png";
-const stepShot2 = "/images/jetacy-step-2.png";
-const stepShot3 = "/images/jetacy-step-3.png";
-const stepShot4 = "/images/jetacy-step-4.png";
-const stepShot5 = "/images/jetacy-step-5.png";
+import type { LucideIcon } from "lucide-react";
 
 const SITE_URL = import.meta.env["VITE_SITE_URL"]?.replace(/\/+$/, "");
-const OG_IMAGE = `${SITE_URL ?? ""}/images/jetacy-og.png`;
-
+const description = "A centralized operating system for aircraft detailing & cabin care services.";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Jetacy | Business Jet Detailing OS" },
-      {
-        name: "description",
-        content:
-          "Jetacy is the business jet detailing operating system. Clients, Fleet Ops & Detailers on one execution layer, with live job cards, dynamic scheduling & photo proof.",
-      },
+      { name: "description", content: description },
       { property: "og:title", content: "Jetacy | Business Jet Detailing OS" },
-      {
-        property: "og:description",
-        content: "One operating system for faster, clearer business jet detailing operations.",
-      },
+      { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      ...(SITE_URL ? [{ property: "og:url", content: SITE_URL }] : []),
-      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image", content: `${SITE_URL ?? ""}/images/jetacy-og.png` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:title", content: "Jetacy | Business Jet Detailing OS" },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: `${SITE_URL ?? ""}/images/jetacy-og.png` },
+      ...(SITE_URL ? [{ property: "og:url", content: SITE_URL }] : []),
     ],
     links: SITE_URL ? [{ rel: "canonical", href: SITE_URL }] : [],
   }),
   component: Index,
 });
-
-const CALENDLY_URL =
-  "https://calendly.com/jetacy/30min?hide_gdpr_banner=1&background_color=131314&text_color=f5f8f8&primary_color=449bcf";
-const LINKEDIN_URL = "https://www.linkedin.com/company/jetacy";
-const EMAIL = "jetacy.app@gmail.com";
-
-function Nav() {
+const modules = [
+  {
+    id: "who",
+    label: "Who we are",
+    sub: "Purpose-built for business aviation",
+    icon: Layers3,
+    color: "blue",
+  },
+  {
+    id: "workflow",
+    label: "Workflow",
+    sub: "Three interfaces. One execution layer.",
+    icon: Workflow,
+    color: "green",
+  },
+  {
+    id: "api",
+    label: "Integrations",
+    sub: "Your systems, connected",
+    icon: Network,
+    color: "yellow",
+  },
+  {
+    id: "workforce",
+    label: "Workforce optimization",
+    sub: "The right people, on demand",
+    icon: Users,
+    color: "orange",
+  },
+];
+function Logo() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-ink/85 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <a
-          href="#top"
-          aria-label="Jetacy home"
-          className="font-display text-2xl font-bold text-brand"
-        >
-          Jetacy
-        </a>
-        <nav className="hidden items-center gap-6 text-sm text-slatejet lg:flex">
-          <a href="#workflow" className="transition-colors hover:text-foreground">
-            Workflow
-          </a>
-          <a href="#workforce" className="transition-colors hover:text-foreground">
-            Workforce
-          </a>
-          <a href="#contact" className="transition-colors hover:text-foreground">
-            Contact
-          </a>
-        </nav>
-        <div className="flex items-center gap-3">
-          <a
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Jetacy on LinkedIn"
-            className="rounded-lg border border-border p-2 text-slatejet transition-colors hover:border-brand hover:text-brand"
-          >
-            <Linkedin className="size-4" />
-          </a>
-          <a
-            href="#contact"
-            className="cta rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-ink transition-opacity hover:opacity-90"
-          >
-            Request Demo
-            <ArrowUpRight className="size-4" aria-hidden="true" />
-          </a>
-        </div>
-      </div>
-    </header>
+    <svg className="wordmark" viewBox="231 671 1238 359" role="img" aria-label="Jetacy">
+      <image href="/images/jetacy-logo.png" width="1700" height="1701" />
+    </svg>
   );
 }
-
-function FramedScreenshot({
+function DemoLink({ children = "Request Demo" }: { children?: React.ReactNode }) {
+  return (
+    <a className="button primary" href="https://calendly.com/jetacy/30min" target="_blank">
+      {children}
+      <ArrowUpRight size={15} />
+    </a>
+  );
+}
+function PhoneMockup({
   src,
-  alt,
-  width,
-  height,
-  portrait = false,
-  maxWClass,
+  label,
+  color,
+  main = false,
 }: {
   src: string;
-  alt: string;
-  width: number;
-  height: number;
-  portrait?: boolean;
-  maxWClass?: string;
+  label: string;
+  color: string;
+  main?: boolean;
 }) {
   return (
-    <div
-      className={`mx-auto w-full ${maxWClass ?? (portrait ? "max-w-[360px]" : "max-w-[560px]")}`}
+    <figure className={`phone-figure ${main ? "main-phone" : ""}`}>
+      {label != "" && <figcaption className={`role-label ${color}`}>
+        <span className="status-dot" />
+        {label}
+      </figcaption>}
+      <div className="phone-frame">
+        <img
+          src={src}
+          alt={`Jetacy ${label} interface preview`}
+          loading="lazy"
+          width="678"
+          height="1198"
+        />
+      </div>
+    </figure>
+  );
+}
+function Who() {
+  return (
+    <div className="who-content content-grid">
+      <div>
+        <span className="pill">Built around your operation</span>
+        <h2>
+          Business Jet Detailing
+          <br />
+          <span className="blue-text">Operating System</span>
+        </h2>
+        <p>
+          Engineered to empower specialized Aircraft Detailers, alongside FBOs & Fleet operators,
+          digitizing the entire detailing lifecycle & easing operational friction.
+        </p>
+        <p>
+          Coordinating Detailers with Clients & Fleet Ops, each through its own dedicated interface,
+          in one centralized workflow.
+        </p>
+        {/* <div className="inline-note">
+          <span className="status-dot" />3 INTERFACES <span>·</span> 1 EXECUTION LAYER
+        </div> */}
+      </div>
+      <PhoneMockup
+        src="/images/jetacy-home-2.png"
+        label=""
+        color="blue"
+        main
+      />
+    </div>
+  );
+}
+const interfaces = [
+  { label: "Fleet Ops", color: "green", src: "/images/jetacy-home.png" },
+  { label: "Detailer", color: "blue", src: "/images/jetacy-cards-busy.png" },
+  { label: "Client", color: "yellow", src: "/images/jetacy-home-2.png" },
+];
+function InterfaceCarousel() {
+  const [active, setActive] = useState(1);
+  const [paused, setPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => {
+      setReducedMotion(query.matches);
+      setPaused(query.matches);
+    };
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+  useEffect(() => {
+    if (paused || reducedMotion) return;
+    const timer = window.setInterval(
+      () => setActive((value) => (value + 1) % interfaces.length),
+      4500,
+    );
+    return () => window.clearInterval(timer);
+  }, [paused, reducedMotion]);
+  function navigate(direction: number) {
+    setPaused(true);
+    setActive((value) => (value + direction + interfaces.length) % interfaces.length);
+  }
+  return (
+    <section
+      className="interface-carousel"
+      aria-label="Jetacy interfaces"
+      aria-roledescription="carousel"
     >
-      <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-2xl">
-        <div className="overflow-hidden rounded-[1.5rem] bg-ink">
+      <div className="interface-stage" onFocusCapture={() => setPaused(true)}>
+        {interfaces.map((item, i) => {
+          const offset = (i - active + interfaces.length) % interfaces.length;
+          const position = offset === 0 ? "center" : offset === 1 ? "right" : "left";
+          return (
+            <div
+              className={`interface-slide is-${position}`}
+              key={item.label}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of 3: ${item.label}`}
+            >
+              <PhoneMockup {...item} main={position === "center"} />
+              <button
+                type="button"
+                className="interface-select"
+                aria-label={`Show ${item.label} interface`}
+                aria-pressed={active === i}
+                onClick={() => {
+                  setActive(i);
+                  setPaused(true);
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+      <div className="interface-controls">
+        <button type="button" onClick={() => navigate(-1)} aria-label="Previous interface">
+          <ChevronLeft size={19} />
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setReducedMotion(false);
+            setPaused((value) => !value);
+          }}
+          aria-label={paused ? "Play interface carousel" : "Pause interface carousel"}
+        >
+          {paused ? <Play size={16} /> : <Pause size={17} />}
+        </button>
+        <button type="button" onClick={() => navigate(1)} aria-label="Next interface">
+          <ChevronRight size={19} />
+        </button>
+      </div>
+      <span className="sr-only" aria-live={paused ? "polite" : "off"}>
+        {interfaces[active]!.label} interface
+      </span>
+    </section>
+  );
+}
+const stages = ["Safety", "Inspect", "Detail", "Photos", "RTS"];
+function WorkflowContent() {
+  const [step, setStep] = useState(2);
+  return (
+    <div className="workflow-content" style={{ paddingBottom: 0 }}>
+      <div className="section-heading">
+        <p className="eyebrow">LIVE JOB CARDS</p>
+        <h2>A dedicated card for each order.</h2>
+        <span className="pill">3 interfaces · 1 execution layer</span>
+      </div>
+      <div style={{ flex: 1 }}>
+        <InterfaceCarousel />
+        {/* <div className="workflow-demo">
+        <div>
+          <p className="eyebrow">FROM ON-STATION TO SIGN-OFF</p>
+          <h3>Every step. Accounted for.</h3>
+          <p>A clear process, live progress & photo proof in one job card.</p>
+          <div className="step-tabs" role="tablist" aria-label="Detailing process">
+            {stages.map((s, i) => (
+              <button
+                id={`step-${i}`}
+                key={s}
+                role="tab"
+                aria-selected={step === i}
+                aria-controls="step-preview"
+                onClick={() => setStep(i)}
+              >
+                {String(i + 1).padStart(2, "0")}
+                <span>{s}</span>
+              </button>
+            ))}
+          </div>
+          <div className="coordination">
+            {[
+              [Phone, "Call"],
+              [MessageSquare, "Chat"],
+              [Mic, "Voice notes"],
+            ].map(([Icon, text]) => {
+              const I = Icon as LucideIcon;
+              return (
+                <span key={String(text)}>
+                  <I size={14} />
+                  {String(text)}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+        <div
+          className="step-preview"
+          id="step-preview"
+          role="tabpanel"
+          aria-labelledby={`step-${step}`}
+        >
           <img
-            src={src}
-            alt={alt}
-            width={width}
-            height={height}
-            className="h-auto w-full object-contain"
+            src={`/images/jetacy-step-${step + 1}.png`}
+            alt={`${stages[step]} stage in the Jetacy detailing workflow`}
+            width="678"
+            height="1198"
+            loading="lazy"
           />
         </div>
+      </div> */}
       </div>
     </div>
   );
 }
-
-function Hero() {
-  return (
-    <section id="top" className="relative overflow-hidden pt-32 pb-20 md:pt-40">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[340px_1fr] lg:gap-16">
-        <div className="order-1 lg:order-2">
-          <p className="eyebrow">WHO WE ARE</p>
-          <h1 className="mt-4 text-[31px] font-bold leading-[1.08] sm:text-[43px] lg:text-[47px] xl:text-[52.6px]">
-            Business Jet Detailing{"\u00a0"}
-            <br />
-            <span className="text-brand">Operating System</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-slatejet sm:text-lg">
-            Engineered to empower specialized Aircraft Detailers, alongside FBOs & Ground Handlers,
-            digitizing the entire detailing lifecycle & easing operational friction.
-            <br />
-            <br />
-            Coordinating Detailers with Clients & Fleet Ops, each through its own dedicated
-            interface, in one centralized workflow.
-          </p>
-          <p className="mt-8 font-display text-sm font-semibold tracking-[0.2em] text-foreground">
-            3 INTERFACES · 1 EXECUTION LAYER
-          </p>
-        </div>
-        <div className="order-2 lg:order-1">
-          <FramedScreenshot
-            src={appHomeScreenshot}
-            alt="Jetacy home screen with Client, Fleet Ops & Detailers interfaces"
-            width={678}
-            height={1198}
-            portrait
-            maxWClass="max-w-[300px] lg:max-w-[340px]"
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WhoWeAre() {
-  return (
-    <section id="who" className="py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-12" />
-        <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-          <div>
-            <p className="eyebrow">LIVE JOB CARDS</p>
-            <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-              A dedicated card for each order.
-            </h2>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-slatejet">
-              Every detail the job needs, in one place.
-            </p>
-          </div>
-          <FramedScreenshot
-            src={jobCardScreenshot}
-            alt="Jetacy live job cards for three aircraft in progress on the ramp"
-            width={678}
-            height={1197}
-            portrait
-            maxWClass="max-w-[300px] lg:max-w-[360px]"
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const stepSlides = [
+const integrations = [
   {
-    src: stepShot1,
-    name: "Safety",
-    code: "ON-STN",
-    nameMs: 2000,
-    holdMs: 4000,
-    alt: "Jetacy step 1: Safety",
+    name: "Fleet systems",
+    description: "Connect aircraft and fleet information to keep detailing work aligned with each aircraft's needs.",
+    icon: Plane,
+    x: 17,
+    y: 19,
+    path: "M170 122 H430 Q460 122 460 152 V300"
   },
   {
-    src: stepShot2,
-    name: "Inspect",
-    code: "INSP-OK",
-    nameMs: 2000,
-    holdMs: 4000,
-    alt: "Jetacy step 2: Inspect",
+    name: "Scheduling",
+    description: "Align bookings, aircraft availability, and teams.",
+    icon: CalendarDays,
+    x: 65,
+    y: 13,
+    path: "M650 83 H530 Q500 83 500 113 V300",
   },
   {
-    src: stepShot3,
-    name: "Detail",
-    code: "DTL CLN GRM DWASH CAB-SVC",
-    nameMs: 1000,
-    holdMs: 5000,
-    alt: "Jetacy step 3: Detail",
+    name: "Ground operations",
+    description: "Share service needs, handovers, and progress.",
+    icon: Radio,
+    x: 27,
+    y: 48,
+    path: "M270 307 H480"
   },
   {
-    src: stepShot4,
-    name: "Photos",
-    code: "QC",
-    nameMs: 2000,
-    holdMs: 4000,
-    alt: "Jetacy step 4: Photos",
+    name: "Payments",
+    description: "Link completed services to billing and payments.",
+    icon: CreditCard,
+    x: 87,
+    y: 48,
+    path: "M870 307 H480"
   },
   {
-    src: stepShot5,
-    name: "RTS",
-    code: "Sign-Off",
-    nameMs: 2000,
-    holdMs: 4000,
-    alt: "Jetacy step 5: RTS",
+    name: "Reporting",
+    description: "Track service activity and performance.",
+    icon: ChartNoAxesCombined,
+    x: 48,
+    y: 85,
+    path: "M480 544 V300"
+  },
+  {
+    name: "Your platform",
+    description: "Connect your existing tools through the Jetacy API.",
+    icon: SlidersHorizontal,
+    x: 83,
+    y: 80,
+    path: "M830 512 H570 Q540 512 540 482 V300 H480",
   },
 ];
+function Integrations() {
+  const [selected, setSelected] = useState<number | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
-const SLIDE_MS = 900;
-const SNAP_MS = SLIDE_MS + 50;
+  useEffect(() => {
+    if (selected === null) return;
 
-const detailCodes = ["DTL", "CLN", "GRM", "DWASH", "CAB-SVC"];
-const CODE_CYCLE_MS = 2000 / 3;
-
-function DetailerWorkflow() {
-  const total = stepSlides.length;
-  const [pos, setPos] = React.useState(0);
-  const [instant, setInstant] = React.useState(false);
-  const [showCode, setShowCode] = React.useState(false);
-  const [codeIdx, setCodeIdx] = React.useState(0);
-  const firstSlide = stepSlides[0]!;
-
-  React.useEffect(() => {
-    if (pos >= total) {
-      const snap = setTimeout(() => {
-        setInstant(true);
-        setPos(0);
-      }, SNAP_MS);
-      return () => clearTimeout(snap);
-    }
-    const meta = stepSlides[pos] ?? stepSlides[0]!;
-    const toCode = setTimeout(() => setShowCode(true), meta.nameMs);
-    const advance = setTimeout(() => {
-      setShowCode(false);
-      setPos(pos + 1);
-    }, meta.holdMs);
-    return () => {
-      clearTimeout(toCode);
-      clearTimeout(advance);
+    const closeOnOutsideClick = (event: MouseEvent) => {
+      const node = event.target instanceof Element
+        ? event.target.closest(".integration-node")
+        : null;
+      if (!node || !contentRef.current?.contains(node)) {
+        setSelected(null);
+      }
     };
-  }, [pos, total]);
 
-  React.useEffect(() => {
-    if (!instant) return;
-    const raf = requestAnimationFrame(() => requestAnimationFrame(() => setInstant(false)));
-    return () => cancelAnimationFrame(raf);
-  }, [instant]);
-
-  React.useEffect(() => {
-    if (pos === 2 && showCode) {
-      const cycle = setInterval(
-        () => setCodeIdx((i) => (i + 1) % detailCodes.length),
-        CODE_CYCLE_MS,
-      );
-      return () => clearInterval(cycle);
-    }
-    setCodeIdx(0);
-    return undefined;
-  }, [pos, showCode]);
+    document.addEventListener("click", closeOnOutsideClick);
+    return () => document.removeEventListener("click", closeOnOutsideClick);
+  }, [selected]);
 
   return (
-    <section id="workflow" className="py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-12" />
-        <div className="text-c enter">
-          <p className="eyebrow">DETAILERS ORDER PROCESS</p>
-          <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">Five steps</h2>
-        </div>
-        <div className="mx-auto mt-10 w-full max-w-[300px] lg:w-[360px] lg:max-w-none">
-          <div className="rounded-[2rem] border border-border bg-surface p-3 shadow-2xl">
-            <div className="relative overflow-hidden rounded-[1.5rem] bg-ink">
-              <div
-                className="flex"
-                style={{
-                  transform: `translateX(-${pos * 100}%)`,
-                  transition: instant
-                    ? "none"
-                    : `transform ${SLIDE_MS}ms cubic-bezier(0.45, 0, 0.25, 1)`,
-                }}
-              >
-                {[...stepSlides, firstSlide].map((s, i) => {
-                  const active = i === pos;
-                  const flip = active && showCode;
-                  const code =
-                    s.name === "Detail" ? (detailCodes[codeIdx] ?? detailCodes[0]!) : s.code;
-                  return (
-                    <div key={`${s.name}-${i}`} className="relative w-full shrink-0">
-                      <img
-                        src={s.src}
-                        alt={s.alt}
-                        width={678}
-                        height={1198}
-                        className="h-auto w-full"
-                        loading={i === 0 ? "eager" : "lazy"}
-                      />
-                      <div className="absolute inset-x-0 top-0 bg-linear-to-b from-ink/85 via-ink/40 to-transparent px-6 pb-12 pt-8 text-center">
-                        <p
-                          className={`font-display text-sm font-semibold uppercase tracking-[0.18em] text-foreground transition-opacity duration-500 ${
-                            flip ? "opacity-0" : "opacity-100"
-                          }`}
-                        >
-                          {s.name}
-                        </p>
-                        <p
-                          className={`absolute inset-x-0 top-8 font-display text-xs font-semibold uppercase tracking-[0.14em] text-brand transition-opacity duration-500 text-center ${
-                            flip ? "opacity-100" : "opacity-0"
-                          }`}
-                        >
-                          {code}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const workforceSteps = [
-  { name: "Apply", desc: "Candidates apply & submit their details." },
-  { name: "Approve", desc: "Your team interviews them\n& clears permits." },
-  { name: "Qualify", desc: "Train cleaners into detailers\n& supervise them." },
-  { name: "Accept", desc: "Approved detailers take jobs\n& work by the hour." },
-  { name: "Get paid", desc: "Hours tracked with automated payouts." },
-  { name: "Grow", desc: "Performance-based profiles\ntrack progress & ranks." },
-];
-
-function WorkforceModule() {
-  return (
-    <section id="workforce" className="py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-12" />
-        <div
-          className="relative overflow-hidden rounded-3xl border border-brand/30 bg-surface p-7 sm:p-10"
-          style={{
-            boxShadow: "0 0 0 1px #449bcf1a, 0 30px 80px -40px #000000, 0 0 120px -50px #449bcf88",
-          }}
-        >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-32 left-1/2 size-[28rem] -translate-x-1/2 rounded-full opacity-25 blur-3xl"
-            style={{ background: "radial-gradient(closest-side, #449bcf, transparent)" }}
-          />
-          <div className="relative text-center">
-            <p className="eyebrow text-center text-brand">WORKFORCE OPTIMIZATION</p>
-            <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
-              On-Demand Hourly Workforce Module
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slatejet">
-              An added layer with on-demand, hourly paid staff, {"\n"}
-              <br />
-              without growing full-time headcount.
-            </p>
-          </div>
-          <ol className="relative mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {workforceSteps.map((s, i) => (
-              <li
-                key={s.name}
-                className="rounded-2xl border border-border bg-ink/70 p-5 transition-colors hover:border-brand/50"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="font-display w-6 shrink-0 text-xl font-bold text-brand">
-                    {String(i + 1)}
-                  </span>
-                  <p className="font-display text-sm font-semibold uppercase tracking-[0.18em]">
-                    {s.name}
-                  </p>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-slatejet">{s.desc}</p>
-              </li>
-            ))}
-          </ol>
-          <p className="relative mt-10 text-center font-display text-xl font-semibold leading-snug sm:text-2xl">
-            Not a marketplace.
-            <br />
-            <span className="text-brand">You decide who works.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const platformFeatures = [
-  { icon: ScanLine, title: "Tail auto-lookup", body: "Aircraft details auto-fill." },
-  { icon: Compass, title: "Flight & FBO sync", body: "Live flight data." },
-  {
-    icon: CalendarClock,
-    title: "Dynamic scheduling",
-    body: "Auto time priority. In-sync calendar",
-  },
-  { icon: Gauge, title: "Live digital job cards", body: "Status, progress & departure countdown." },
-  { icon: MapPin, title: "GPS tracking", body: "Detailer location on ramp." },
-  { icon: Coins, title: "Billing & finance audit", body: "Invoices, reports & auto payouts" },
-];
-
-function Platform() {
-  return (
-    <section id="platform" className="py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-12" />
-        <p className="eyebrow">The platform</p>
-        <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">Powered by API.</h2>
-        <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {platformFeatures.map((f) => (
-            <div key={f.title} className="bg-card p-6 transition-colors hover:bg-surface">
-              <div className="flex items-center gap-2.5">
-                <f.icon className="size-5 shrink-0 text-brand" />
-                <h3 className="font-display text-base font-semibold">{f.title}</h3>
-              </div>
-              <p className="mt-2.5 text-sm leading-relaxed text-slatejet">{f.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function BuiltFor() {
-  const items = [
-    { label: "Specialized Aircraft Detailers", dot: "bg-brand" },
-    { label: "FBOs & Fleet Ops", dot: "bg-fleet" },
-    { label: "BizAv Ground Handlers", dot: "bg-ground" },
-    { label: "Aircraft Management", dot: "bg-royal" },
-  ];
-  return (
-    <section id="built-for" className="py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-12" />
-        <p className="eyebrow">Who Jetacy is built for</p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((it) => (
-            <div
-              key={it.label}
-              className="flex items-center gap-3 rounded-xl border border-border bg-card p-5"
-            >
-              <span className={`size-2 shrink-0 rounded-full ${it.dot}`} />
-              <span className="text-sm font-medium text-foreground">{it.label}</span>
-            </div>
-          ))}
-        </div>
-        <p className="mt-8 max-w-3xl text-base leading-relaxed text-slatejet">
-          We deploy as a white-label partner, integrated into your system & customized to your
-          brand.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-function Contact() {
-  return (
-    <section id="contact" className="py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="hairline mb-12" />
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <p className="eyebrow">Request a demo</p>
-            <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-              See Jetacy on your own turnaround ?
-            </h2>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-slatejet">
-              Book a walkthrough. Choose a suitable time.
-            </p>
-          </div>
-          <div className="overflow-hidden rounded-2xl border border-border bg-card">
-            <iframe
-              src={CALENDLY_URL}
-              title="Schedule a Jetacy demo on Calendly"
-              className="h-[307px] w-full border-0"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t border-border py-10">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-center sm:flex-row sm:text-left">
-        <div>
-          <p className="font-display text-lg font-bold text-brand">Jetacy</p>
-          <p className="text-xs tracking-[0.14em] text-slatejet">Jet Detailing OS</p>
-        </div>
-        <div className="flex items-center gap-3 text-xs text-slatejet">
-          <span>© 2026 Jetacy. All rights reserved.</span>
-          <a
-            href={`mailto:${EMAIL}`}
-            aria-label="Email Jetacy"
-            className="rounded-lg border border-border p-2 transition-colors hover:border-brand hover:text-brand"
-          >
-            <Mail className="size-4" />
-          </a>
-          <a
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Jetacy on LinkedIn"
-            className="rounded-lg border border-border p-2 transition-colors hover:border-brand hover:text-brand"
-          >
-            <Linkedin className="size-4" />
-          </a>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-const brochureSlides = [
-  { id: "top", label: "Who we are" },
-  { id: "who", label: "Live job cards" },
-  { id: "workflow", label: "Detailers order process" },
-  { id: "platform", label: "The platform" },
-  { id: "workforce", label: "Workforce optimization" },
-  { id: "built-for", label: "Who Jetacy is built for" },
-  { id: "contact", label: "Request a demo" },
-];
-
-function MobileChapters({
-  active,
-  onNavigate,
-}: {
-  active: number;
-  onNavigate: (index: number) => void;
-}) {
-  const [open, setOpen] = React.useState(false);
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const triggerRef = React.useRef<HTMLButtonElement>(null);
-
-  React.useEffect(() => {
-    if (!open) return;
-    const dismiss = (event: PointerEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) setOpen(false);
-    };
-    document.addEventListener("pointerdown", dismiss);
-    return () => document.removeEventListener("pointerdown", dismiss);
-  }, [open]);
-
-  return (
-    <div
-      className="mobile-chapters"
-      ref={containerRef}
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
-      }}
-      onKeyDown={(event) => {
-        if (event.key === "Escape") {
-          setOpen(false);
-          triggerRef.current?.focus();
-        }
-      }}
-    >
-      <button
-        ref={triggerRef}
-        className="chapter-trigger"
-        aria-label={`Go to chapter: ${brochureSlides[active]?.label}`}
-        aria-expanded={open}
-        aria-controls="mobile-chapter-list"
-        onClick={() => setOpen((value) => !value)}
+    <div className="integration-content" ref={contentRef}>
+      <div
+        className="integration-network"
+        role="group"
+        aria-label="API connections to the Jetacy execution layer"
       >
-        <span className="chapter-number">{String(active + 1).padStart(2, "0")}</span>
-        <span className="chapter-label">{brochureSlides[active]?.label}</span>
-        <ChevronUp size={16} aria-hidden="true" />
-      </button>
-      <nav
-        id="mobile-chapter-list"
-        className="chapter-list"
-        aria-label="Go to chapter"
-        aria-hidden={!open}
-        inert={!open}
-        data-open={open}
-      >
-        {brochureSlides.map((slide, index) => (
+        <svg className="integration-wires" viewBox="0 0 1000 640" fill="none" aria-hidden="true">
+          {integrations.map((item, i) => (
+            <g key={item.name} className={selected === i ? "wire-active" : ""}>
+              <path className="integration-wire" d={item.path} />
+              <path
+                className="integration-pulse"
+                d={item.path}
+                pathLength="1"
+                style={{ animationDelay: `${i * -0.7}s` }}
+              />
+            </g>
+          ))}
+        </svg>
+        <div className="integration-hub" role="img" aria-label="Jetacy execution layer">
+          <div className="integration-hub-inner">
+            <Logo />
+          </div>
+        </div>
+        {integrations.map((item, i) => (
           <button
-            key={slide.id}
-            aria-current={active === index ? "step" : undefined}
-            onClick={() => {
-              onNavigate(index);
-              setOpen(false);
-              triggerRef.current?.focus();
-            }}
+            type="button"
+            key={item.name}
+            className={`integration-node${item.x > 60 ? " integration-node-right" : ""}`}
+            style={{ left: `${item.x}%`, top: `${item.y}%` }}
+            aria-label={item.name}
+            aria-pressed={selected === i}
+            aria-describedby={selected === i ? `integration-details-${i}` : undefined}
+            onClick={() => setSelected(selected === i ? null : i)}
           >
-            <span className="chapter-number">{String(index + 1).padStart(2, "0")}</span>
-            <span>{slide.label}</span>
+            <item.icon strokeWidth={1.5} aria-hidden="true" />
+            {selected === i && (
+              <span
+                id={`integration-details-${i}`}
+                className="integration-details"
+                role="status"
+              >
+                <strong>{item.name}</strong>
+                <span>{item.description}</span>
+              </span>
+            )}
           </button>
         ))}
-      </nav>
+      </div>
+    </div>
+  );
+}
+function WorkforceContent() {
+  return (
+    <div className="workforce-content">
+      <div>
+        <p className="eyebrow">A MORE FLEXIBLE OPERATION</p>
+        <div className="content">
+          <div>
+            <h2>
+              On-Demand
+              <br />
+              Workforce Module
+            </h2>
+            <p>
+              An added layer with on-demand hourly paid staff, without growing the full-time
+              headcount.
+            </p>
+          </div>
+          <div>
+            <br></br>
+            <span className="pill">
+              Not a marketplace.
+              &nbsp;
+              <span className="blue-text">You decide who works.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <ol className="workforce-steps" aria-label="Workforce process">
+        {[
+          { icon: ShieldCheck, label: "Approve", detail: "Set your standard. Choose your people." },
+          { icon: Users, label: "Hire", detail: "Add capacity when you need it." },
+          { icon: Sparkles, label: "Train", detail: "Prepare every team for your operation." },
+          { icon: Radio, label: "Supervise", detail: "Keep work aligned with your standards." },
+          { icon: CreditCard, label: "Auto payouts", detail: "Keep hourly payments moving." },
+          { icon: ChartNoAxesCombined, label: "Ranked profiles", detail: "Build a picture of team performance." },
+        ].map(({ icon: Icon, label, detail }, i) => (
+          <li key={label}>
+            <span className="workforce-step-number" aria-hidden="true">0{i + 1}</span>
+
+            <span className="workforce-step-icon">
+              <Icon size={18} strokeWidth={1.6} aria-hidden="true" />
+            </span>
+
+            <div className="workforce-step-copy">
+              <h3>{label}</h3>
+              {/* <p>{detail}</p> */}
+            </div>
+
+
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }
 
 function Index() {
-  const [active, setActive] = React.useState(0);
-  const mainRef = React.useRef<HTMLElement>(null);
-
-  React.useEffect(() => {
-    const main = mainRef.current;
-    if (!main) return;
-    const mobileLayout = window.matchMedia("(max-width: 900px), (max-height: 560px)");
-    let observer: IntersectionObserver;
-    const observeSlides = () => {
-      observer?.disconnect();
-      observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              const index = brochureSlides.findIndex((slide) => slide.id === entry.target.id);
-              if (index >= 0) setActive(index);
-            }
-          }
-        },
-        { root: mobileLayout.matches ? null : main, rootMargin: "-40% 0px -40% 0px", threshold: 0 },
-      );
-      main.querySelectorAll("main > section").forEach((section) => observer.observe(section));
-    };
-    observeSlides();
-    mobileLayout.addEventListener("change", observeSlides);
-    return () => {
-      observer.disconnect();
-      mobileLayout.removeEventListener("change", observeSlides);
-    };
+  const [open, setOpen] = useState("");
+  const [light, setLight] = useState(false);
+  const [calendar, setCalendar] = useState(false);
+  useEffect(() => {
+    try {
+      setLight(localStorage.getItem("jetacy-theme") === "light");
+    } catch {
+      /* Theme works without storage. */
+    }
   }, []);
-
-  const goToSlide = React.useCallback((index: number) => {
-    const slide = brochureSlides[index];
-    if (slide) document.getElementById(slide.id)?.scrollIntoView({ block: "start" });
-  }, []);
-
-  React.useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      // Let native scrolling reach all content in chapters taller than the viewport.
-      if (window.matchMedia("(max-width: 900px), (max-height: 560px)").matches) return;
-      const target = event.target as HTMLElement;
-      if (target.closest("input, textarea, select, button, a, iframe, [contenteditable]")) return;
-      if (["ArrowDown", "PageDown", "ArrowUp", "PageUp", "Home", "End"].includes(event.key)) {
-        event.preventDefault();
-        const next =
-          event.key === "Home"
-            ? 0
-            : event.key === "End"
-              ? brochureSlides.length - 1
-              : active + (["ArrowDown", "PageDown"].includes(event.key) ? 1 : -1);
-        goToSlide(Math.max(0, Math.min(brochureSlides.length - 1, next)));
-      }
+  useEffect(() => {
+    const syncHash = () => {
+      const hash = location.hash.slice(1);
+      if (modules.some((m) => m.id === hash)) setOpen(hash);
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [active, goToSlide]);
-
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, []);
+  function toggleTheme() {
+    const next = !light;
+    setLight(next);
+    try {
+      localStorage.setItem("jetacy-theme", next ? "light" : "dark");
+    } catch {
+      /* Optional persistence. */
+    }
+  }
   return (
-    <div className="brochure min-h-screen bg-ink text-foreground">
-      <Nav />
-      <main ref={mainRef} id="brochure" aria-label="Jetacy brochure">
-        <Hero />
-        <WhoWeAre />
-        <DetailerWorkflow />
-        <Platform />
-        <WorkforceModule />
-        <BuiltFor />
-        <Contact />
-      </main>
-      <aside className="slide-rail" aria-label="Brochure slides">
-        {brochureSlides.map((slide, index) => (
-          <a
-            key={slide.id}
-            href={`#${slide.id}`}
-            aria-label={slide.label}
-            aria-current={active === index ? "step" : undefined}
-          >
-            <span>{slide.label}</span>
-            <i />
+    <div className={`jetacy-site ${light ? "light-theme" : ""}`}>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+
+      <header className="site-header">
+        <div className="header-inner">
+          <a href="#top" aria-label="Jetacy home">
+            <Logo />
           </a>
-        ))}
-      </aside>
-      <div className="brochure-bottom">
-        <MobileChapters active={active} onNavigate={goToSlide} />
-        <div className="slide-caption">
-          <span>{String(active + 1).padStart(2, "0")}</span>
-          <span className="caption-line" />
-          <span>{brochureSlides[active]?.label}</span>
+          <nav aria-label="Main navigation">
+            {modules.map((m) => (
+              <a key={m.id} href={`#${m.id}`} onClick={() => setOpen(m.id)}>
+                {m.id === "api" ? "Integrations" : m.id === "workforce" ? "Workforce" : m.label}
+              </a>
+            ))}
+          </nav>
+          <div className="header-actions">
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${light ? "dark" : "light"} theme`}
+            >
+              {light ? <Moon size={17} /> : <Sun size={17} />}
+            </button>
+            <DemoLink />
+          </div>
         </div>
-        <div className="slide-controls">
-          <span>{String(active + 1).padStart(2, "0")} / 07</span>
-          <button
-            onClick={() => goToSlide(active - 1)}
-            disabled={active === 0}
-            aria-label="Previous slide"
+      </header>
+
+      <main id="main">
+        <div className="page-shell" id="top">
+          {false && <section className="intro" aria-labelledby="page-title">
+            <div className="intro-top">
+              {/* <span className="eyebrow">
+                <span className="status-dot" />
+                THE BUSINESS AVIATION EXECUTION LAYER
+              </span> */}
+              {/* <span className="instrument-label">
+                <Radio size={12} /> CONNECTED BY DESIGN
+              </span> */}
+            </div>
+            <div className="intro-main">
+              <h1 id="page-title">
+                Precision on the ground.
+                <br />
+                <span>Confidence in the air.</span>
+              </h1>
+              <div className="intro-aside">
+                <p>
+                  The operating system for
+                  <br />
+                  business jet detailing & cabin care.
+                </p>
+                {/* <a href="#who" onClick={() => setOpen("who")} className="text-link">
+                  Explore Jetacy <ArrowUpRight size={15} />
+                </a> */}
+              </div>
+            </div>
+          </section>}
+
+          {false && <div className="system-ticker" aria-label="Platform overview">
+            <span>
+              <span className="status-dot" /> ONE CONNECTED OPERATION
+            </span>
+            <span>
+              <i className="green" /> FLEET OPS
+            </span>
+            <span>
+              <i className="blue" /> DETAILER
+            </span>
+            <span>
+              <i className="yellow" /> CLIENT
+            </span>
+            <span className="ticker-end">
+              3 INTERFACES <span> / </span> 1 EXECUTION LAYER
+            </span>
+          </div>}
+
+          {false && <div className="module-heading">
+            <span>EXPLORE THE SYSTEM</span>
+            <span>
+              SELECT A MODULE TO EXPAND <Plus size={11} />
+            </span>
+          </div>}
+
+          <Accordion.Root
+            type="single"
+            collapsible
+            value={open}
+            onValueChange={setOpen}
+            className="modules"
           >
-            <ArrowUp size={17} />
-          </button>
-          <button
-            onClick={() => goToSlide(active + 1)}
-            disabled={active === brochureSlides.length - 1}
-            aria-label="Next slide"
-          >
-            <ArrowDown size={17} />
-          </button>
+            {modules.map((m, i) => (
+              <Accordion.Item className={`module ${m.color}`} value={m.id} id={m.id} key={m.id}>
+                <Accordion.Header>
+                  <Accordion.Trigger className="module-trigger">
+                    <span className="module-number">0{i + 1}</span>
+                    <span className="module-icon">
+                      <m.icon size={21} strokeWidth={1.5} />
+                    </span>
+                    <span className="module-title">{m.label}</span>
+                    <span className="module-subtitle">{m.sub}</span>
+                    {/* <span className="module-state">{open === m.id ? "CLOSE" : "EXPLORE"}</span> */}
+                    <span className="plus-box">
+                      <Plus size={17} />
+                    </span>
+                  </Accordion.Trigger>
+                </Accordion.Header>
+                <Accordion.Content className="module-content">
+                  {m.id === "who" ? (
+                    <Who />
+                  ) : m.id === "workflow" ? (
+                    <WorkflowContent />
+                  ) : m.id === "api" ? (
+                    <Integrations />
+                  ) : (
+                    <WorkforceContent />
+                  )}
+                </Accordion.Content>
+              </Accordion.Item>
+            ))}
+          </Accordion.Root>
+
+          {false && <section id="contact" className="contact-section" aria-labelledby="demo-title">
+            <div className="contact-copy">
+              <h2 id="demo-title">See Jetacy in action.</h2>
+              <p>A 30-minute walkthrough, tailored to your operation.</p>
+              <p className="contact-note">
+                White-label. Connected to your systems. Built around your brand.
+              </p>
+            </div>
+            <div className="contact-actions">
+              <button
+                className="button demo-button"
+                onClick={() => setCalendar((value) => !value)}
+                aria-expanded={calendar}
+                aria-controls="demo-calendar"
+              >
+                {calendar ? "Close booking" : "Request Demo"}
+                {calendar ? (
+                  <Plus className="close-booking" size={15} />
+                ) : (
+                  <ArrowUpRight size={15} />
+                )}
+              </button>
+              <a className="email-link" href="mailto:info@jetacy.com">
+                info@jetacy.com
+              </a>
+            </div>
+            {calendar && (
+              <div className="contact-calendar" id="demo-calendar">
+                <iframe
+                  key={light ? "light" : "dark"}
+                  title="Schedule a Jetacy walkthrough"
+                  src={`https://calendly.com/jetacy/30min?hide_gdpr_banner=1&background_color=${light ? "f5f8f8" : "131314"}&text_color=${light ? "1b1f23" : "f5f8f8"}&primary_color=449bcf`}
+                />
+                <a
+                  className="calendar-fallback text-link"
+                  href="https://calendly.com/jetacy/30min"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open booking in a new tab <ArrowUpRight size={13} />
+                </a>
+              </div>
+            )}
+          </section>}
+
+          {false && <footer className="site-footer">
+            <a href="#top" aria-label="Jetacy home">
+              <Logo />
+            </a>
+            <span className="footer-slogan">Jet Detailing OS</span>
+            <span className="copyright">© {new Date().getFullYear()} Jetacy</span>
+            <a href="mailto:info@jetacy.com" aria-label="Email Jetacy">
+              <Mail size={16} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/jetacy"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Jetacy on LinkedIn"
+            >
+              <Linkedin size={16} />
+            </a>
+            <span className="footer-note">
+              <Check size={12} /> BUILT FOR THE TURNAROUND
+            </span>
+          </footer>}
         </div>
-      </div>
+      </main>
     </div>
   );
 }
