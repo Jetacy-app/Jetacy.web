@@ -1,4 +1,5 @@
 ﻿import { useEffect, useState } from "react";
+import { AppShowcase } from "@/components/app-showcase";
 import { createFileRoute } from "@tanstack/react-router";
 import * as Accordion from "@radix-ui/react-accordion";
 import {
@@ -134,7 +135,7 @@ function Who() {
   return (
     <div className="who-content content-grid">
       <div>
-        {/* <span className="pill">Built around your operation</span> */}
+        <span className="pill">Built around your operation</span>
         <h2 id="who-title">
           Business Jet Detailing
           <br />
@@ -143,20 +144,15 @@ function Who() {
         <p>
           Engineered to empower specialized Aircraft Detailers, alongside FBOs & Fleet operators, digitizing the entire detailing lifecycle & easing operational friction.
         </p>
-        {/* <p>
+        <p>
           Coordinating Detailers with Clients & Fleet Ops, each through its own dedicated interface,
           in one centralized workflow.
-        </p> */}
+        </p>
         {/* <div className="inline-note">
           <span className="status-dot" />3 INTERFACES <span>·</span> 1 EXECUTION LAYER
         </div> */}
       </div>
-      <PhoneMockup
-        src="/images/jetacy-home-2.png"
-        label=""
-        color="blue"
-        main
-      />
+      <AppShowcase />
     </div>
   );
 }

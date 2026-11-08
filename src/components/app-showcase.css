@@ -1,0 +1,204 @@
+/* This scene is scoped to the operating system showcase only. */
+.jetacy-showcase {
+  --pointer-x: 0;
+  --pointer-y: 0;
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  padding: 28px 22px 38px;
+  perspective: 1200px;
+}
+
+.jetacy-screen {
+  position: relative;
+  width: min(100%, 290px);
+  aspect-ratio: 678 / 1198;
+  container-type: inline-size;
+  border: 1px solid #383b3c;
+  border-radius: 22px;
+  background: #131415;
+  color: #f5f8f8;
+  box-shadow: 7px 24px 35px -14px rgb(0 0 0 / 40%);
+  transform-style: preserve-3d;
+  transform: rotateY(calc(-10deg + var(--pointer-x) * 5deg))
+    rotateX(calc(3deg - var(--pointer-y) * 3deg)) rotateZ(2deg);
+}
+
+.jetacy-screen-brand {
+  position: absolute;
+  top: 22.3%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4cqw;
+}
+
+.jetacy-screen-brand svg {
+  width: 37%;
+  height: auto;
+}
+.jetacy-screen-brand > span {
+  font-size: 2.95cqw;
+  letter-spacing: 0.55cqw;
+}
+
+.jetacy-pillar-slot {
+  position: absolute;
+  left: 19.8%;
+  width: 60.4%;
+  height: 9%;
+  border: 1px solid #202426;
+  border-radius: 1.8cqw;
+  background: #101213;
+  box-shadow: inset 0 2px 6px rgb(0 0 0 / 35%);
+  transform-style: preserve-3d;
+}
+.jetacy-pillar-client {
+  top: 36.1%;
+  --tone: #fcd042;
+  --depth: 38px;
+  --drift: 4px;
+  --duration: 5s;
+  --parallax: 2px;
+}
+.jetacy-pillar-fleet {
+  top: 47.5%;
+  --tone: #48ba5d;
+  --depth: 48px;
+  --drift: 6px;
+  --duration: 6s;
+  --parallax: 3px;
+}
+.jetacy-pillar-detailers {
+  top: 58.9%;
+  --tone: #449bcf;
+  --depth: 34px;
+  --drift: 3px;
+  --duration: 4.5s;
+  --parallax: 1.5px;
+}
+.jetacy-pillar-depth {
+  height: 100%;
+  transform: translateZ(var(--depth));
+  transform-style: preserve-3d;
+}
+.jetacy-pillar-parallax {
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: translate3d(
+    calc(var(--pointer-x) * var(--parallax)),
+    calc(var(--pointer-y) * var(--parallax)),
+    0
+  );
+}
+.jetacy-pillar-card {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2cqw;
+  border: 1px solid #303638;
+  border-radius: 1.8cqw;
+  background: #1d2123;
+  box-shadow:
+    0 3px 0 #111516,
+    1px 5px 0 #25292b,
+    3px 13px 18px rgb(0 0 0 / 32%);
+  animation: jetacy-pillar-float var(--duration) ease-in-out infinite;
+}
+.jetacy-pillar-fleet .jetacy-pillar-card {
+  animation-delay: -2s;
+}
+.jetacy-pillar-detailers .jetacy-pillar-card {
+  animation-delay: -1s;
+}
+.jetacy-pillar-icon,
+.jetacy-pillar-chevron {
+  display: grid;
+  place-items: center;
+  flex: 0 0 15%;
+  aspect-ratio: 1;
+  border-radius: 1.2cqw;
+  background: #121415;
+}
+.jetacy-pillar-icon {
+  color: var(--tone);
+}
+.jetacy-pillar-icon svg {
+  width: 5cqw;
+  height: 5cqw;
+}
+.jetacy-pillar-chevron {
+  color: #b8bdbf;
+}
+.jetacy-pillar-chevron svg {
+  width: 4.4cqw;
+  height: 4.4cqw;
+}
+.jetacy-pillar-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1cqw;
+  white-space: nowrap;
+}
+.jetacy-pillar-copy strong {
+  font-size: 3.5cqw;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.jetacy-pillar-copy > span {
+  color: #b0b5b7;
+  font-size: 2.15cqw;
+  letter-spacing: 0.1cqw;
+}
+.jetacy-screen-caption {
+  position: absolute;
+  top: 72.7%;
+  width: 100%;
+  color: #85898b;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2.15cqw;
+  letter-spacing: 0.23cqw;
+  line-height: 1.7;
+}
+@keyframes jetacy-pillar-float {
+  0%,
+  100% {
+    transform: translateY(calc(-1 * var(--drift)));
+  }
+  50% {
+    transform: translateY(var(--drift));
+  }
+}
+@media (max-width: 900px) {
+  .jetacy-showcase {
+    padding-inline: 12px;
+  }
+  .jetacy-screen {
+    width: min(100%, 260px);
+  }
+}
+@media (max-width: 640px) {
+  .jetacy-showcase {
+    padding: 15px 25px 35px;
+  }
+  .jetacy-screen {
+    width: min(100%, 280px);
+    transform: rotateY(-7deg) rotateX(2deg) rotateZ(1deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jetacy-screen {
+    transform: rotateY(-7deg) rotateX(2deg) rotateZ(1deg);
+  }
+  .jetacy-pillar-card {
+    animation: none;
+  }
+  .jetacy-pillar-parallax {
+    transform: none;
+  }
+}
