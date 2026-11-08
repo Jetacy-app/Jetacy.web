@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import * as Accordion from "@radix-ui/react-accordion";
 import {
@@ -394,17 +394,17 @@ const integrations = [
     name: "Scheduling",
     description: "Align bookings, aircraft availability, and teams.",
     icon: CalendarDays,
-    x: 65,
+    x: 83,
     y: 13,
-    path: "M650 83 H530 Q500 83 500 113 V300",
+    path: "M830 83 H530 Q500 83 500 113 V300",
   },
   {
     name: "Ground operations",
     description: "Share service needs, handovers, and progress.",
     icon: Radio,
-    x: 27,
+    x: 17,
     y: 48,
-    path: "M270 307 H480"
+    path: "M170 307 H480"
   },
   {
     name: "Payments",
@@ -418,9 +418,9 @@ const integrations = [
     name: "Reporting",
     description: "Track service activity and performance.",
     icon: ChartNoAxesCombined,
-    x: 48,
-    y: 85,
-    path: "M480 544 V300"
+    x: 17,
+    y: 80,
+    path: "M170 512 H430 Q460 512 460 482 V300"
   },
   {
     name: "Your platform",
@@ -432,35 +432,16 @@ const integrations = [
   },
 ];
 function Integrations() {
-  const [selected, setSelected] = useState<number | null>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (selected === null) return;
-
-    const closeOnOutsideClick = (event: MouseEvent) => {
-      const node = event.target instanceof Element
-        ? event.target.closest(".integration-node")
-        : null;
-      if (!node || !contentRef.current?.contains(node)) {
-        setSelected(null);
-      }
-    };
-
-    document.addEventListener("click", closeOnOutsideClick);
-    return () => document.removeEventListener("click", closeOnOutsideClick);
-  }, [selected]);
-
   return (
-    <div className="integration-content" ref={contentRef}>
+    <div className="integration-content">
       <div
         className="integration-network"
         role="group"
         aria-label="API connections to the Jetacy execution layer"
       >
-        <svg className="integration-wires" viewBox="0 0 1000 640" fill="none" aria-hidden="true">
+        <svg className="integration-wires" viewBox="0 0 1000 640" preserveAspectRatio="none" fill="none" aria-hidden="true">
           {integrations.map((item, i) => (
-            <g key={item.name} className={selected === i ? "wire-active" : ""}>
+            <g key={item.name}>
               <path className="integration-wire" d={item.path} />
               <path
                 className="integration-pulse"
@@ -478,28 +459,20 @@ function Integrations() {
           </div>
         </div>
         {integrations.map((item, i) => (
-          <button
-            type="button"
+          <div
             key={item.name}
             className={`integration-node${item.x > 60 ? " integration-node-right" : ""}`}
             style={{ left: `${item.x}%`, top: `${item.y}%` }}
-            aria-label={item.name}
-            aria-pressed={selected === i}
-            aria-describedby={selected === i ? `integration-details-${i}` : undefined}
-            onClick={() => setSelected(selected === i ? null : i)}
           >
             <item.icon strokeWidth={1.5} aria-hidden="true" />
-            {selected === i && (
-              <span
+            <span
                 id={`integration-details-${i}`}
                 className="integration-details"
-                role="status"
               >
                 <strong>{item.name}</strong>
                 <span>{item.description}</span>
               </span>
-            )}
-          </button>
+          </div>
         ))}
       </div>
     </div>
