@@ -21,8 +21,21 @@
   color: #f5f8f8;
   box-shadow: 7px 24px 35px -14px rgb(0 0 0 / 40%);
   transform-style: preserve-3d;
-  transform: rotateY(calc(-10deg + var(--pointer-x) * 5deg))
-    rotateX(calc(3deg - var(--pointer-y) * 3deg)) rotateZ(2deg);
+  transform: rotateY(calc(-27deg + var(--pointer-x) * 5deg))
+    rotateX(calc(10deg - var(--pointer-y) * 3deg)) rotateZ(2deg);
+}
+
+.jetacy-screen::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  width: 25%;
+  height: 6px;
+  border-radius: 0 0 5px 5px;
+  background: #383b3c;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .jetacy-screen-brand {
@@ -59,24 +72,24 @@
   top: 36.1%;
   --tone: #fcd042;
   --depth: 38px;
-  --drift: 4px;
-  --duration: 5s;
+  --drift: 2.5px;
+  --duration: 6.8s;
   --parallax: 2px;
 }
 .jetacy-pillar-fleet {
   top: 47.5%;
   --tone: #48ba5d;
   --depth: 48px;
-  --drift: 6px;
-  --duration: 6s;
+  --drift: 3.5px;
+  --duration: 8.2s;
   --parallax: 3px;
 }
 .jetacy-pillar-detailers {
   top: 58.9%;
   --tone: #449bcf;
   --depth: 34px;
-  --drift: 3px;
-  --duration: 4.5s;
+  --drift: 2px;
+  --duration: 7.4s;
   --parallax: 1.5px;
 }
 .jetacy-pillar-depth {
@@ -106,13 +119,13 @@
     0 3px 0 #111516,
     1px 5px 0 #25292b,
     3px 13px 18px rgb(0 0 0 / 32%);
-  animation: jetacy-pillar-float var(--duration) ease-in-out infinite;
+  animation: jetacy-pillar-float var(--duration) cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
 .jetacy-pillar-fleet .jetacy-pillar-card {
-  animation-delay: -2s;
+  animation-delay: -2.7s;
 }
 .jetacy-pillar-detailers .jetacy-pillar-card {
-  animation-delay: -1s;
+  animation-delay: -4.8s;
 }
 .jetacy-pillar-icon,
 .jetacy-pillar-chevron {
@@ -168,10 +181,10 @@
 @keyframes jetacy-pillar-float {
   0%,
   100% {
-    transform: translateY(calc(-1 * var(--drift)));
+    transform: translate3d(0, calc(-1 * var(--drift)), 2px);
   }
   50% {
-    transform: translateY(var(--drift));
+    transform: translate3d(0, var(--drift), 0);
   }
 }
 @media (max-width: 900px) {
@@ -188,12 +201,12 @@
   }
   .jetacy-screen {
     width: min(100%, 280px);
-    transform: rotateY(-7deg) rotateX(2deg) rotateZ(1deg);
+    transform: rotateY(-19deg) rotateX(7deg) rotateZ(1deg);
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .jetacy-screen {
-    transform: rotateY(-7deg) rotateX(2deg) rotateZ(1deg);
+    transform: rotateY(-19deg) rotateX(7deg) rotateZ(1deg);
   }
   .jetacy-pillar-card {
     animation: none;
