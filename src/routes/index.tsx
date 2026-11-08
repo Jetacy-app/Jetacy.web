@@ -134,7 +134,7 @@ function PhoneMockup({
 function Who() {
   return (
     <div className="who-content content-grid">
-      <div>
+      <div style={{paddingBottom: '100px'}}>
         {/* <span className="pill">Built around your operation</span> */}
         <h2 id="who-title">
           Business Jet Detailing
