@@ -11,7 +11,6 @@ import {
   Sun,
   Moon,
   Plane,
-  Layers3,
   Workflow,
   Network,
   Users,
@@ -56,29 +55,29 @@ export const Route = createFileRoute("/")({
 });
 const modules = [
   {
-    id: "who",
-    label: "Who we are",
-    sub: "Purpose-built for business aviation",
-    icon: Layers3,
-    color: "blue",
-  },
-  {
     id: "workflow",
     label: "Workflow",
     sub: "Three interfaces. One execution layer.",
     icon: Workflow,
-    color: "green",
+    color: "blue",
+  },
+  {
+    id: "features",
+    label: "Features",
+    sub: "Built for every step of the job",
+    icon: Sparkles,
+    color: "yellow",
   },
   {
     id: "api",
     label: "Integrations",
     sub: "Your systems, connected",
     icon: Network,
-    color: "yellow",
+    color: "green",
   },
   {
-    id: "workforce",
-    label: "Workforce optimization",
+    id: "Staff Optimization",
+    label: "Staff Optimization",
     sub: "The right people, on demand",
     icon: Users,
     color: "orange",
@@ -91,7 +90,7 @@ function Logo() {
     </svg>
   );
 }
-function DemoLink({ children = "Request Demo" }: { children?: React.ReactNode }) {
+function DemoLink({ children = "Book a demo" }: { children?: React.ReactNode }) {
   return (
     <a className="button primary" href="https://calendly.com/jetacy/30min" target="_blank">
       {children}
@@ -112,10 +111,10 @@ function PhoneMockup({
 }) {
   return (
     <figure className={`phone-figure ${main ? "main-phone" : ""}`}>
-      {label != "" && <figcaption className={`role-label ${color}`}>
+      {/* {label != "" && <figcaption className={`role-label ${color}`}>
         <span className="status-dot" />
         {label}
-      </figcaption>}
+      </figcaption>} */}
       <div className="phone-frame">
         <img
           src={src}
@@ -132,20 +131,19 @@ function Who() {
   return (
     <div className="who-content content-grid">
       <div>
-        <span className="pill">Built around your operation</span>
-        <h2>
+        {/* <span className="pill">Built around your operation</span> */}
+        <h2 id="who-title">
           Business Jet Detailing
           <br />
           <span className="blue-text">Operating System</span>
         </h2>
         <p>
-          Engineered to empower specialized Aircraft Detailers, alongside FBOs & Fleet operators,
-          digitizing the entire detailing lifecycle & easing operational friction.
+          Engineered to empower specialized Aircraft Detailers, alongside FBOs & Fleet operators, digitizing the entire detailing lifecycle & easing operational friction.
         </p>
-        <p>
+        {/* <p>
           Coordinating Detailers with Clients & Fleet Ops, each through its own dedicated interface,
           in one centralized workflow.
-        </p>
+        </p> */}
         {/* <div className="inline-note">
           <span className="status-dot" />3 INTERFACES <span>·</span> 1 EXECUTION LAYER
         </div> */}
@@ -159,11 +157,13 @@ function Who() {
     </div>
   );
 }
+
 const interfaces = [
   { label: "Fleet Ops", color: "green", src: "/images/jetacy-home.png" },
   { label: "Detailer", color: "blue", src: "/images/jetacy-cards-busy.png" },
   { label: "Client", color: "yellow", src: "/images/jetacy-home-2.png" },
 ];
+
 function InterfaceCarousel() {
   const [active, setActive] = useState(1);
   const [paused, setPaused] = useState(false);
@@ -223,7 +223,7 @@ function InterfaceCarousel() {
           );
         })}
       </div>
-      <div className="interface-controls">
+      {/* <div className="interface-controls">
         <button type="button" onClick={() => navigate(-1)} aria-label="Previous interface">
           <ChevronLeft size={19} />
         </button>
@@ -240,14 +240,16 @@ function InterfaceCarousel() {
         <button type="button" onClick={() => navigate(1)} aria-label="Next interface">
           <ChevronRight size={19} />
         </button>
-      </div>
+      </div> */}
       <span className="sr-only" aria-live={paused ? "polite" : "off"}>
         {interfaces[active]!.label} interface
       </span>
     </section>
   );
 }
+
 const stages = ["Safety", "Inspect", "Detail", "Photos", "RTS"];
+
 function WorkflowContent() {
   const [step, setStep] = useState(2);
   return (
@@ -255,7 +257,8 @@ function WorkflowContent() {
       <div className="section-heading">
         <p className="eyebrow">LIVE JOB CARDS</p>
         <h2>A dedicated card for each order.</h2>
-        <span className="pill">3 interfaces · 1 execution layer</span>
+        <p>Coordinating Detailers with Clients & Fleet Ops, each through its own dedicated interface, in one centralized workflow.</p>
+        <span className="pill">3 interfaces · <span className="blue-text">1 execution layer</span></span>
       </div>
       <div style={{ flex: 1 }}>
         <InterfaceCarousel />
@@ -311,6 +314,70 @@ function WorkflowContent() {
         </div>
       </div> */}
       </div>
+    </div>
+  );
+}
+function FeaturesContent() {
+  return (
+    <div className="features-content">
+      <div className="section-heading">
+        <p className="eyebrow">BUILT AROUND YOUR OPERATION</p>
+        <h2>Everything you need. In one app.</h2>
+      </div>
+      <ul className="feature-grid">
+        {[
+          {
+            icon: MessageSquare,
+            title: "Coordination & Communication",
+            description: "In-app direct calls, chat, voice notes, photos, videos and documents.",
+          },
+          {
+            icon: Plane,
+            title: "Aircraft size pricing logic",
+            description: "Service rates and ground time scale automatically with aircraft size and service scope. Automated pricing logic across 90+ aircraft models uses airframe class to calculate service cost and ramp duration.",
+          },
+        ].map(({ icon: Icon, title, description }) => (
+          <li key={title}>
+            <Icon size={21} strokeWidth={1.5} aria-hidden="true" color={"#FCD042"}/>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </li>
+        ))}
+      </ul>
+      {/* <div className="feature-security-heading">
+        <p className="eyebrow">PROPOSED SECURITY FEATURES</p>
+        <h2>Control access. Protect operational data.</h2>
+      </div> */}
+      <ul className="feature-grid">
+        {[
+          {
+            icon: Users,
+            title: "Role-based access",
+            description: "Define permissions for detailers, clients and fleet operations, with access limited to the jobs and information each role needs.",
+          },
+          {
+            icon: ShieldCheck,
+            title: "Secure sign-in",
+            description: "Add multi-factor authentication and session controls to help protect accounts and manage access from shared devices.",
+          },
+          {
+            icon: Clock3,
+            title: "Activity & audit trails",
+            description: "Keep a timestamped record of job updates, approvals and pricing changes, showing who changed what and when.",
+          },
+          {
+            icon: SlidersHorizontal,
+            title: "Protected files & sharing",
+            description: "Encrypt operational files in transit and at rest, with permission-controlled downloads and expiring share links.",
+          },
+        ].map(({ icon: Icon, title, description }) => (
+          <li key={title}>
+            <Icon size={21} strokeWidth={1.5} aria-hidden="true"  color={"#FCD042"}/>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -406,7 +473,8 @@ function Integrations() {
         </svg>
         <div className="integration-hub" role="img" aria-label="Jetacy execution layer">
           <div className="integration-hub-inner">
-            <Logo />
+            {/* <Logo /> */}
+            <span style={{fontSize:40,fontWeight:'600',paddingLeft:13,paddingRight:13,color:'#48BA5D'}}>Jetacy</span>
           </div>
         </div>
         {integrations.map((item, i) => (
@@ -440,31 +508,33 @@ function Integrations() {
 function WorkforceContent() {
   return (
     <div className="workforce-content">
-      <div>
-        <p className="eyebrow">A MORE FLEXIBLE OPERATION</p>
-        <div className="content">
-          <div>
-            <h2>
-              On-Demand
-              <br />
-              Workforce Module
-            </h2>
-            <p>
-              An added layer with on-demand hourly paid staff, without growing the full-time
-              headcount.
-            </p>
-          </div>
+      <div style={{ flex: 1 }}>
+        {/* <p className="eyebrow">A MORE FLEXIBLE OPERATION</p> */}
+        <div className="content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          {/* <div> */}
+          <h2 >
+            On-Demand
+            Workforce Module
+          </h2>
+
+          <p>
+            An added layer with on-demand hourly paid staff,
+            without growing the full-time headcount.
+          </p>
+          {/* </div> */}
+
           <div>
             <br></br>
             <span className="pill">
               Not a marketplace.
               &nbsp;
-              <span className="blue-text">You decide who works.</span>
+              <span className="orange-text">You decide who works.</span>
             </span>
           </div>
         </div>
       </div>
-      <ol className="workforce-steps" aria-label="Workforce process">
+
+      {false && <ol className="workforce-steps" aria-label="Workforce process">
         {[
           { icon: ShieldCheck, label: "Approve", detail: "Set your standard. Choose your people." },
           { icon: Users, label: "Hire", detail: "Add capacity when you need it." },
@@ -488,7 +558,8 @@ function WorkforceContent() {
 
           </li>
         ))}
-      </ol>
+      </ol>}
+
     </div>
   );
 }
@@ -496,7 +567,6 @@ function WorkforceContent() {
 function Index() {
   const [open, setOpen] = useState("");
   const [light, setLight] = useState(false);
-  const [calendar, setCalendar] = useState(false);
   useEffect(() => {
     try {
       setLight(localStorage.getItem("jetacy-theme") === "light");
@@ -534,6 +604,7 @@ function Index() {
             <Logo />
           </a>
           <nav aria-label="Main navigation">
+            <a href="#who">About us</a>
             {modules.map((m) => (
               <a key={m.id} href={`#${m.id}`} onClick={() => setOpen(m.id)}>
                 {m.id === "api" ? "Integrations" : m.id === "workforce" ? "Workforce" : m.label}
@@ -541,6 +612,18 @@ function Index() {
             ))}
           </nav>
           <div className="header-actions">
+            <a href="mailto:info@jetacy.com" aria-label="Email Jetacy" style={{color:'var(--muted-foreground)'}}>
+              <Mail size={16} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/jetacy"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Jetacy on LinkedIn"
+              style={{color:'var(--muted-foreground)'}}
+            >
+              <Linkedin size={16} />
+            </a>
             <button
               className="theme-toggle"
               onClick={toggleTheme}
@@ -609,6 +692,11 @@ function Index() {
             </span>
           </div>}
 
+          <section id="who" className="who-section" aria-labelledby="who-title">
+            {/* <p className="eyebrow">Who we are</p> */}
+            <Who />
+          </section>
+
           <Accordion.Root
             type="single"
             collapsible
@@ -620,23 +708,23 @@ function Index() {
               <Accordion.Item className={`module ${m.color}`} value={m.id} id={m.id} key={m.id}>
                 <Accordion.Header>
                   <Accordion.Trigger className="module-trigger">
-                    <span className="module-number">0{i + 1}</span>
+                    {/* <span className="module-number">0{i + 1}</span> */}
                     <span className="module-icon">
                       <m.icon size={21} strokeWidth={1.5} />
                     </span>
                     <span className="module-title">{m.label}</span>
-                    <span className="module-subtitle">{m.sub}</span>
+                    {/* <span className="module-subtitle">{m.sub}</span> */}
                     {/* <span className="module-state">{open === m.id ? "CLOSE" : "EXPLORE"}</span> */}
-                    <span className="plus-box">
+                    <span className="plus-box" style={{marginLeft: 'auto'}}>
                       <Plus size={17} />
                     </span>
                   </Accordion.Trigger>
                 </Accordion.Header>
                 <Accordion.Content className="module-content">
-                  {m.id === "who" ? (
-                    <Who />
-                  ) : m.id === "workflow" ? (
+                  {m.id === "workflow" ? (
                     <WorkflowContent />
+                  ) : m.id === "features" ? (
+                    <FeaturesContent />
                   ) : m.id === "api" ? (
                     <Integrations />
                   ) : (
@@ -646,53 +734,51 @@ function Index() {
               </Accordion.Item>
             ))}
           </Accordion.Root>
+        </div>
 
-          {false && <section id="contact" className="contact-section" aria-labelledby="demo-title">
+        <section id="contact" className="contact-section " aria-labelledby="demo-title">
+          <div className="container">
             <div className="contact-copy">
-              <h2 id="demo-title">See Jetacy in action.</h2>
-              <p>A 30-minute walkthrough, tailored to your operation.</p>
-              <p className="contact-note">
-                White-label. Connected to your systems. Built around your brand.
-              </p>
-            </div>
-            <div className="contact-actions">
-              <button
-                className="button demo-button"
-                onClick={() => setCalendar((value) => !value)}
-                aria-expanded={calendar}
-                aria-controls="demo-calendar"
-              >
-                {calendar ? "Close booking" : "Request Demo"}
-                {calendar ? (
-                  <Plus className="close-booking" size={15} />
-                ) : (
-                  <ArrowUpRight size={15} />
-                )}
-              </button>
-              <a className="email-link" href="mailto:info@jetacy.com">
-                info@jetacy.com
-              </a>
-            </div>
-            {calendar && (
-              <div className="contact-calendar" id="demo-calendar">
-                <iframe
-                  key={light ? "light" : "dark"}
-                  title="Schedule a Jetacy walkthrough"
-                  src={`https://calendly.com/jetacy/30min?hide_gdpr_banner=1&background_color=${light ? "f5f8f8" : "131314"}&text_color=${light ? "1b1f23" : "f5f8f8"}&primary_color=449bcf`}
-                />
-                <a
-                  className="calendar-fallback text-link"
-                  href="https://calendly.com/jetacy/30min"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Open booking in a new tab <ArrowUpRight size={13} />
-                </a>
+              {/* <p className="contact-eyebrow">YOUR NEXT TURNAROUND STARTS HERE</p> */}
+              <h2 id="demo-title">See Jetacy<br /><span class="blue-text">on your own turnaround</span></h2>
+              <div style={{ paddingTop: '30px', display: 'flex', flexDirection: 'column', gap: '5px', marginBottom: '30px' }}>
+                <p style={{ whiteSpace: 'nowrap' }}>Built for:</p>
+                <ul className="demo-highlights">
+                  <li><Check size={15} /> Aircraft Detailers</li>
+                  <li><Check size={15} /> Private Aviation Cleaners</li>
+                  <li><Check size={15} /> FBOs</li>
+                  <li><Check size={15} /> Aircraft Management</li>
+                  <li><Check size={15} /> Fleet operators</li>
+                  <li><Check size={15} /> Charter service providers</li>
+                </ul>
               </div>
-            )}
-          </section>}
+              <p>We deploy as a white-label B2B partners, integrated into our partner's systems, customized to their brand & service workflow.</p>
+              <br></br>
+              <div className="contact-actions">
+                <a className="button primary demo-button" href="https://calendly.com/jetacy/30min" target="_blank" rel="noreferrer">
+                  Book a demo <ArrowUpRight size={16} />
+                </a>
+                <a className="email-link" href="mailto:info@jetacy.com">Prefer email? Get in touch <ArrowUpRight size={12} /></a>
+              </div>
+            </div>
+            <div className="contact-calendar" id="demo-calendar">
+              {/* <div className="calendar-heading">
+                <span>Book a walkthrough</span>
+                <span className="calendar-duration">Choose a suitable time</span>
+              </div> */}
+              <iframe
+                title="Book a Jetacy demo"
+                src="https://calendly.com/jetacy/30min?embed_domain=jetacy.com&embed_type=Inline&hide_event_type_details=1&hide_gdpr_banner=1"
+              />
+              {/* <a className="calendar-fallback text-link" href="https://calendly.com/jetacy/30min" target="_blank" rel="noreferrer">
+                  Open booking in a new tab <ArrowUpRight size={13} />
+                </a> */}
+            </div>
+          </div>
+        </section>
 
-          {false && <footer className="site-footer">
+        <footer className="site-footer">
+          <div className="container">
             <a href="#top" aria-label="Jetacy home">
               <Logo />
             </a>
@@ -709,11 +795,11 @@ function Index() {
             >
               <Linkedin size={16} />
             </a>
-            <span className="footer-note">
+            {/* <span className="footer-note">
               <Check size={12} /> BUILT FOR THE TURNAROUND
-            </span>
-          </footer>}
-        </div>
+            </span> */}
+          </div>
+        </footer>
       </main>
     </div>
   );
