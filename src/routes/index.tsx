@@ -102,11 +102,13 @@ function PhoneMockup({
   src,
   label,
   color,
+  phoneColor = "",
   main = false,
 }: {
   src: string;
   label: string;
   color: string;
+  phoneColor?: string;
   main?: boolean;
 }) {
   return (
@@ -115,7 +117,8 @@ function PhoneMockup({
         <span className="status-dot" />
         {label}
       </figcaption>} */}
-      <div className="phone-frame">
+      <div className="phone-frame" style={{ borderColor: phoneColor != "" ? `${phoneColor}` : 'var(--border)' }}>
+        <div className="phone-notch" style={{ background: phoneColor != "" ? `${phoneColor}` : 'var(--border)' }}></div>
         <img
           src={src}
           alt={`Jetacy ${label} interface preview`}
@@ -159,9 +162,9 @@ function Who() {
 }
 
 const interfaces = [
-  { label: "Fleet Ops", color: "green", src: "/images/jetacy-home.png" },
-  { label: "Detailer", color: "blue", src: "/images/jetacy-cards-busy.png" },
-  { label: "Client", color: "yellow", src: "/images/jetacy-home-2.png" },
+  { label: "Detailer", color: "blue", phoneColor: "#449BCF", src: "/images/jetacy-detailer.png" },
+  { label: "Client", color: "yellow", phoneColor: "#FCD042", src: "/images/jetacy-home.png" },
+  { label: "Fleet Ops", color: "green", phoneColor: "#48ba5d", src: "/images/jetacy-fleet.png" },
 ];
 
 function InterfaceCarousel() {
@@ -208,7 +211,7 @@ function InterfaceCarousel() {
               aria-roledescription="slide"
               aria-label={`${i + 1} of 3: ${item.label}`}
             >
-              <PhoneMockup {...item} main={position === "center"} />
+              <PhoneMockup {...item} phoneColor={item.phoneColor} main={position === "center"} />
               <button
                 type="button"
                 className="interface-select"
@@ -223,7 +226,7 @@ function InterfaceCarousel() {
           );
         })}
       </div>
-      {/* <div className="interface-controls">
+      {false && <div className="interface-controls">
         <button type="button" onClick={() => navigate(-1)} aria-label="Previous interface">
           <ChevronLeft size={19} />
         </button>
@@ -240,7 +243,7 @@ function InterfaceCarousel() {
         <button type="button" onClick={() => navigate(1)} aria-label="Next interface">
           <ChevronRight size={19} />
         </button>
-      </div> */}
+      </div>}
       <span className="sr-only" aria-live={paused ? "polite" : "off"}>
         {interfaces[active]!.label} interface
       </span>
@@ -338,7 +341,7 @@ function FeaturesContent() {
           },
         ].map(({ icon: Icon, title, description }) => (
           <li key={title}>
-            <Icon size={21} strokeWidth={1.5} aria-hidden="true" color={"#FCD042"}/>
+            <Icon size={21} strokeWidth={1.5} aria-hidden="true" color={"#FCD042"} />
             <h3>{title}</h3>
             <p>{description}</p>
           </li>
@@ -372,7 +375,7 @@ function FeaturesContent() {
           },
         ].map(({ icon: Icon, title, description }) => (
           <li key={title}>
-            <Icon size={21} strokeWidth={1.5} aria-hidden="true"  color={"#FCD042"}/>
+            <Icon size={21} strokeWidth={1.5} aria-hidden="true" color={"#FCD042"} />
             <h3>{title}</h3>
             <p>{description}</p>
           </li>
@@ -386,49 +389,49 @@ const integrations = [
     name: "Fleet systems",
     description: "Connect aircraft and fleet information to keep detailing work aligned with each aircraft's needs.",
     icon: Plane,
-    x: 17,
-    y: 19,
-    path: "M170 122 H430 Q460 122 460 152 V300"
+    x: 39,
+    y: 17,
+    path: "M180 307 C300 307 270 109 390 109"
   },
   {
     name: "Scheduling",
     description: "Align bookings, aircraft availability, and teams.",
     icon: CalendarDays,
-    x: 83,
-    y: 13,
-    path: "M830 83 H530 Q500 83 500 113 V300",
+    x: 70,
+    y: 27,
+    path: "M180 307 C300 307 580 173 700 173",
   },
   {
     name: "Ground operations",
     description: "Share service needs, handovers, and progress.",
     icon: Radio,
-    x: 17,
-    y: 48,
-    path: "M170 307 H480"
+    x: 46,
+    y: 45,
+    path: "M180 307 C300 307 340 288 460 288"
   },
   {
     name: "Payments",
     description: "Link completed services to billing and payments.",
     icon: CreditCard,
-    x: 87,
-    y: 48,
-    path: "M870 307 H480"
+    x: 76,
+    y: 59,
+    path: "M180 307 C300 307 640 378 760 378"
   },
   {
     name: "Reporting",
     description: "Track service activity and performance.",
     icon: ChartNoAxesCombined,
-    x: 17,
+    x: 32,
     y: 80,
-    path: "M170 512 H430 Q460 512 460 482 V300"
+    path: "M180 307 C300 407 240 480 300 510"
   },
   {
     name: "Your platform",
     description: "Connect your existing tools through the Jetacy API.",
     icon: SlidersHorizontal,
-    x: 83,
+    x: 67,
     y: 80,
-    path: "M830 512 H570 Q540 512 540 482 V300 H480",
+    path: "M180 307 C400 307 550 567 770 510",
   },
 ];
 function Integrations() {
@@ -455,23 +458,23 @@ function Integrations() {
         <div className="integration-hub" role="img" aria-label="Jetacy execution layer">
           <div className="integration-hub-inner">
             {/* <Logo /> */}
-            <span style={{fontSize:40,fontWeight:'600',paddingLeft:13,paddingRight:13,color:'#48BA5D'}}>Jetacy</span>
+            <span style={{ fontSize: 29, fontWeight: '600', paddingLeft: 13, paddingRight: 13, color: '#48BA5D' }}>Jetacy</span>
           </div>
         </div>
         {integrations.map((item, i) => (
           <div
             key={item.name}
-            className={`integration-node${item.x > 60 ? " integration-node-right" : ""}`}
+            className="integration-node"
             style={{ left: `${item.x}%`, top: `${item.y}%` }}
           >
-            <item.icon strokeWidth={1.5} aria-hidden="true" />
+            <item.icon strokeWidth={1.5} aria-hidden="true" color={'#48BA5D'} />
             <span
-                id={`integration-details-${i}`}
-                className="integration-details"
-              >
-                <strong>{item.name}</strong>
-                <span>{item.description}</span>
-              </span>
+              id={`integration-details-${i}`}
+              className="integration-details"
+            >
+              <strong>{item.name}</strong>
+              <span>{item.description}</span>
+            </span>
           </div>
         ))}
       </div>
@@ -585,7 +588,7 @@ function Index() {
             ))}
           </nav>
           <div className="header-actions">
-            <a href="mailto:info@jetacy.com" aria-label="Email Jetacy" style={{color:'var(--muted-foreground)'}}>
+            <a href="mailto:info@jetacy.com" aria-label="Email Jetacy" style={{ color: 'var(--muted-foreground)' }}>
               <Mail size={16} />
             </a>
             <a
@@ -593,7 +596,7 @@ function Index() {
               target="_blank"
               rel="noreferrer"
               aria-label="Jetacy on LinkedIn"
-              style={{color:'var(--muted-foreground)'}}
+              style={{ color: 'var(--muted-foreground)' }}
             >
               <Linkedin size={16} />
             </a>
@@ -688,7 +691,7 @@ function Index() {
                     <span className="module-title">{m.label}</span>
                     {/* <span className="module-subtitle">{m.sub}</span> */}
                     {/* <span className="module-state">{open === m.id ? "CLOSE" : "EXPLORE"}</span> */}
-                    <span className="plus-box" style={{marginLeft: 'auto'}}>
+                    <span className="plus-box" style={{ marginLeft: 'auto' }}>
                       <Plus size={17} />
                     </span>
                   </Accordion.Trigger>
