@@ -386,7 +386,7 @@ h1>span {
 .modules {
   /* border-top: 1px solid var(--border); */
   margin-bottom: 50px;
-  margin-top: -100px;
+  margin-top: -225px;
   z-index: 1;
   position: relative;
   background-color: var(--background);
@@ -433,7 +433,7 @@ h1>span {
 
 .module-title {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.5px;
   color: var(--muted-foreground);
   text-transform: uppercase;
@@ -532,7 +532,7 @@ h1>span {
 
 h2 {
   font-size: clamp(22px, 22px, 22px);
-  font-weight: 500;
+  font-weight: 400;
   /* letter-spacing: -1.3px; */
   line-height: 1.2;
 }
@@ -630,8 +630,23 @@ h2 {
   background: var(--role);
 }
 
+.who-content {
+  display: flex;
+  align-items: center;
+}
+
+.aboutus-content {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-bottom:225px;
+}
+
 .who-content .phone-figure {
-  max-width: 210px;
+  /* max-width: 210px; */
 }
 
 .section-heading {
@@ -940,15 +955,24 @@ h2 {
 
 .integration-node {
   --node-size: 32px;
-  width: 23%;
+  width: 34%;
   min-height: var(--node-size);
   display: flex;
   gap: 8px;
   padding: 0;
   border: 0;
   border-radius: 0;
-  transform: translate(calc(var(--node-size) / -2), -50%);
+  transform: translate(0, -50%);
   color: var(--muted-foreground);
+}
+
+.integration-node-left {
+  flex-direction: row-reverse;
+  transform: translate(-100%, -50%);
+}
+
+.integration-node-left .integration-details {
+  text-align: right;
 }
 
 .integration-node>svg {
@@ -958,8 +982,8 @@ h2 {
 }
 
 .integration-hub {
-  left: 14%;
-  top: 48%;
+  left: 50%;
+  top: 50%;
   width: 16%;
   /* aspect-ratio: 1; */
   padding: 3px;
@@ -1199,7 +1223,7 @@ h2 {
 .contact-calendar iframe {
   display: block;
   width: 100%;
-  height: 420px;
+  height: 300px;
   border: 0;
 }
 
@@ -1489,7 +1513,7 @@ h2 {
   }
 
   .who-content .phone-figure {
-    max-width: 185px;
+    /* max-width: 185px; */
   }
 
   .who-section h2,
@@ -1770,7 +1794,7 @@ h2 {
   }
 
   .integration-network .integration-hub {
-    left: 12%;
+    left: 50%;
     width: auto;
   }
 
@@ -1780,7 +1804,7 @@ h2 {
   }
 
   .integration-network .integration-node {
-    width: 28%;
+    width: 34%;
     gap: 4px;
     align-items: flex-start;
   }
