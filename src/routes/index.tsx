@@ -4,6 +4,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import * as Accordion from "@radix-ui/react-accordion";
 import {
   ArrowUpRight,
+  ClipboardList,
+  Calculator,
+  MessagesSquare,
+  Droplets,
+  Zap,
+  Database,
+  Crown,
   ChevronLeft,
   ChevronRight,
   Pause,
@@ -326,42 +333,42 @@ function FeaturesContent() {
       <ul className="feature-grid">
         {[
           {
-            icon: Plane,
+            icon: ClipboardList,
             title: "JOB CARDS",
             description: "Real-time mission cards uniting tail details, live service progress, assigned detailers, GPS tracking, before/after photos & turnaround countdowns.",
           },
           {
-            icon: Plane,
+            icon: Calculator,
             title: "PRICING INTELLIGENCE",
             description: "Automated pricing logic scales with airframe class, service scope & ground time, enabling accurate costing & ramp duration.",
           },
           {
-            icon: Plane,
+            icon: MessagesSquare,
             title: "UNIFIED COORDINATION",
             description: "In-app calls, chat, voice notes, photos, videos & documents. Connecting the stakeholders with on-demand LMRs.",
           },
           {
-            icon: Plane,
+            icon: Droplets,
             title: "STAIN TREATMENT",
             description: "Multi-tier protocols (spot, deep, heavy) for stain removal, extraction, remediation & surface restoration.",
           },
           {
-            icon: Plane,
+            icon: Zap,
             title: "PRIORITY DISPATCH",
             description: "Automated Rushed & Urgent tiers, on-demand queue prioritization & team deployment for time-sensitive departures.",
           },
           {
-            icon: Plane,
+            icon: Database,
             title: "DATABASE SECURITY",
             description: "Centralised authentication, encrypted client data storage, secure backups & controlled record access.",
           },
           {
-            icon: Plane,
+            icon: Crown,
             title: "ROYAL PROTOCOLS",
             description: "Bespoke white-glove tier for VIP aircraft, enforcing elevated service standards, discrete cabin care & verified execution.",
           },
           {
-            icon: Plane,
+            icon: SlidersHorizontal,
             title: "SYSTEM INTEGRATION",
             description: "Adapted to provider's operational workflows, service portfolio, branding & commercial structure.",
           },
