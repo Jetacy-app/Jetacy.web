@@ -388,7 +388,7 @@ function FeaturesContent() {
         <p className="eyebrow">PROPOSED SECURITY FEATURES</p>
         <h2>Control access. Protect operational data.</h2>
       </div> */}
-      
+
       {false && <ul className="feature-grid">
         {[
           {
