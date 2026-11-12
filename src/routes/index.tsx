@@ -77,8 +77,8 @@ const modules = [
     color: "green",
   },
   {
-    id: "Staff Optimization",
-    label: "Staff Optimization",
+    id: "Workforce",
+    label: "Workforce",
     sub: "The right people, on demand",
     icon: Users,
     color: "orange",
@@ -91,7 +91,7 @@ function Logo() {
     </svg>
   );
 }
-function DemoLink({ children = "Book a demo" }: { children?: React.ReactNode }) {
+function DemoLink({ children = "Demo" }: { children?: React.ReactNode }) {
   return (
     <a className="button primary" href="https://calendly.com/jetacy/30min" target="_blank">
       {children}
@@ -134,14 +134,14 @@ function PhoneMockup({
 function Who() {
   return (
     <div className="who-content content-grid">
-      <div>
+      <div className="aboutus-content">
         {/* <span className="pill">Built around your operation</span> */}
         <h2 id="who-title">
-          Business Jet Detailing
+          BizJet Detailing
           <br />
           <span className="blue-text">Operating System</span>
         </h2>
-        <p>
+        <p style={{ maxWidth: 400 }}>
           Engineered to empower specialized Aircraft Detailers, alongside FBOs & Fleet operators, digitizing the entire detailing lifecycle & easing operational friction.
         </p>
         {/* <p>
@@ -320,34 +320,69 @@ function FeaturesContent() {
   return (
     <div className="features-content">
       <div className="section-heading">
-        <p className="eyebrow">BUILT AROUND YOUR OPERATION</p>
-        <h2>Everything you need. In one app.</h2>
+        <p className="eyebrow">An operational system in sync</p>
+        <h2>From Tail Number to Trip-Ready</h2>
       </div>
       <ul className="feature-grid">
         {[
           {
-            icon: MessageSquare,
-            title: "Coordination & Communication",
-            description: "In-app direct calls, chat, voice notes, photos, videos and documents.",
+            icon: Plane,
+            title: "JOB CARDS",
+            description: "Real-time mission cards uniting tail details, live service progress, assigned detailers, GPS tracking, before/after photos & turnaround countdowns.",
           },
           {
             icon: Plane,
-            title: "Aircraft size pricing logic",
-            description: "Service rates and ground time scale automatically with aircraft size and service scope. Automated pricing logic across 90+ aircraft models uses airframe class to calculate service cost and ramp duration.",
+            title: "PRICING INTELLIGENCE",
+            description: "Automated pricing logic scales with airframe class, service scope & ground time, enabling accurate costing & ramp duration.",
+          },
+          {
+            icon: Plane,
+            title: "UNIFIED COORDINATION",
+            description: "In-app calls, chat, voice notes, photos, videos & documents. Connecting the stakeholders with on-demand LMRs.",
+          },
+          {
+            icon: Plane,
+            title: "STAIN TREATMENT",
+            description: "Multi-tier protocols (spot, deep, heavy) for stain removal, extraction, remediation & surface restoration.",
+          },
+          {
+            icon: Plane,
+            title: "PRIORITY DISPATCH",
+            description: "Automated Rushed & Urgent tiers, on-demand queue prioritization & team deployment for time-sensitive departures.",
+          },
+          {
+            icon: Plane,
+            title: "DATABASE SECURITY",
+            description: "Centralised authentication, encrypted client data storage, secure backups & controlled record access.",
+          },
+          {
+            icon: Plane,
+            title: "ROYAL PROTOCOLS",
+            description: "Bespoke white-glove tier for VIP aircraft, enforcing elevated service standards, discrete cabin care & verified execution.",
+          },
+          {
+            icon: Plane,
+            title: "SYSTEM INTEGRATION",
+            description: "Adapted to provider's operational workflows, service portfolio, branding & commercial structure.",
           },
         ].map(({ icon: Icon, title, description }) => (
           <li key={title}>
-            <Icon size={21} strokeWidth={1.5} aria-hidden="true" color={"#FCD042"} />
-            <h3>{title}</h3>
+            <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+              {/* <Icon size={21} strokeWidth={1.5} aria-hidden="true" color={"#FCD042"} /> */}
+              <Icon size={21} strokeWidth={1.5} aria-hidden="true" color={'var(--muted-foreground)'} />
+              <h3>{title}</h3>
+            </div>
             <p>{description}</p>
           </li>
         ))}
       </ul>
+
       {/* <div className="feature-security-heading">
         <p className="eyebrow">PROPOSED SECURITY FEATURES</p>
         <h2>Control access. Protect operational data.</h2>
       </div> */}
-      <ul className="feature-grid">
+      
+      {false && <ul className="feature-grid">
         {[
           {
             icon: Users,
@@ -371,12 +406,15 @@ function FeaturesContent() {
           },
         ].map(({ icon: Icon, title, description }) => (
           <li key={title}>
-            <Icon size={21} strokeWidth={1.5} aria-hidden="true" color={"#FCD042"} />
-            <h3>{title}</h3>
+            <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+              {/* <Icon size={21} strokeWidth={1.5} aria-hidden="true" color={"#FCD042"} /> */}
+              <Icon size={21} strokeWidth={1.5} aria-hidden="true" color={'var(--muted-foreground)'} />
+              <h3>{title}</h3>
+            </div>
             <p>{description}</p>
           </li>
         ))}
-      </ul>
+      </ul>}
     </div>
   );
 }
@@ -385,49 +423,49 @@ const integrations = [
     name: "Fleet systems",
     description: "Connect aircraft and fleet information to keep detailing work aligned with each aircraft's needs.",
     icon: Plane,
-    x: 39,
-    y: 17,
-    path: "M180 307 C300 307 270 109 390 109"
+    x: 34,
+    y: 20,
+    path: "M500 320 C412 320 412 128 324 128"
   },
   {
     name: "Scheduling",
     description: "Align bookings, aircraft availability, and teams.",
     icon: CalendarDays,
-    x: 70,
-    y: 27,
-    path: "M180 307 C300 307 580 173 700 173",
+    x: 34,
+    y: 50,
+    path: "M500 320 C430 260 394 380 324 320",
   },
   {
     name: "Ground operations",
     description: "Share service needs, handovers, and progress.",
     icon: Radio,
-    x: 46,
-    y: 45,
-    path: "M180 307 C300 307 340 288 460 288"
+    x: 34,
+    y: 80,
+    path: "M500 320 C412 320 412 512 324 512"
   },
   {
     name: "Payments",
     description: "Link completed services to billing and payments.",
     icon: CreditCard,
-    x: 76,
-    y: 59,
-    path: "M180 307 C300 307 640 378 760 378"
+    x: 66,
+    y: 20,
+    path: "M500 320 C588 320 588 128 676 128"
   },
   {
     name: "Reporting",
     description: "Track service activity and performance.",
     icon: ChartNoAxesCombined,
-    x: 32,
-    y: 80,
-    path: "M180 307 C300 407 240 480 300 510"
+    x: 66,
+    y: 50,
+    path: "M500 320 C570 260 606 380 676 320"
   },
   {
     name: "Your platform",
     description: "Connect your existing tools through the Jetacy API.",
     icon: SlidersHorizontal,
-    x: 67,
+    x: 66,
     y: 80,
-    path: "M180 307 C400 307 550 567 770 510",
+    path: "M500 320 C588 320 588 512 676 512",
   },
 ];
 function Integrations() {
@@ -460,7 +498,7 @@ function Integrations() {
         {integrations.map((item, i) => (
           <div
             key={item.name}
-            className="integration-node"
+            className={`integration-node${i < 3 ? " integration-node-left" : ""}`}
             style={{ left: `${item.x}%`, top: `${item.y}%` }}
           >
             <item.icon strokeWidth={1.5} aria-hidden="true" color={'#48BA5D'} />
@@ -484,21 +522,18 @@ function WorkforceContent() {
         {/* <p className="eyebrow">A MORE FLEXIBLE OPERATION</p> */}
         <div className="content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           {/* <div> */}
-          <h2 >
-            On-Demand
-            Workforce Module
-          </h2>
+          <h2>On-Demand Team Module</h2>
 
           <p>
-            An added layer with on-demand hourly paid staff,
-            without growing the full-time headcount.
+            An added layer of hourly detailers to scale ramp capacity & optimize the fixed full-time headcount.
           </p>
+
           {/* </div> */}
 
           <div>
             <br></br>
             <span className="pill">
-              Not a marketplace.
+              Approve. Hire. Train. Supervise. Auto-Pay. Rank.
               &nbsp;
               <span className="orange-text">You decide who works.</span>
             </span>
@@ -712,7 +747,7 @@ function Index() {
           <div className="container">
             <div className="contact-copy">
               {/* <p className="contact-eyebrow">YOUR NEXT TURNAROUND STARTS HERE</p> */}
-              <h2 id="demo-title">See Jetacy<br /><span class="blue-text">on your own turnaround</span></h2>
+              <h2 id="demo-title">See <span className="blue-text">Jetacy</span> on your own turnaround</h2>
               <div style={{ paddingTop: '30px', display: 'flex', flexDirection: 'column', gap: '5px', marginBottom: '30px' }}>
                 <p style={{ whiteSpace: 'nowrap' }}>Built for:</p>
                 <ul className="demo-highlights">
@@ -724,11 +759,15 @@ function Index() {
                   <li><Check size={15} /> Charter service providers</li>
                 </ul>
               </div>
-              <p>We deploy as a white-label B2B partners, integrated into our partner's systems, customized to their brand & service workflow.</p>
+              <p>
+                <b>We deploy as a white-label B2B partners.</b>
+                <br />
+                Integrated into our partner's service workflow, customized to their brand & operations.
+              </p>
               <br></br>
               <div className="contact-actions">
                 <a className="button primary demo-button" href="https://calendly.com/jetacy/30min" target="_blank" rel="noreferrer">
-                  Book a demo <ArrowUpRight size={16} />
+                  Demo <ArrowUpRight size={16} />
                 </a>
                 <a className="email-link" href="mailto:info@jetacy.com">Prefer email? Get in touch <ArrowUpRight size={12} /></a>
               </div>
